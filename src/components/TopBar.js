@@ -1,9 +1,7 @@
 import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import { observer } from 'mobx-react'
-import store from '../store'
-
-import Log from './Log'
+import { Profile, Recipes, Log } from '.'
 
 const TopBar = () => (
   <Tabs>
@@ -11,10 +9,10 @@ const TopBar = () => (
       <Log />
     </Tab>
     <Tab label='Recipes'>
-      Do recipe stuff here
+      <Recipes />
     </Tab>
     <Tab label='Profile'>
-      Who da fuck are you
+      <Profile />
     </Tab>
   </Tabs>
 )

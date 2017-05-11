@@ -2,6 +2,7 @@ import React from 'react'
 import { Donut } from 'rebass'
 import store from '../store'
 import { observer } from 'mobx-react'
+import RaisedButton from 'material-ui/RaisedButton'
 
 const Log = () => (
   <div className='Log'>
@@ -14,9 +15,39 @@ const Log = () => (
       <div>Daily Calories</div>
     </div>
     <div className='log-macro-donut'>
-      <Donut />
-      <Donut />
-      <Donut />
+      <div><Donut
+        value={(store.daily.protein - store.used.protein) / 2000} />
+        <div>Protein</div>
+      </div>
+      <div><Donut
+        value={(store.daily.carbs - store.used.carbs)} />
+        <div>Carbs</div>
+      </div>
+      <div>
+        <Donut
+          value={(store.daily.fats - store.used.fats)} />
+        <div>Fats</div>
+      </div>
+    </div>
+    <div className='Daily Log'>
+      <div className='add-food-buttons'>
+        <div className='breakfast'>
+          breakfast:
+          <RaisedButton label='+'
+            onTouchTap={(() => {
+              console.log('hey')
+            })}
+           />
+        </div>
+        <div className='lunch'>
+        Lunch:
+        <RaisedButton label='+' />
+        </div>
+        <div className='dinner'>
+        Dinner:
+        <RaisedButton label='+' />
+        </div>
+      </div>
     </div>
   </div>
 )

@@ -12,7 +12,6 @@ body {
   font: $base-text-size / 1 $base-font-family;
 }
 
-
 .log-cal {
   display: flex;
   flex-direction: column;
@@ -28,4 +27,15 @@ body {
 .log-macro-donut {
   display: flex;
   justify-content: space-around;
+  padding-bottom: 50px;
+}
+
+.add-food-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  > div {
+    padding: 25px;
+  }
 }
