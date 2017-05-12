@@ -2,9 +2,9 @@ import { observable, action } from 'mobx'
 
 class Store {
   @observable display = {
-    'breakfast': 'flex',
-    'lunch': 'none',
-    'dinner': 'none'
+    'Breakfast': 'none',
+    'Lunch': 'none',
+    'Dinner': 'none'
   }
   @observable daily = {
     'calories': 2000,
@@ -24,6 +24,7 @@ class Store {
     } else {
       this.display.input = 'none'
     }
+    console.log(this.display.input)
   }
 }
 
