@@ -3,6 +3,7 @@ import { Donut } from 'rebass'
 import store from '../store'
 import { observer } from 'mobx-react'
 import RaisedButton from 'material-ui/RaisedButton'
+import { Modal } from '.'
 
 const Log = () => (
   <div className='Log'>
@@ -32,12 +33,13 @@ const Log = () => (
     <div className='Daily Log'>
       <div className='add-food-buttons'>
         <div className='breakfast'>
-          breakfast:
+          Breakfast:
           <RaisedButton label='+'
             onTouchTap={(() => {
               store.toggle('breakfast')
             })}
            />
+          <Modal target='breakfast' />
         </div>
         <div className='lunch'>
         Lunch:
@@ -46,6 +48,7 @@ const Log = () => (
             store.toggle('lunch')
           })}
         />
+          <Modal target='lunch' />
         </div>
         <div className='dinner'>
         Dinner:
@@ -54,6 +57,7 @@ const Log = () => (
             store.toggle('dinner')
           })}
         />
+          <Modal target='dinner' />
         </div>
       </div>
     </div>

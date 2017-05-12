@@ -2,7 +2,7 @@ import { observable, action } from 'mobx'
 
 class Store {
   @observable display = {
-    'breakfast': 'none',
+    'breakfast': 'flex',
     'lunch': 'none',
     'dinner': 'none'
   }
@@ -20,11 +20,10 @@ class Store {
   }
   @action toggle = (input) => {
     if (this.display.input === 'none') {
-      this.display.input = 'inline'
+      this.display.input = 'flex'
     } else {
       this.display.input = 'none'
     }
-    console.log(this.display.input)
   }
 }
 
