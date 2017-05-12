@@ -35,17 +35,25 @@ const Log = () => (
           breakfast:
           <RaisedButton label='+'
             onTouchTap={(() => {
-              console.log('hey')
+              store.toggle('breakfast')
             })}
            />
         </div>
         <div className='lunch'>
         Lunch:
-        <RaisedButton label='+' />
+        <RaisedButton label='+'
+          onTouchTap={(() => {
+            store.toggle('lunch')
+          })}
+        />
         </div>
         <div className='dinner'>
         Dinner:
-        <RaisedButton label='+' />
+        <RaisedButton label='+'
+          onTouchTap={(() => {
+            store.toggle('dinner')
+          })}
+        />
         </div>
       </div>
     </div>
