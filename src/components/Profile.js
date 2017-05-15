@@ -12,17 +12,17 @@ const Profile = () => (
     <div className='profile-top'>
       <div className='profile-info'>
         <Avatar src='https://s-media-cache-ak0.pinimg.com/originals/79/6b/1c/796b1c17ab518ddd26c46ccfbb0f215b.png' />
-        <br />
         <TextField hintText='Name' />
         <DatePicker hintText='Age' />
-        <TextField hintText='Weight' /><br />
-        <TextField hintText='Height' /><br />
+        <TextField hintText='Weight' />
+        <TextField hintText='Height' />
       </div>
       <div className='profile-top-dailies'>
         <h3>Daily Nutrients</h3>
         <DailyNutrients />
       </div>
     </div>
+    <br />
     <div className='profile-radio-list'>
       <div className='profile-radio-title'>Gender:</div><br />
       <Radio label='Male' name='gender' /><br />

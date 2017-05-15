@@ -5,14 +5,20 @@ import { observer } from 'mobx-react'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const LogItem = ({ target }) => (
-  <div className={target}>
-    {target}:
+  <div className='LogItem'>
+    <div className={target}>
+      {target}
+      Calories: {store.used.calories[`${target}`]}
+      Protein: {store.used.protein[`${target}`]}
+      Carbs: {store.used.carbs[`${target}`]}
+      Fats: {store.used.fat[`${target}`]}
       <RaisedButton label='+'
         onTouchTap={(() => {
           store.toggle(`${target}`)
         })}
        />
-    <Modal target={target} />
+      <Modal target={target} />
+    </div>
   </div>
 )
 

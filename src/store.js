@@ -13,11 +13,28 @@ class Store {
     'fat': 33
   }
   @observable used = {
-    'calories': 1200,
-    'protein': 32,
-    'carbs': 120,
-    'fat': 18
+    'calories': {
+      'Breakfast': '1000',
+      'Lunch': '450',
+      'Dinner': '0'
+    },
+    'protein': {
+      'Breakfast': '1000',
+      'Lunch': '450',
+      'Dinner': '0'
+    },
+    'carbs': {
+      'Breakfast': '1000',
+      'Lunch': '450',
+      'Dinner': '0'
+    },
+    'fat': {
+      'Breakfast': '1000',
+      'Lunch': '450',
+      'Dinner': '0'
+    }
   }
+
   @action toggle = (input) => {
     if (this.display.input === 'none') {
       this.display.input = 'flex'
