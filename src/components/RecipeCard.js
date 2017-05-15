@@ -3,7 +3,6 @@ import { Card, CardHeader, CardText, CardMedia, CardTitle, CardActions } from 'm
 import FlatButton from 'material-ui/FlatButton'
 import store from '../store'
 import { observer } from 'mobx-react'
-import { Modal } from '.'
 
 const RecipeCard = () => (
   <Card className='recipe-card'>
@@ -29,9 +28,6 @@ const RecipeCard = () => (
         store.toggle('Dinner')
       })} />
     </CardActions>
-    <Modal target='Breakfast' />
-    <Modal target='Lunch' />
-    <Modal target='Dinner' />
   </Card>
 )
 

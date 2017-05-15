@@ -49,8 +49,6 @@ body {
   }
 }
 
-
-
 .Recipes {
   .recipe-card-list {
     display: flex;
@@ -64,6 +62,52 @@ body {
   }
 }
 
+.Profile {
+  .profile-top {
+    .profile-top-dailies {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .profile-radio-title {
+    font-size: 1.2em;
+    text-decoration: underline;
+  }
+
+  .profile-radio-list {
+    padding-top: 20px;
+  }
+
+  .profile-goals {
+    .profile-goals-list {
+      display: flex;
+      justify-content: space-around;
+
+      .paper-goals {
+        height: 150px;
+        width: 120px;
+
+        .DailyNutrients {
+          display: none;
+        }
+
+        &:hover {
+          width: 300px;
+
+          .DailyNutrients {
+            display: inline;
+          }
+        }
+      }
+    }
+  }
+}
+
 .Modal {
   position: fixed;
   top: 0;
@@ -73,6 +117,7 @@ body {
   background-color: hsla(0, 0%, 0%, 0.7);
   align-items: center;
   justify-content: center;
+  z-index: 2;
 
   .modal-window {
     width: 300px;
