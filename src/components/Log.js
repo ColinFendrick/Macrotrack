@@ -31,13 +31,14 @@ const Log = () => (
         <div>Fats</div>
       </div>
     </div>
-    <div className='Daily Log'>
+    <div className='daily-log'>
       <div className='add-food-buttons'>
         <LogItem target='Breakfast' />
         <LogItem target='Lunch' />
         <LogItem target='Dinner' />
       </div>
     </div>
+    <div className='weekly-log' />
   </div>
 )
 
