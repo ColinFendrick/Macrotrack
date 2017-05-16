@@ -58,7 +58,7 @@ const Profile = () => (
       </div>
     </div>
     <br />
-    <div style={{'width': '100vh', 'text-align': 'center'}}>
+    <div style={{'width': '100vh', 'textAlign': 'center'}}>
       <FlatButton style={{'border': '1px solid black'}} label='Update Profile' />
     </div>
 

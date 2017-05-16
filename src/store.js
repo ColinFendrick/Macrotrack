@@ -50,13 +50,13 @@ class Store {
     'Dinner': {}
   }
 
-  @action toggle = (input) => {
-    if (this.display.input === 'none') {
-      this.display.input = 'flex'
+  @action toggle = input => {
+    if (this.display[input] === 'none') {
+      this.display[input] = 'flex'
     } else {
-      this.display.input = 'none'
+      this.display[input] = 'none'
     }
-    console.log(this.display.input)
+    console.log(this.display[input])
   }
 }
 
