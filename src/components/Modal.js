@@ -11,9 +11,8 @@ const Modal = ({ target }) => (
       <div className='modal-window-top'>
         <h4>{target}</h4>
         <TextField hintText='Search for Recipes' />
-        <FontIcon className='fa fa-camera-retro'
+        <FontIcon className='fa fa-times delete-button'
           onTouchTap={() => store.toggle(target)} />
-        <div onClick={() => store.toggle(target)}>X</div>
       </div>
       <GridList cellHeight={180}>
         <GridTile title='Salmon'>
