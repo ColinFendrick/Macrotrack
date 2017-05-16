@@ -9,7 +9,9 @@ const LogItem = ({ target }) => (
   <div className='LogItem'>
     <div className={target}>
       {target}:<br />
-      <Table>
+      <Table
+        multiSelectable
+        onRowSelection={selectedRows => console.log(selectedRows)}>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
@@ -20,8 +22,12 @@ const LogItem = ({ target }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow selected={console.log('what')}>
+          <TableRow>
             <TableRowColumn>1</TableRowColumn>
+            <TableRowColumn>2</TableRowColumn>
+            <TableRowColumn>3</TableRowColumn>
+            <TableRowColumn>3</TableRowColumn>
+            <TableRowColumn>3</TableRowColumn>
           </TableRow>
         </TableBody>
       </Table>
