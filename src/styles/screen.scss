@@ -95,12 +95,18 @@ body {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
+      .height {
+        width: 100%;
+        padding-top: 12px;
+        text-align: center;
+      }
     }
 
     .profile-top-dailies {
       display: flex;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
     }
   }
 
