@@ -7,29 +7,38 @@ import { observer } from 'mobx-react'
 
 class RecipeCard extends Component {
   state = {
-    open: {
-      'breakfast': false,
-      'lunch': false,
-      'dinner': false
-    }
+    open: false,
+    dialog: ''
   }
   _open = input => {
     this.setState(oldState => {
       let newState = {...oldState}
-      newState.open[input] = true
+      newState.open = true
+      newState.dialog = `Add Salmon to ${input}`
       return newState
     })
   }
-  _close = input => {
+  _close = () => {
     this.setState(oldState => {
       let newState = {...oldState}
-      newState.open[input] = false
+      newState.open = false
+      newState.dialog = ''
       return newState
     })
   }
-  _submit = input => {
-    this._close(input)
+  _submit = () => {
+    this._close()
   }
+  action = [<FlatButton
+    label='Cancel'
+    primary
+    onTouchTap={() => this._close()}
+        />,
+    <FlatButton
+      label='Submit'
+      primary
+      onTouchTap={() => this._submit()}
+    />]
   render () {
     return <Card className='recipe-card'>
       <CardHeader />
@@ -43,56 +52,16 @@ class RecipeCard extends Component {
     </CardText>
       <CardActions>
         <FlatButton label='Add to Breakfast'
-          onTouchTap={() => this._open('breakfast')} />
+          onTouchTap={() => this._open('Breakfast')} />
         <FlatButton label='Add to Lunch'
-          onTouchTap={() => this._open('lunch')} />
+          onTouchTap={() => this._open('Lunch')} />
         <FlatButton label='Add to Dinner'
-          onTouchTap={() => this._open('dinner')} />
+          onTouchTap={() => this._open('Dinner')} />
       </CardActions>
       <Dialog
-        title='Add Salmon and Stuff to Breakfast'
-        actions={[<FlatButton
-          label='Cancel'
-          primary
-          onTouchTap={() => this._close('breakfast')}
-              />,
-          <FlatButton
-            label='Submit'
-            primary
-            keyboardFocused
-            onTouchTap={() => this._submit('breakfast')}
-          />]}
-        open={this.state.open.breakfast}
-    />
-      <Dialog
-        title='Add Salmon and Stuff to Lunch'
-        actions={[<FlatButton
-          label='Cancel'
-          primary
-          onTouchTap={() => this._close('lunch')}
-              />,
-          <FlatButton
-            label='Submit'
-            primary
-            keyboardFocused
-            onTouchTap={() => this._submit('lunch')}
-          />]}
-        open={this.state.open.lunch}
-    />
-      <Dialog
-        title='Add Salmon and Stuff to Dinner'
-        actions={[<FlatButton
-          label='Cancel'
-          primary
-          onTouchTap={() => this._close('dinner')}
-              />,
-          <FlatButton
-            label='Submit'
-            primary
-            keyboardFocused
-            onTouchTap={() => this._submit('dinner')}
-          />]}
-        open={this.state.open.dinner}
+        title={this.state.dialog}
+        actions={this.action}
+        open={this.state.open}
     />
     </Card>
   }

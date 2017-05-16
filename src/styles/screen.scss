@@ -87,6 +87,10 @@ body {
     display: flex;
     justify-content: space-between;
 
+    .DailyNutrients {
+      margin-right: 100px;
+    }
+
     .profile-info {
       display: flex;
       flex-direction: column;
