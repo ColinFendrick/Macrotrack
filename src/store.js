@@ -34,6 +34,11 @@ class Store {
       'Dinner': '0'
     }
   }
+  @observable log = {
+    'Breakfast': {},
+    'Lunch': {},
+    'Dinner': {}
+  }
 
   @action toggle = (input) => {
     if (this.display.input === 'none') {

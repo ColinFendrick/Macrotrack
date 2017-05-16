@@ -36,6 +36,12 @@ const Profile = () => (
       <Radio label='Mesomorph' name='body' /><br />
       <Radio label='Ectomorph' name='body' /><br />
     </div>
+    <div className='profile-radio-list'>
+      <div className='profile-radio-title'>Activity Level</div><br />
+      <Radio label='Lightly Active (0-2 workouts per week)' name='activity' /><br />
+      <Radio label='Moderately Active (3-4)' name='activity' /><br />
+      <Radio label='Active (5-7 workouts per week)' name='activity' /><br />
+    </div>
     <div className='profile-goals'>
       <h3>What are my goals?</h3>
       <div className='profile-goals-list'>
