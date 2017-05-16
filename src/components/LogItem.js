@@ -3,12 +3,12 @@ import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import RaisedButton from 'material-ui/RaisedButton'
-import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody } from 'material-ui/Table'
+import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 const LogItem = ({ target }) => (
   <div className='LogItem'>
     <div className={target}>
-      {target}:<br />
+      {target}:
       <Table
         multiSelectable
         onRowSelection={selectedRows => console.log(selectedRows)}>
@@ -30,6 +30,15 @@ const LogItem = ({ target }) => (
             <TableRowColumn>3</TableRowColumn>
           </TableRow>
         </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableRowColumn>Total</TableRowColumn>
+            <TableRowColumn className='calories'>Total Cal</TableRowColumn>
+            <TableRowColumn className='protein'>Total Pro</TableRowColumn>
+            <TableRowColumn className='carb'>Total Carbs</TableRowColumn>
+            <TableRowColumn className='fat'>Total Fats</TableRowColumn>
+          </TableRow>
+        </TableFooter>
       </Table>
       <RaisedButton label='+'
         onTouchTap={(() => {

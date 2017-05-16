@@ -57,7 +57,10 @@ const Profile = () => (
         <Paper className='paper-goals'>Gain Muscle<DailyNutrients /></Paper>
       </div>
     </div>
-    <FlatButton label='Update Profile' />
+    <br />
+    <div style={{'width': '100vh', 'text-align': 'center'}}>
+      <FlatButton style={{'border': '1px solid black'}} label='Update Profile' />
+    </div>
 
   </div>
 )

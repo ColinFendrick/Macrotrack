@@ -12,6 +12,16 @@ class Store {
     'carbs': 100,
     'fat': 33
   }
+  @observable profile = {
+    'name': '',
+    'age': '',
+    'weight': '',
+    'height': '',
+    'bender': '',
+    'body': '',
+    'activity': '',
+    'goals': ''
+  }
   @observable used = {
     'calories': {
       'Breakfast': '1000',

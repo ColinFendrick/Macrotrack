@@ -2,6 +2,26 @@
 
 $base-text-size: 16px;
 $base-font-family: sans-serif;
+$calories: hsl(118, 24%, 45%);
+$protein: hsl(280, 28%, 52%);
+$fat: hsl(37, 100%, 85%);
+$carb: hsl(359, 64%, 45%);
+
+.calories {
+  color: $calories;
+}
+
+.protein {
+  color: $protein;
+}
+
+.fat {
+  color: $fat;
+}
+
+.carb {
+  color: $carb;
+}
 
 html {
   @include full-height;

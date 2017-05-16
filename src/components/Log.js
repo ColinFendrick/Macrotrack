@@ -8,7 +8,7 @@ const Log = () => (
   <div className='Log'>
     <div className='log-cal'>
       <Donut
-        color='teal'
+        color='hsl(118, 24%, 45%)'
         size={256}
         value={(store.daily.calories - store.used.calories) / 2000}
       />
@@ -16,17 +16,17 @@ const Log = () => (
     </div>
     <div className='log-macro-donut'>
       <div>
-        <Donut
+        <Donut color='hsl(280, 28%, 52%)'
           value={(store.daily.protein - store.used.protein) / 2000} />
         <div>Protein</div>
       </div>
       <div>
-        <Donut
+        <Donut color='hsl(359, 64%, 45%)'
           value={(store.daily.carbs - store.used.carbs)} />
         <div>Carbs</div>
       </div>
       <div>
-        <Donut
+        <Donut color='hsl(37, 100%, 85%)'
           value={(store.daily.fats - store.used.fats)} />
         <div>Fats</div>
       </div>
