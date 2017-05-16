@@ -7,8 +7,7 @@ import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableB
 
 const LogItem = ({ target }) => (
   <div className='LogItem'>
-    <div className={target}>
-      {target}:
+    {target}:
       <Table
         multiSelectable
         onRowSelection={selectedRows => console.log(selectedRows)}>
@@ -40,13 +39,13 @@ const LogItem = ({ target }) => (
           </TableRow>
         </TableFooter>
       </Table>
-      <RaisedButton label='+'
-        onTouchTap={(() => {
-          store.toggle(`${target}`)
-        })}
+    <RaisedButton primary
+      label='+'
+      onTouchTap={(() => {
+        store.toggle(`${target}`)
+      })}
        />
-      <Modal target={target} />
-    </div>
+    <Modal target={target} />
   </div>
 )
 

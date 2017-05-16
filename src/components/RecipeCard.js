@@ -47,9 +47,29 @@ class RecipeCard extends Component {
       >
         <img className='recipe-image' src='https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg' />
       </CardMedia>
-      <CardText>
+      <CardText className='card-text'>
+        <div className='card-description'>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </CardText>
+      </div>
+        <div className='card-nutrition'>
+          <div className='calories card-nutrition-details'>
+            <div>Calories</div>
+            <div>1000</div>
+          </div>
+          <div className='protein card-nutrition-details'>
+            <div>Protein</div>
+            <div>1000</div>
+          </div>
+          <div className='fat card-nutrition-details'>
+            <div>Fat</div>
+            <div>1000</div>
+          </div>
+          <div className='carb card-nutrition-details'>
+            <div>Carbohydrates</div>
+            <div>1000</div>
+          </div>
+        </div>
+      </CardText>
       <CardActions>
         <FlatButton label='Add to Breakfast'
           onTouchTap={() => this._open('Breakfast')} />

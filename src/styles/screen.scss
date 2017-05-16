@@ -30,6 +30,7 @@ html {
 body {
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
+  background-color: #eceff1;
 }
 
 .Log {
@@ -49,13 +50,6 @@ body {
     display: flex;
     justify-content: space-around;
     padding-bottom: 50px;
-  }
-
-  .Breakfast,
-  .Lunch,
-  .Dinner {
-    display: flex;
-    justify-content: space-between;
   }
 
   .add-food-buttons {
@@ -78,6 +72,16 @@ body {
     .recipe-card {
       max-width: 47%;
       padding-top: 10px;
+
+      .card-text .card-nutrition {
+        display: flex;
+        flex-direction: column;
+
+        .card-nutrition-details {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
     }
   }
 }
