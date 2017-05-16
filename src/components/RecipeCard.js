@@ -45,12 +45,9 @@ class RecipeCard extends Component {
         <FlatButton label='Add to Breakfast'
           onTouchTap={() => this._open('breakfast')} />
         <FlatButton label='Add to Lunch'
-          onTouchTap={(() => {
-            console.log('lunch')
-          })} />
-        <FlatButton label='Add to Dinner' onTouchTap={(() => {
-          console.log('dinner')
-        })} />
+          onTouchTap={() => this._open('lunch')} />
+        <FlatButton label='Add to Dinner'
+          onTouchTap={() => this._open('dinner')} />
       </CardActions>
       <Dialog
         title='Add Salmon and Stuff to Breakfast'

@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer } from 'mobx-react'
 import store from '../store'
+import TextField from 'material-ui/TextField'
 import { GridList, GridTile } from 'material-ui/GridList'
 import FontIcon from 'material-ui/FontIcon'
 
@@ -9,6 +10,7 @@ const Modal = ({ target }) => (
     <div className='modal-window'>
       <div className='modal-window-top'>
         <h4>{target}</h4>
+        <TextField hintText='Search for Recipes' />
         <FontIcon className='fa fa-camera-retro'
           onTouchTap={() => store.toggle(target)} />
         <div onClick={() => store.toggle(target)}>X</div>
