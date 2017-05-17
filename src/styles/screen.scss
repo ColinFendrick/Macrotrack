@@ -2,10 +2,10 @@
 
 $base-text-size: 16px;
 $base-font-family: sans-serif;
-$calories: hsl(118, 24%, 45%);
-$protein: hsl(280, 28%, 52%);
-$fat: hsl(37, 100%, 85%);
-$carb: hsl(359, 64%, 45%);
+$calories: #91c7b1;
+$protein: #b33951;
+$fat: #e3d081;
+$carb: hsla(212, 68%, 40%, 0.58);
 
 .calories {
   color: $calories;
@@ -173,5 +173,22 @@ body {
       display: flex;
       justify-content: space-around;
     }
+
+    .filters {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
   }
+}
+
+
+.Splash .splash-button-container {
+  display: flex;
+  flex-direction: column;
+
+  .splash-button {
+    margin: 10px;
+  }
+
 }

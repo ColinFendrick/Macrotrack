@@ -1,11 +1,6 @@
 import { observable, action } from 'mobx'
 
 class Store {
-  @observable display = {
-    'Breakfast': 'none',
-    'Lunch': 'none',
-    'Dinner': 'none'
-  }
   @observable daily = {
     'calories': 2000,
     'protein': 100,
@@ -49,6 +44,12 @@ class Store {
     'Lunch': {},
     'Dinner': {}
   }
+  @observable display = {
+    'Breakfast': 'none',
+    'Lunch': 'none',
+    'Dinner': 'none'
+  }
+  @observable filter = 0
 
   @action toggle = input => {
     if (this.display[input] === 'none') {
@@ -56,7 +57,10 @@ class Store {
     } else {
       this.display[input] = 'none'
     }
-    console.log(this.display[input])
+  }
+  @action _filter = value => {
+    this.filter = value
+    console.log(value)
   }
 }
 

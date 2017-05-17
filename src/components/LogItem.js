@@ -2,7 +2,8 @@ import React from 'react'
 import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
-import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 const LogItem = ({ target }) => (
@@ -39,12 +40,13 @@ const LogItem = ({ target }) => (
           </TableRow>
         </TableFooter>
       </Table>
-    <RaisedButton primary
+    <FloatingActionButton
       label='+'
       onTouchTap={(() => {
         store.toggle(`${target}`)
-      })}
-       />
+      })}>
+      <ContentAdd />
+    </FloatingActionButton>
     <Modal target={target} />
   </div>
 )
