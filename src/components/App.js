@@ -8,7 +8,6 @@ import {
 } from 'react-router-dom'
 
 const muiTheme = getMuiTheme({
-  fontFamily: 'PT Sans, Roboto, sans-serif',
   palette: {
     primary1Color: '#3f51b5',
     canvasColor: '#e1e7ed',

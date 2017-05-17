@@ -7,6 +7,16 @@ $protein: #b33951;
 $fat: #e3d081;
 $carb: hsla(212, 68%, 40%, 0.58);
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 .calories {
   color: $calories;
 }
@@ -31,6 +41,7 @@ body {
   margin: 0;
   font: $base-text-size / 1 $base-font-family;
   background-color: #eceff1;
+  font-family: 'PT Sans', 'Roboto', 'sans-serif';
 }
 
 .Log {
@@ -182,13 +193,31 @@ body {
   }
 }
 
-
-.Splash .splash-button-container {
-  display: flex;
-  flex-direction: column;
-
-  .splash-button {
-    margin: 10px;
+.Splash .splash-container {
+  .logo {
+    h3 {
+      animation-name: fadeIn;
+      animation-duration: 2s;
+      animation-delay: 100ms;
+    }
   }
 
+  .splash-button-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 133px;
+
+    .splash-button {
+      margin: 10px;
+
+      div {
+        height: 100%;
+
+        &:hover {
+          background-color: orange;
+        }
+      }
+    }
+  }
 }
