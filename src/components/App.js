@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { TopBar, Splash } from '.'
+import { TopBar, Splash, Log, Recipes, Profile } from '.'
 import {
   BrowserRouter as Router,
   Route
@@ -21,7 +21,10 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path='/' component={Splash} />
-          <Route exact path='/home' component={TopBar} />
+          <Route path='/app' component={TopBar} />
+          <Route exact path='/app/log' component={Log} />
+          <Route exact path='/app/recipes' component={Recipes} />
+          <Route exact path='/app/profile' component={Profile} />
         </div>
       </Router>
     </MuiThemeProvider>

@@ -1,10 +1,9 @@
 import React from 'react'
 import SplashImage from '../../public/spalsh-race.jpeg'
-import { NavLink as Link } from 'react-router-dom'
 import { Banner } from 'rebass'
 import RaisedButton from 'material-ui/RaisedButton'
 
-const Splash = () => (
+const Splash = ({ history }) => (
   <div className='Splash'>
     <Banner
       align='center'
@@ -16,10 +15,8 @@ const Splash = () => (
           <div>A better way</div>
         </div>
         <div className='splash-button-container'>
-          <Link to={'/home'}>
-            <RaisedButton className='splash-button' label='Make a profile' />
-            <RaisedButton className='splash-button' label='Go to your log' />
-          </Link>
+          <RaisedButton className='splash-button' label='Make a profile' onTouchTap={() => history.push('app/profile')} />
+          <RaisedButton className='splash-button' label='Go to your log' onTouchTap={() => history.push('app/log')} />
         </div>
       </div>
     </Banner>
