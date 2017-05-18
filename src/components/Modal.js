@@ -7,6 +7,8 @@ import FontIcon from 'material-ui/FontIcon'
 import Toggle from 'material-ui/Toggle'
 import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 
 const Modal = ({ target }) => (
   <div className='Modal' style={{'display': store.display[`${target}`]}}>
@@ -46,6 +48,11 @@ const Modal = ({ target }) => (
           <img src='https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg' />
         </GridTile>
       </GridList>
+      <div className='add-custom'>
+        <FloatingActionButton>
+          <ContentAdd onTouchTap={() => console.log('asdf')} />
+        </FloatingActionButton>
+      </div>
     </div>
   </div>
 )
