@@ -61,7 +61,7 @@ class Profile extends Component {
             defaultValue={store.profile.weight}
             name='weight' onChange={this._change} />
           <div className='height'>
-            <span>Height: {Math.floor(this.state.height / 124352)}'{(this.state.height % 12)}</span>
+            <span>Height: {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}</span>
             <Slider min={40}
               max={90}
               step={1}

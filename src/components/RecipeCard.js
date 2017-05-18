@@ -39,6 +39,7 @@ class RecipeCard extends Component {
       primary
       onTouchTap={() => this._submit()}
     />]
+
   render () {
     return <Card className='recipe-card'>
       <CardHeader />
@@ -77,6 +78,8 @@ class RecipeCard extends Component {
           onTouchTap={() => this._open('Lunch')} />
         <FlatButton label='Add to Dinner'
           onTouchTap={() => this._open('Dinner')} />
+        <FlatButton label='Snacks'
+          onTouchTap={() => this._open('Snack')} />
       </CardActions>
       <Dialog
         title={this.state.dialog}
