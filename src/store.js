@@ -9,13 +9,14 @@ class Store {
   }
   @observable profile = {
     'name': '',
-    'age': '',
+    'age': 0,
+    'date': '',
     'weight': '',
-    'height': '',
-    'bender': '',
-    'body': '',
-    'activity': '',
-    'goals': ''
+    'height': 55,
+    'gender': 'male',
+    'body': 'endo',
+    'activity': 'low',
+    'goal': 'lose'
   }
   @observable used = {
     'calories': {

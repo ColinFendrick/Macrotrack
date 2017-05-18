@@ -1,27 +1,30 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
-import Avatar from 'material-ui/Avatar'
 import DatePicker from 'material-ui/DatePicker'
 import Paper from 'material-ui/Paper'
-import FlatButton from 'material-ui/FlatButton'
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Slider from 'material-ui/Slider'
-
+import RaisedButton from 'material-ui/RaisedButton'
 import { DailyNutrients } from '.'
+import { observer } from 'mobx-react'
+import store from '../store'
+import moment from 'moment'
 
 class Profile extends Component {
   state = {
     'name': '',
     'age': 0,
-    'weight': 0,
+    'date': '',
+    'weight': '',
     'height': 55,
     'gender': 'male',
     'body': 'endo',
     'activity': 'low',
     'goal': 'lose'
   }
-  gather = () => {
-    console.log(this.refs.name.value)
+  _update = () => {
+    store.profile = {...this.state}
+    console.log(store.profile)
   }
   _change = event => {
     this.setState({
@@ -33,24 +36,40 @@ class Profile extends Component {
       'goal': input
     })
   }
-  _height = (event, value) => {
+  _height = (_, value) => {
     this.setState({'height': value})
+  }
+  _age = (_, value) => {
+    this.setState({'date': value})
+    let date = moment(value).format('MMM Do YY')
+    let age = moment(date, 'MMM Do YYY').fromNow().split(' ')[0]
+    this.setState({'age': age})
+    console.log(moment(value).fromNow())
+  }
+  disableFuture = date => {
+    return moment(date).fromNow().includes('in')
   }
   render () {
     return <div className='Profile'>
       <div className='profile-top'>
         <div className='profile-info'>
-          <Avatar src='https://s-media-cache-ak0.pinimg.com/originals/79/6b/1c/796b1c17ab518ddd26c46ccfbb0f215b.png' />
-          <TextField hintText='Name' name='name' onChange={this._change} />
-          <DatePicker hintText='Age' />
-          <TextField hintText='Weight' name='weight' onChange={this._change} />
+          <TextField hintText='Name'
+            defaultValue={store.profile.name}
+            name='name' onChange={this._change} />
+          <DatePicker hintText='Birthday'
+            defaultValue={store.profile.date}
+            shouldDisableDate={this.disableFuture}
+            name='age' onChange={this._age} />
+          <TextField hintText='Weight'
+            defaultValue={store.profile.weight}
+            name='weight' onChange={this._change} />
           <div className='height'>
             <span>Height: {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}</span>
             <Slider min={40}
               max={90}
               step={1}
               name='height'
-              value={this.state.height}
+              defaultValue={store.profile.height}
               onChange={this._height} />
           </div>
         </div>
@@ -62,7 +81,7 @@ class Profile extends Component {
       <br />
       <div className='profile-radio-list'>
         <div className='profile-radio-title'>Gender:</div><br />
-        <RadioButtonGroup name='gender' onChange={this._change}>
+        <RadioButtonGroup name='gender' onChange={this._change} defaultSelected={store.profile.gender}>
           <RadioButton value='male' label='Male' />
           <RadioButton value='female' label='Female' />
           <RadioButton value='trans' label='Transgender / Transsexual / Non-Binary' />
@@ -71,7 +90,7 @@ class Profile extends Component {
       <div className='profile-radio-list'>
         <div className='profile-radio-title'>Body Type:</div><br />
         <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a></div><br />
-        <RadioButtonGroup name='body' onChange={this._change}>
+        <RadioButtonGroup name='body' onChange={this._change} defaultSelected={store.profile.body}>
           <RadioButton value='endo' label='Endomorph' />
           <RadioButton value='meso' label='Mesomorph' />
           <RadioButton value='ecto' label='Ectomorph' />
@@ -79,7 +98,7 @@ class Profile extends Component {
       </div>
       <div className='profile-radio-list'>
         <div className='profile-radio-title'>Activity Level</div><br />
-        <RadioButtonGroup name='activity' onChange={this._change}>
+        <RadioButtonGroup name='activity' onChange={this._change} defaultSelected={store.profile.activity}>
           <RadioButton value='low' label='Lightly Active (0-2 workouts per week)' />
           <RadioButton value='medium' label='Moderately Active (3-4 workouts per week)' />
           <RadioButton value='high' label='Highly Active (5-7 workouts per week)' />
@@ -88,17 +107,24 @@ class Profile extends Component {
       <div className='profile-goals'>
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
-          <Paper className='paper-goals' onTouchTap={() => this._activity('lose')}>Lose Weight<DailyNutrients /></Paper>
-          <Paper className='paper-goals' onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain<DailyNutrients /></Paper>
-          <Paper className='paper-goals' onTouchTap={() => this._activity('gain')}>Gain Muscle<DailyNutrients /></Paper>
+          <Paper className='paper-goals'
+            onTouchTap={() => this._activity('lose')}>Lose Weight<DailyNutrients />
+          </Paper>
+          <Paper className='paper-goals'
+            onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain<DailyNutrients />
+          </Paper>
+          <Paper className='paper-goals'
+            onTouchTap={() => this._activity('gain')}>Gain Muscle<DailyNutrients />
+          </Paper>
         </div>
       </div>
       <br />
-      <div style={{'width': '100vh', 'textAlign': 'center'}}>
-        <FlatButton style={{'border': '1px solid black'}} label='Update Profile' onTouchTap={() => this.gather()} />
+      <div style={{'width': '100%', 'textAlign': 'center'}}>
+        <RaisedButton style={{'border': '1px solid black'}} label='Update Profile' onTouchTap={() => this._update()} />
       </div>
+      <br />
     </div>
   }
 }
 
-export default Profile
+export default observer(Profile)

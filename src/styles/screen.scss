@@ -76,6 +76,7 @@ body {
 
 .Recipes {
   .recipe-card-list {
+    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -101,10 +102,6 @@ body {
   .profile-top {
     display: flex;
     justify-content: space-between;
-
-    .DailyNutrients {
-      margin-right: 100px;
-    }
 
     .profile-info {
       display: flex;
@@ -229,5 +226,17 @@ body {
         }
       }
     }
+  }
+}
+
+.DailyNutrients {
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
+  .daily {
+    display: flex;
+    justify-content: space-between;
   }
 }

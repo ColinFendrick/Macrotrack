@@ -1,20 +1,28 @@
 import React from 'react'
+import { observer } from 'mobx-react'
+import store from '../store'
 
 const DailyNutrients = () => (
   <div className='DailyNutrients'>
-    <div>
-      Calories:1000
+    <div className='daily'>
+      <div>Calories: </div>
+      <div>{store.daily.calories}</div>
     </div>
-    <div>
-      Protein: 165g
+    <div className='daily'>
+      <div>Protein: </div>
+      <div>{store.daily.protein}</div>
     </div>
-    <div>
-      Fats: 18g
+    <div className='daily'>
+      <div>Fats: </div>
+      <div>
+        {store.daily.fat}
+      </div>
     </div>
-    <div>
-      Carbohydrates: 180g
+    <div className='daily'>
+      <div>Carbohydrates: </div>
+      <div>{store.daily.carbs}</div>
     </div>
   </div>
 )
 
-export default DailyNutrients
+export default observer(DailyNutrients)
