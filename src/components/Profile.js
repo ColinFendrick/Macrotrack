@@ -41,10 +41,8 @@ class Profile extends Component {
   }
   _age = (_, value) => {
     this.setState({'date': value})
-    let date = moment(value).format('MMM Do YY')
-    let age = moment(date, 'MMM Do YYY').fromNow().split(' ')[0]
+    let age = moment(value).fromNow().split(' ')[0]
     this.setState({'age': age})
-    console.log(moment(value).fromNow())
   }
   disableFuture = date => {
     return moment(date).fromNow().includes('in')
