@@ -50,7 +50,7 @@ const Modal = ({ target }) => (
       </GridList>
       <div className='add-custom'>
         <FloatingActionButton>
-          <ContentAdd onTouchTap={() => console.log('asdf')} />
+          <ContentAdd onTouchTap={() => store.toggle('add')} />
         </FloatingActionButton>
       </div>
     </div>

@@ -48,7 +48,8 @@ class Store {
   @observable display = {
     'Breakfast': 'none',
     'Lunch': 'none',
-    'Dinner': 'none'
+    'Dinner': 'none',
+    'add': 'none'
   }
   @observable filter = 0
 
