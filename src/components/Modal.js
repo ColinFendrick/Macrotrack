@@ -14,18 +14,19 @@ class Modal extends Component {
   }
   updateResults (query) {
     get(query).then(r => this.setState({ entries: r.hits }))
+    console.log(this.state)
   }
   render () {
-    return <div className='Modal' style={{'display': store.display[`${this.props.target}`]}}>
+    return <div className='Modal' style={{'display': store.display[`${this.props.meal}`]}}>
       <div className='modal-window'>
         <div className='modal-window-top'>
-          <h4>{this.props.target}</h4>
+          <h4>{this.props.meal}</h4>
           <TextField hintText='Search for Recipes' onChange={e => this.updateResults(e.target.value)} />
           <FontIcon className='fa fa-times delete-button'
-            onTouchTap={() => store.toggle(this.props.target)} />
+            onTouchTap={() => store.toggle(this.props.meal)} />
         </div>
         <Filters />
-        <SearchList entries={this.state.entries} />
+        <SearchList entries={this.state.entries} meal={this.props.meal} />
         <div className='add-custom'>
           <FloatingActionButton>
             <ContentAdd onTouchTap={() => store.toggle('add')} />

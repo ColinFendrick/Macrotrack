@@ -6,12 +6,12 @@ import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
-const LogItem = ({ target }) => (
+const LogItem = ({ meal }) => (
   <div className='LogItem'>
-    {target}:
+    {meal}:
       <Table
         multiSelectable
-        onRowSelection={selectedRows => console.log(selectedRows)}>
+        onRowSelectmealion={selectedRows => console.log(selectedRows)}>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
@@ -43,11 +43,11 @@ const LogItem = ({ target }) => (
     <FloatingActionButton
       label='+'
       onTouchTap={(() => {
-        store.toggle(`${target}`)
+        store.toggle(`${meal}`)
       })}>
       <ContentAdd />
     </FloatingActionButton>
-    <Modal target={target} />
+    <Modal meal={meal} />
   </div>
 )
 

@@ -64,6 +64,10 @@ class Store {
     this.filter = value
     console.log(value)
   }
+  @action add = (food, meal) => {
+    this.log[meal] = food
+    console.log(this.log)
+  }
 }
 
 const store = new Store()
