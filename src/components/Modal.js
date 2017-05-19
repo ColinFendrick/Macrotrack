@@ -9,6 +9,7 @@ import DropDownMenu from 'material-ui/DropDownMenu'
 import MenuItem from 'material-ui/MenuItem'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
+import { AddFood } from '.'
 
 const Modal = ({ target }) => (
   <div className='Modal' style={{'display': store.display[`${target}`]}}>
@@ -53,6 +54,7 @@ const Modal = ({ target }) => (
           <ContentAdd onTouchTap={() => store.toggle('add')} />
         </FloatingActionButton>
       </div>
+      <AddFood />
     </div>
   </div>
 )

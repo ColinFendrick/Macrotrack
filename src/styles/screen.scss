@@ -193,6 +193,23 @@ body {
     width: 100%;
     text-align: right;
   }
+
+  .AddFood {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+
+    .add-window {
+      width: 400px;
+      background-color: white;
+    }
+  }
 }
 
 .Splash .splash-container {
