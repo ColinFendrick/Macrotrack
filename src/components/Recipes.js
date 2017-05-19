@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import Toggle from 'material-ui/Toggle'
-import { RecipeCard } from '.'
+import { RecipeCardList } from '.'
 import { get } from './api'
 
 class Recipes extends Component {
@@ -11,9 +11,6 @@ class Recipes extends Component {
   updateResults (query) {
     get(query).then(r => this.setState({ entries: r.hits }))
   }
-  recipeList = () => {
-    return this.state.entries.map(entry => <RecipeCard />)
-  }
   render () {
     return <div className='Recipes'>
       <div>
@@ -22,7 +19,7 @@ class Recipes extends Component {
         <Toggle label='Vegetarian' />
       </div>
       <div className='recipe-card-list'>
-        {this.recipeList}
+        <RecipeCardList entries={this.state.entries} />
       </div>
     </div>
   }

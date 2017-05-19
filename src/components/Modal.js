@@ -14,7 +14,6 @@ class Modal extends Component {
   }
   updateResults (query) {
     get(query).then(r => this.setState({ entries: r.hits }))
-    console.log(this.state)
   }
   render () {
     return <div className='Modal' style={{'display': store.display[`${this.props.meal}`]}}>
