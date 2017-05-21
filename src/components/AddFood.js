@@ -11,7 +11,7 @@ const AddFood = () => (
       <FontIcon className='fa fa-times delete-button'
         onTouchTap={() => store.toggle('add')} />
       <TextField hintText='Name' />
-      <TextField hintText='Name' />
+      <TextField hintText='Calories' />
     </div>
   </div>
 )
