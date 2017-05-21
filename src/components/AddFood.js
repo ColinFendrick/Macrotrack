@@ -6,7 +6,6 @@ import { observer } from 'mobx-react'
 
 const AddFood = () => (
   <div className='AddFood' style={{'display': store.display.add}} >
-
     <div className='add-window'>
       <FontIcon className='fa fa-times delete-button'
         onTouchTap={() => store.toggle('add')} />
