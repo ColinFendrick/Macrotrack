@@ -44,30 +44,30 @@ class RecipeCard extends Component {
     return <Card className='recipe-card'>
       <CardHeader />
       <CardMedia
-        overlay={<CardTitle title='Salmon and Stuff' subtitle='Salmon' />}
+        overlay={<CardTitle title={this.props.entry.fields.item_name} />}
       >
         <img className='recipe-image' src='https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg' />
       </CardMedia>
       <CardText className='card-text'>
         <div className='card-description'>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </div>
+          {this.props.entry.fields.item_description}
+        </div>
         <div className='card-nutrition'>
           <div className='calories card-nutrition-details'>
             <div>Calories</div>
-            <div>1000</div>
+            <div>{this.props.entry.fields.nf_calories}</div>
           </div>
           <div className='protein card-nutrition-details'>
             <div>Protein</div>
-            <div>1000</div>
+            <div>{this.props.entry.fields.nf_protein}</div>
           </div>
           <div className='fat card-nutrition-details'>
             <div>Fat</div>
-            <div>1000</div>
+            <div>{this.props.entry.fields.nf_total_fat}</div>
           </div>
           <div className='carb card-nutrition-details'>
             <div>Carbohydrates</div>
-            <div>1000</div>
+            <div>{this.props.entry.fields.nf_total_carbohydrates}</div>
           </div>
         </div>
       </CardText>
