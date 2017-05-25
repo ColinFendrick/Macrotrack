@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from '.'
+import { Modal, LogEntries } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
@@ -22,13 +22,7 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow>
-            <TableRowColumn>1</TableRowColumn>
-            <TableRowColumn>2</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-            <TableRowColumn>3</TableRowColumn>
-          </TableRow>
+          <LogEntries meal={meal} />
         </TableBody>
         <TableFooter>
           <TableRow>

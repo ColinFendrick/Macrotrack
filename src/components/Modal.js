@@ -31,7 +31,7 @@ class Modal extends Component {
             <ContentAdd onTouchTap={() => store.toggle('add')} />
           </FloatingActionButton>
         </div>
-        <AddFood />
+        <AddFood meal={this.props.meal} />
       </div>
     </div>
   }
