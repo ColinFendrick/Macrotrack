@@ -2,19 +2,21 @@ import React, { Component } from 'react'
 import { Card, CardHeader, CardText, CardMedia, CardTitle, CardActions } from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog'
-// import store from '../store'
+import store from '../store'
 import { observer } from 'mobx-react'
 
 class RecipeCard extends Component {
   state = {
     open: false,
-    dialog: ''
+    dialog: '',
+    meal: ''
   }
-  _open = input => {
+  _open = (food, meal) => {
     this.setState(oldState => {
       let newState = {...oldState}
       newState.open = true
-      newState.dialog = `Add Salmon to ${input}`
+      newState.dialog = `Add ${food.item_name} to ${meal}`
+      newState.meal = meal
       return newState
     })
   }
@@ -23,10 +25,12 @@ class RecipeCard extends Component {
       let newState = {...oldState}
       newState.open = false
       newState.dialog = ''
+      newState.meal = ''
       return newState
     })
   }
   _submit = () => {
+    store.add(_, state.meal)
     this._close()
   }
   action = [<FlatButton
@@ -69,19 +73,20 @@ class RecipeCard extends Component {
           </div>
           <div className='carb card-nutrition-details'>
             <div>Carbohydrates</div>
-            <div>{entry.fields.nf_total_carbohydrates}</div>
+            <div>{entry.fields.nf_total_carbohydrate}</div>
           </div>
+          {entry.fields.images_front_full_url}
         </div>
       </CardText>
       <CardActions>
         <FlatButton label='Add to Breakfast'
-          onTouchTap={() => this._open('Breakfast')} />
+          onTouchTap={() => this._open(entry.fields, 'Breakfast')} />
         <FlatButton label='Add to Lunch'
-          onTouchTap={() => this._open('Lunch')} />
+          onTouchTap={() => this._open(entry.fields, 'Lunch')} />
         <FlatButton label='Add to Dinner'
-          onTouchTap={() => this._open('Dinner')} />
-        <FlatButton label='Snacks'
-          onTouchTap={() => this._open('Snack')} />
+          onTouchTap={() => this._open(entry.fields, 'Dinner')} />
+        <FlatButton label='Add to Snacks'
+          onTouchTap={() => this._open(entry.fields, 'Snack')} />
       </CardActions>
       <Dialog
         title={this.state.dialog}
