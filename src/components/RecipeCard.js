@@ -8,6 +8,7 @@ import { observer } from 'mobx-react'
 class RecipeCard extends Component {
   state = {
     open: false,
+    food: {},
     dialog: '',
     meal: ''
   }
@@ -15,6 +16,7 @@ class RecipeCard extends Component {
     this.setState(oldState => {
       let newState = {...oldState}
       newState.open = true
+      newState.food = food
       newState.dialog = `Add ${food.item_name} to ${meal}`
       newState.meal = meal
       return newState
@@ -30,7 +32,7 @@ class RecipeCard extends Component {
     })
   }
   _submit = () => {
-    store.add(_, state.meal)
+    store.add(this.state.food, this.state.meal)
     this._close()
   }
   action = [<FlatButton
