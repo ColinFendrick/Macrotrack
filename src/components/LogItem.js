@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, LogEntries } from '.'
+import { Modal, LogEntry } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
@@ -11,7 +11,7 @@ const LogItem = ({ meal }) => (
     {meal}:
       <Table
         multiSelectable
-        onRowSelectmealion={selectedRows => console.log(selectedRows)}>
+        onRowSelection={selectedRows => console.log(selectedRows, store.log[meal])}>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
@@ -22,7 +22,7 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          <LogEntries meal={meal} />
+          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <LogEntry entry={entry} key={i} />) : null}
         </TableBody>
         <TableFooter>
           <TableRow>

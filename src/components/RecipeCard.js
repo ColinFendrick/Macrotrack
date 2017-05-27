@@ -17,7 +17,7 @@ class RecipeCard extends Component {
       let newState = {...oldState}
       newState.open = true
       newState.food = food
-      newState.dialog = `Add ${food.item_name} to ${meal}`
+      newState.dialog = `Add ${food.fields.item_name} to ${meal}`
       newState.meal = meal
       return newState
     })
@@ -32,7 +32,7 @@ class RecipeCard extends Component {
     })
   }
   _submit = () => {
-    store.add(this.state.food, this.state.meal)
+    store.add(store.log, this.state.food.fields, this.state.meal)
     this._close()
   }
   action = [<FlatButton
@@ -82,13 +82,13 @@ class RecipeCard extends Component {
       </CardText>
       <CardActions>
         <FlatButton label='Add to Breakfast'
-          onTouchTap={() => this._open(entry.fields, 'Breakfast')} />
+          onTouchTap={() => this._open(entry, 'Breakfast')} />
         <FlatButton label='Add to Lunch'
-          onTouchTap={() => this._open(entry.fields, 'Lunch')} />
+          onTouchTap={() => this._open(entry, 'Lunch')} />
         <FlatButton label='Add to Dinner'
-          onTouchTap={() => this._open(entry.fields, 'Dinner')} />
+          onTouchTap={() => this._open(entry, 'Dinner')} />
         <FlatButton label='Add to Snacks'
-          onTouchTap={() => this._open(entry.fields, 'Snack')} />
+          onTouchTap={() => this._open(entry, 'Snack')} />
       </CardActions>
       <Dialog
         title={this.state.dialog}

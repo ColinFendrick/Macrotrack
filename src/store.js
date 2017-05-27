@@ -7,6 +7,7 @@ class Store {
     'carbs': 100,
     'fat': 33
   }
+
   @observable profile = {
     'name': '',
     'age': 0,
@@ -18,6 +19,7 @@ class Store {
     'activity': 'low',
     'goal': 'lose'
   }
+
   @observable used = {
     'calories': {
       'Breakfast': '1000',
@@ -40,11 +42,14 @@ class Store {
       'Dinner': '0'
     }
   }
+
   @observable log = {
     'Breakfast': {},
     'Lunch': {},
-    'Dinner': {}
+    'Dinner': {},
+    'Snack': {}
   }
+
   @observable display = {
     'Breakfast': 'none',
     'Lunch': 'none',
@@ -52,6 +57,7 @@ class Store {
     'Snack': 'none',
     'add': 'none'
   }
+
   @observable filter = 0
 
   @action toggle = input => {
@@ -61,13 +67,22 @@ class Store {
       this.display[input] = 'none'
     }
   }
+
   @action _filter = value => {
     this.filter = value
     console.log(value)
   }
-  @action add = (food, meal) => {
-    this.log[meal] = food
-    console.log(this.log)
+
+  @action add = (log, food, meal) => {
+    let newLog = { ...log }
+    const foodId = food['item_id']
+
+    newLog[meal] = {
+      ...log[meal],
+      [foodId]: food
+    }
+
+    this.log = newLog
   }
 }
 
