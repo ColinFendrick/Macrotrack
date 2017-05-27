@@ -41,33 +41,35 @@ class RecipeCard extends Component {
     />]
 
   render () {
+    const { props: { entry } } = this
+
     return <Card className='recipe-card'>
       <CardHeader />
       <CardMedia
-        overlay={<CardTitle title={this.props.entry.fields.item_name} />}
+        overlay={<CardTitle title={entry.fields.item_name} />}
       >
-        <img className='recipe-image' src='https://static.pexels.com/photos/46239/salmon-dish-food-meal-46239.jpeg' />
+        <img className='recipe-image' src={entry.fields.images_front_full_url} />
       </CardMedia>
       <CardText className='card-text'>
         <div className='card-description'>
-          {this.props.entry.fields.item_description}
+          {entry.fields.item_description}
         </div>
         <div className='card-nutrition'>
           <div className='calories card-nutrition-details'>
             <div>Calories</div>
-            <div>{this.props.entry.fields.nf_calories}</div>
+            <div>{entry.fields.nf_calories}</div>
           </div>
           <div className='protein card-nutrition-details'>
             <div>Protein</div>
-            <div>{this.props.entry.fields.nf_protein}</div>
+            <div>{entry.fields.nf_protein}</div>
           </div>
           <div className='fat card-nutrition-details'>
             <div>Fat</div>
-            <div>{this.props.entry.fields.nf_total_fat}</div>
+            <div>{entry.fields.nf_total_fat}</div>
           </div>
           <div className='carb card-nutrition-details'>
             <div>Carbohydrates</div>
-            <div>{this.props.entry.fields.nf_total_carbohydrates}</div>
+            <div>{entry.fields.nf_total_carbohydrates}</div>
           </div>
         </div>
       </CardText>
