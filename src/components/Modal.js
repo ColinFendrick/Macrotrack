@@ -6,14 +6,14 @@ import FontIcon from 'material-ui/FontIcon'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import { AddFood, SearchList, Filters } from '.'
-import { get } from './api'
+import { getData } from './api'
 
 class Modal extends Component {
   state = {
     entries: []
   }
   updateResults (query) {
-    get(query).then(r => this.setState({ entries: r.hits }))
+    getData(query).then(r => this.setState({ entries: r.hits }))
   }
   render () {
     return <div className='Modal' style={{'display': store.display[`${this.props.meal}`]}}>
