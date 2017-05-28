@@ -3,7 +3,7 @@ import { GridList, GridTile } from 'material-ui/GridList'
 import store from '../store'
 
 const Searchlist = ({ entries, meal }) => (
-  <GridList cellHeight={10}>
+  <GridList cellHeight={20}>
     {entries.map(entry => <GridTile
       title={entry.fields.item_name}
       subtitle={entry.fields.item_description}
