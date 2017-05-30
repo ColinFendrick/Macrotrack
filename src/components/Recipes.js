@@ -22,7 +22,7 @@ class Recipes extends Component {
         <Toggle
           defaultToggled={store.toggle}
           label='Show only foods within budget'
-          onTouchTap={() => store._toggle} />
+          onTouchTap={() => store._toggle()} />
       </div>
       <div className='recipe-card-list'>
         <RecipeCardList entries={this.state.entries} />

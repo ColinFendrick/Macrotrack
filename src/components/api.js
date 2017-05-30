@@ -1,5 +1,5 @@
 import store from '../store'
-import { observer } from 'mobx-react'
+import { autorun } from 'mobx'
 const API_BASE = 'https://api.nutritionix.com/v1_1/search/'
 const API_KEY = '105450dabfa9aba34c9ace6b9248ef91'
 const API_ID = 'fc3e322d'
@@ -7,7 +7,7 @@ const API_ID = 'fc3e322d'
 const getData = query => {
   const url = API_BASE
   let filters = {}
-  if (store.filter) {
+  if (store.toggle) {
     filters = {
       'nf_calories': {
         'lte': store.daily.calories - store.used.calories.total
@@ -40,5 +40,11 @@ const getData = query => {
     })
   }).then(r => r.json()).then(r => console.log(r.hits))
 }
+
+autorun(() => {
+  getData()
+})
+
+window.getData = getData
 
 export { getData }
