@@ -59,22 +59,27 @@ class Profile extends Component {
   }
 
   render () {
-    const req = 'This text is required'
+    const req = 'This is required'
+
     return <div className='Profile'>
       <div className='profile-top'>
         <div className='profile-info'>
           <TextField hintText='Name'
             defaultValue={store.profile.name}
             name='name' onChange={this._change}
-            errorText={req} />
+            floatingLabelText={req}
+            floatingLabelFixed />
           <DatePicker hintText='Birthday'
             defaultValue={store.profile.date}
             shouldDisableDate={this.disableFuture}
             name='age' onChange={this._age}
-            errorText={req} />
+            floatingLabelText={req}
+            floatingLabelFixed />
           <TextField hintText='Weight'
             defaultValue={store.profile.weight}
-            name='weight' onChange={this._change} />
+            name='weight' onChange={this._change}
+            floatingLabelText={req}
+            floatingLabelFixed />
           <div className='height'>
             <span>Height: {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}</span>
             <Slider min={40}
