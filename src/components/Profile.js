@@ -50,8 +50,7 @@ class Profile extends Component {
   _age = (_, value) => {
     this.setState({'date': value})
     let age = moment(value).fromNow().split(' ')[0]
-    this.setState({'age': age})
-    console.log(this.state.age)
+    age !== 'a' ? this.setState({'age': parseInt(age)}) : this.setState({'age': 0})
   }
 
   disableFuture = date => {
@@ -70,7 +69,6 @@ class Profile extends Component {
             floatingLabelText={req}
             floatingLabelFixed />
           <DatePicker hintText='Birthday'
-            defaultValue={store.profile.date}
             shouldDisableDate={this.disableFuture}
             name='age' onChange={this._age}
             floatingLabelText={req}
