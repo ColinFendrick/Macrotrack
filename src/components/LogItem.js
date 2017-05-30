@@ -13,7 +13,7 @@ class LogItem extends Component {
   logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
     return <TableRow key={i}>
       <TableRowColumn>{i + 1}</TableRowColumn>
-      <TableRowColumn>{entry[1].item_name}</TableRowColumn>
+      <TableRowColumn style={{'wordWrap': 'break-word'}}><div className=''>{entry[1].item_name}</div></TableRowColumn>
       <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
       <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
       <TableRowColumn className='carb'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
@@ -21,6 +21,11 @@ class LogItem extends Component {
     </TableRow>
   }
 )
+
+  componentDidMount () {
+    const arr = Object.entries(store.log[this.props.meal])
+    console.log(arr)
+  }
 
   _toggle = e => {
     if ((e === 'none') || (e.length === 0)) {

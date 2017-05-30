@@ -10,7 +10,8 @@ class Recipes extends Component {
   }
 
   updateResults (query) {
-    getData(query).then(r => this.setState({ entries: r.hits }))
+    getData(query)
+    // .then(r => this.setState({ entries: r.hits }))
   }
 
   render () {

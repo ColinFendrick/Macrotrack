@@ -12,6 +12,7 @@ class RecipeCard extends Component {
     dialog: '',
     meal: ''
   }
+
   _open = (food, meal) => {
     this.setState(oldState => {
       let newState = {...oldState}
@@ -22,6 +23,7 @@ class RecipeCard extends Component {
       return newState
     })
   }
+
   _close = () => {
     this.setState(oldState => {
       let newState = {...oldState}
@@ -31,10 +33,12 @@ class RecipeCard extends Component {
       return newState
     })
   }
+
   _submit = () => {
     store.add(store.log, this.state.food.fields, this.state.meal)
     this._close()
   }
+
   action = [<FlatButton
     label='Cancel'
     primary
