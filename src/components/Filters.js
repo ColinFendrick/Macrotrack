@@ -8,7 +8,7 @@ const Filters = () => (
   <div className='DropDownMenu'>
     <div className='filters'>
       <Toggle label='Show only foods within budget' />
-      <DropDownMenu value={store.filter} onChange={(_, x, value) => store._filter(value)}>
+      <DropDownMenu value={store.sort} onChange={(_, x, value) => store._sort(value)}>
         <MenuItem primaryText='Filter By' value={0} />
         <MenuItem primaryText='Calories: Lowest to Highest' value={1} />
         <MenuItem primaryText='Calories: Highest to Lowest' value={2} />

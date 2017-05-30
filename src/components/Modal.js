@@ -9,12 +9,10 @@ import { AddFood, SearchList, Filters } from '.'
 import { getData } from './api'
 
 class Modal extends Component {
-  state = {
-    entries: []
-  }
   updateResults (query) {
-    getData(query).then(r => this.setState({ entries: r.hits }))
+    getData(query)
   }
+
   render () {
     return <div className='Modal' style={{'display': store.display[`${this.props.meal}`]}}>
       <div className='modal-window'>

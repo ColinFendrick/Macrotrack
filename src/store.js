@@ -74,7 +74,7 @@ class Store {
     }
   }
 
-  @observable filter = 0
+  @observable sort = 0
   @observable toggle = false
 
   @action _toggle = () => {
@@ -89,8 +89,8 @@ class Store {
     }
   }
 
-  @action _filter = value => {
-    this.filter = value
+  @action sort = value => {
+    this.sort = value
   }
 
   @action add = (log, food, meal) => {

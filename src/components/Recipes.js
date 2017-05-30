@@ -7,10 +7,6 @@ import { observer } from 'mobx-react'
 import store from '../store'
 
 class Recipes extends Component {
-  state = {
-    entries: []
-  }
-
   updateResults (query) {
     getData(query)
   }
