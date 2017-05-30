@@ -1,15 +1,15 @@
 import React from 'react'
-import { TableHeaderColumn, TableRow } from 'material-ui/Table'
-import store from '../store'
+import { TableRowColumn, TableRow } from 'material-ui/Table'
 import { observer } from 'mobx-react'
 
-const LogEntry = ({ entry }) => (
-  <TableRow className='LogEntries' onTouchTap={() => console.log(entry)}>
-    <TableHeaderColumn>{entry[1].item_name.split(' ')[0]}</TableHeaderColumn>
-    <TableHeaderColumn>{entry[1].nf_calories}</TableHeaderColumn>
-    <TableHeaderColumn>{entry[1].nf_protein}</TableHeaderColumn>
-    <TableHeaderColumn>{entry[1].nf_total_carbohydrate}</TableHeaderColumn>
-    <TableHeaderColumn>{entry[1].nf_total_fat}</TableHeaderColumn>
+const LogEntry = ({ entry, key }) => (
+  <TableRow className='LogEntries' selected onTouchTap={() => console.log(key)}>
+    <TableRowColumn>{key}</TableRowColumn>
+    <TableRowColumn>{entry[1].item_name}</TableRowColumn>
+    <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
+    <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
+    <TableRowColumn className='carbs'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
+    <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
   </TableRow>
 )
 

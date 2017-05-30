@@ -11,9 +11,10 @@ const LogItem = ({ meal }) => (
     {meal}:
       <Table
         multiSelectable
-        onRowSelection={selectedRows => console.log(selectedRows, store.log[meal])}>
+        onRowSelection={selectedRows => console.log(selectedRows)}>
         <TableHeader>
           <TableRow>
+            <TableHeaderColumn>ID</TableHeaderColumn>
             <TableHeaderColumn>Name</TableHeaderColumn>
             <TableHeaderColumn>Calories</TableHeaderColumn>
             <TableHeaderColumn>Protein</TableHeaderColumn>
@@ -26,11 +27,12 @@ const LogItem = ({ meal }) => (
         </TableBody>
         <TableFooter>
           <TableRow>
+            <TableRowColumn />
             <TableRowColumn>Total</TableRowColumn>
-            <TableRowColumn className='calories'>Total Cal</TableRowColumn>
-            <TableRowColumn className='protein'>Total Pro</TableRowColumn>
-            <TableRowColumn className='carb'>Total Carbs</TableRowColumn>
-            <TableRowColumn className='fat'>Total Fats</TableRowColumn>
+            <TableRowColumn className='calories'>{store.used.calories[meal]}</TableRowColumn>
+            <TableRowColumn className='protein'>{store.used.protein[meal]}</TableRowColumn>
+            <TableRowColumn className='carb'>{store.used.carbs[meal]}</TableRowColumn>
+            <TableRowColumn className='fat'>{store.used.fats[meal]}</TableRowColumn>
           </TableRow>
         </TableFooter>
       </Table>
