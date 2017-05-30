@@ -72,7 +72,11 @@ class Store {
     }
   }
 
-  @observable filter = 0
+  @observable toggle = false
+
+  @action _toggle = () => {
+    this.toggle = !this.toggle
+  }
 
   @action mealToggle = (input, meal) => {
     if (this.display[input][meal] === 'none') {
@@ -84,7 +88,6 @@ class Store {
 
   @action _filter = value => {
     this.filter = value
-    console.log(value)
   }
 
   @action add = (log, food, meal) => {

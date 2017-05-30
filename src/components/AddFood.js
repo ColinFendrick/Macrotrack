@@ -22,7 +22,6 @@ class AddFood extends Component {
   _update = () => {
     store.log[this.props.meal] = {...this.state}
     store.toggle('add')
-    console.log(store.log[this.props.meal])
   }
   render () {
     return <div className='AddFood' style={{'display': store.display.add}} >

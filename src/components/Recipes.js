@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField'
 import Toggle from 'material-ui/Toggle'
 import { RecipeCardList } from '.'
 import { getData } from './api'
+import store from '../store'
 
 class Recipes extends Component {
   state = {
@@ -18,7 +19,10 @@ class Recipes extends Component {
     return <div className='Recipes'>
       <div>
         <TextField hintText='Search Recipes' onChange={e => this.updateResults(e.target.value)} />
-        <Toggle label='Show only foods within budget' />
+        <Toggle
+          defaultToggled={store.toggle}
+          label='Show only foods within budget'
+          onTouchTap={() => store._toggle} />
       </div>
       <div className='recipe-card-list'>
         <RecipeCardList entries={this.state.entries} />
