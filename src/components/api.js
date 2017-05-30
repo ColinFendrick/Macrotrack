@@ -58,6 +58,7 @@ const getData = query => {
       'appKey': API_KEY,
       'query': query,
       'fields': ['*'],
+      'limit': 50,
       'filters': filters,
       'sort': sort
     })
