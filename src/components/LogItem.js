@@ -2,8 +2,8 @@ import React from 'react'
 import { Modal, LogEntry } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
+// import FloatingActionButton from 'material-ui/FloatingActionButton'
+// import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 const LogItem = ({ meal }) => (
@@ -34,13 +34,14 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableFooter>
       </Table>
-    <FloatingActionButton
+    {/* To do: Add in action button to add food from here */}
+    {/* <FloatingActionButton
       label='+'
       onTouchTap={(() => {
         store.toggle(`${meal}`)
       })}>
       <ContentAdd />
-    </FloatingActionButton>
+    </FloatingActionButton> */}
     <Modal meal={meal} />
   </div>
 )
