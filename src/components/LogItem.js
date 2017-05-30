@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal } from '.'
+// import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import IconButton from 'material-ui/IconButton'
@@ -9,8 +9,19 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
+  logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => <TableRow key={i}>
+    <TableRowColumn>{i + 1}</TableRowColumn>
+    <TableRowColumn>{entry[1].item_name}</TableRowColumn>
+    <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
+    <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
+    <TableRowColumn className='carbs'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
+    <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
+  </TableRow>
+  )
+
   render () {
     const { props: { meal } } = this
+
     return <div className='LogItem'>
       {meal}:
       <Table
@@ -29,14 +40,7 @@ class LogItem extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <TableRow key={i}>
-            <TableRowColumn>{i + 1}</TableRowColumn>
-            <TableRowColumn>{entry[1].item_name}</TableRowColumn>
-            <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
-            <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
-            <TableRowColumn className='carbs'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
-            <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
-          </TableRow>) : null}
+          {(store.log && store.log[meal]) ? {this.logitems} : null}
         </TableBody>
         <TableFooter>
           <TableRow>
@@ -62,7 +66,7 @@ class LogItem extends Component {
       })}>
       <ContentAdd />
     </FloatingActionButton> */}
-      <Modal meal={this.props.meal} />
+      {/* <Modal meal={this.props.meal} /> */}
     </div>
   }
 }
