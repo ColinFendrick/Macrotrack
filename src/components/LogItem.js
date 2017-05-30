@@ -23,7 +23,7 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <LogEntry entry={entry} key={i} />) : null}
+          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <LogEntry entry={entry} key={i} id={i} />) : null}
         </TableBody>
         <TableFooter>
           <TableRow>

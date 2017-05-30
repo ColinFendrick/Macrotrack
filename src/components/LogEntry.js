@@ -2,9 +2,9 @@ import React from 'react'
 import { TableRowColumn, TableRow } from 'material-ui/Table'
 import { observer } from 'mobx-react'
 
-const LogEntry = ({ entry, key }) => (
+const LogEntry = ({ entry, id }) => (
   <TableRow className='LogEntries' selected onTouchTap={() => console.log(key)}>
-    <TableRowColumn>{key}</TableRowColumn>
+    <TableRowColumn>{id}</TableRowColumn>
     <TableRowColumn>{entry[1].item_name}</TableRowColumn>
     <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
     <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
