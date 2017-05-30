@@ -3,7 +3,7 @@ import { RecipeCard } from '.'
 
 const RecipeCardList = ({ entries }) => (
   <div className='RecipeCardList'>
-    {entries.map(entry => <RecipeCard entry={entry} key={entry.fields.item_id} />)}
+    {entries.map(entry => <RecipeCard entry={entry} key={entry._id} />)}
   </div>
 )
 

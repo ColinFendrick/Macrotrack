@@ -3,6 +3,7 @@ import TextField from 'material-ui/TextField'
 import Toggle from 'material-ui/Toggle'
 import { RecipeCardList } from '.'
 import { getData } from './api'
+import { observer } from 'mobx-react'
 import store from '../store'
 
 class Recipes extends Component {
@@ -12,7 +13,6 @@ class Recipes extends Component {
 
   updateResults (query) {
     getData(query)
-    // .then(r => this.setState({ entries: r.hits }))
   }
 
   render () {
@@ -25,10 +25,10 @@ class Recipes extends Component {
           onTouchTap={() => store._toggle()} />
       </div>
       <div className='recipe-card-list'>
-        <RecipeCardList entries={this.state.entries} />
+        <RecipeCardList entries={store.entries} />
       </div>
     </div>
   }
 }
 
-export default Recipes
+export default observer(Recipes)

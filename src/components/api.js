@@ -38,7 +38,7 @@ const getData = query => {
         'order': 'desc'
       }
     })
-  }).then(r => r.json()).then(r => console.log(r.hits))
+  }).then(r => r.json()).then(r => store.entries = r.hits)
 }
 
 autorun(() => {

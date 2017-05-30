@@ -1,6 +1,8 @@
 import { observable, action } from 'mobx'
 
 class Store {
+  @observable entries = []
+
   @observable daily = {
     'calories': 2000,
     'protein': 100,
@@ -72,6 +74,7 @@ class Store {
     }
   }
 
+  @observable filter = 0
   @observable toggle = false
 
   @action _toggle = () => {
