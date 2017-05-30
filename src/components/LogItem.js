@@ -2,6 +2,7 @@ import React from 'react'
 import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
+import IconButton from 'material-ui/IconButton'
 // import FloatingActionButton from 'material-ui/FloatingActionButton'
 // import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
@@ -11,7 +12,7 @@ const LogItem = ({ meal }) => (
     {meal}:
       <Table
         multiSelectable
-        onRowSelection={selectedRows => console.log(selectedRows)}>
+        onRowSelection={() => store.mealToggle('remove', meal)}>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>ID</TableHeaderColumn>
@@ -23,7 +24,7 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <TableRow key={i} on>
+          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <TableRow key={i}>
             <TableRowColumn>{i + 1}</TableRowColumn>
             <TableRowColumn>{entry[1].item_name}</TableRowColumn>
             <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
@@ -43,6 +44,11 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableFooter>
       </Table>
+    <IconButton tooltip='Delete'
+      style={{'display': store.display.remove[meal]}}
+      >
+      home
+    </IconButton>
     {/* To do: Add in action button to add food from here */}
     {/* <FloatingActionButton
       label='+'

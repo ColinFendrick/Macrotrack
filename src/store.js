@@ -63,10 +63,24 @@ class Store {
     'Lunch': 'none',
     'Dinner': 'none',
     'Snack': 'none',
-    'add': 'none'
+    'add': 'none',
+    'remove': {
+      'Breakfast': 'none',
+      'Lunch': 'none',
+      'Dinner': 'none',
+      'Snack': 'none'
+    }
   }
 
   @observable filter = 0
+
+  @action mealToggle = (input, meal) => {
+    if (this.display[input][meal] === 'none') {
+      this.display[input][meal] = 'flex'
+    } else {
+      this.display[input][meal] = 'none'
+    }
+  }
 
   @action toggle = input => {
     if (this.display[input] === 'none') {
