@@ -10,17 +10,17 @@ const DailyNutrients = () => (
     </div>
     <div className='daily'>
       <div>Protein: </div>
-      <div>{store.daily.protein}</div>
+      <div>{store.daily.protein} g</div>
     </div>
     <div className='daily'>
       <div>Fats: </div>
       <div>
-        {store.daily.fat}
+        {store.daily.fats} g
       </div>
     </div>
     <div className='daily'>
       <div>Carbohydrates: </div>
-      <div>{store.daily.carbs}</div>
+      <div>{store.daily.carbs} g</div>
     </div>
   </div>
 )

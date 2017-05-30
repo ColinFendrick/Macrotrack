@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import DatePicker from 'material-ui/DatePicker'
 import Paper from 'material-ui/Paper'
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 import Slider from 'material-ui/Slider'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 import RaisedButton from 'material-ui/RaisedButton'
 import { DailyNutrients } from '.'
 import { observer } from 'mobx-react'
@@ -12,10 +13,10 @@ import moment from 'moment'
 
 class Profile extends Component {
   state = {
-    'name': '',
-    'age': 0,
+    'name': null,
+    'age': null,
     'date': '',
-    'weight': '',
+    'weight': null,
     'height': 55,
     'gender': 'male',
     'body': 'endo',
@@ -24,8 +25,9 @@ class Profile extends Component {
   }
 
   _update = () => {
-    store.profile = {...this.state}
-    console.log(this.state)
+    if (!this.state.name || !this.state.weight || !this.state.height) {
+      alert('All fields are required')
+    } else { store.profile = {...this.state} }
   }
 
   _change = event => {
@@ -38,6 +40,7 @@ class Profile extends Component {
     this.setState({
       'goal': input
     })
+    console.log(this.state)
   }
 
   _height = (_, value) => {
@@ -48,6 +51,7 @@ class Profile extends Component {
     this.setState({'date': value})
     let age = moment(value).fromNow().split(' ')[0]
     this.setState({'age': age})
+    console.log(this.state.age)
   }
 
   disableFuture = date => {
@@ -55,16 +59,19 @@ class Profile extends Component {
   }
 
   render () {
+    const req = 'This text is required'
     return <div className='Profile'>
       <div className='profile-top'>
         <div className='profile-info'>
           <TextField hintText='Name'
             defaultValue={store.profile.name}
-            name='name' onChange={this._change} />
+            name='name' onChange={this._change}
+            errorText={req} />
           <DatePicker hintText='Birthday'
             defaultValue={store.profile.date}
             shouldDisableDate={this.disableFuture}
-            name='age' onChange={this._age} />
+            name='age' onChange={this._age}
+            errorText={req} />
           <TextField hintText='Weight'
             defaultValue={store.profile.weight}
             name='weight' onChange={this._change} />
@@ -84,31 +91,32 @@ class Profile extends Component {
         </div>
       </div>
       <br />
-      <div className='profile-radio-list'>
-        <div className='profile-radio-title'>Gender:</div><br />
-        <RadioButtonGroup name='gender' onChange={this._change} defaultSelected={store.profile.gender}>
-          <RadioButton value='male' label='Male' />
-          <RadioButton value='female' label='Female' />
-          <RadioButton value='trans' label='Transgender / Transsexual / Non-Binary' />
-        </RadioButtonGroup>
-      </div>
-      <div className='profile-radio-list'>
-        <div className='profile-radio-title'>Body Type:</div><br />
-        <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a></div><br />
-        <RadioButtonGroup name='body' onChange={this._change} defaultSelected={store.profile.body}>
-          <RadioButton value='endo' label='Endomorph' />
-          <RadioButton value='meso' label='Mesomorph' />
-          <RadioButton value='ecto' label='Ectomorph' />
-        </RadioButtonGroup>
-      </div>
-      <div className='profile-radio-list'>
-        <div className='profile-radio-title'>Activity Level</div><br />
-        <RadioButtonGroup name='activity' onChange={this._change} defaultSelected={store.profile.activity}>
-          <RadioButton value='low' label='Lightly Active (0-2 workouts per week)' />
-          <RadioButton value='medium' label='Moderately Active (3-4 workouts per week)' />
-          <RadioButton value='high' label='Highly Active (5-7 workouts per week)' />
-        </RadioButtonGroup>
-      </div>
+      <SelectField
+        floatingLabelText='Gender'
+        value={this.state.gender}
+        onChange={(e, i, v) => this.setState({'gender': v})}>
+        <MenuItem value='male' primaryText='Male' />
+        <MenuItem value='female' primaryText='Female' />
+        <MenuItem value='trans' primaryText='Transgender / Transsexual / Non-Binary' />
+      </SelectField>
+      <br />
+      <SelectField
+        floatingLabelText='Body Type'
+        value={this.state.body}
+        onChange={(e, i, v) => this.setState({'body': v})}>
+        <MenuItem value='endo' primaryText='Endomorph' />
+        <MenuItem value='meso' primaryText='Mesomorph' />
+        <MenuItem value='ecto' primaryText='Ectomorph' />
+      </SelectField>
+      <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a></div><br />
+      <SelectField
+        floatingLabelText='Activity Level'
+        value={this.state.activity}
+        onChange={(e, i, v) => this.setState({'activity': v})}>
+        <MenuItem value='low' primaryText='Low Activity (0-2 workout per week)' />
+        <MenuItem value='med' primaryText='Medium Activity (3-5 workouts per week)' />
+        <MenuItem value='high' primaryText='High Activity (6+ workouts per week)' />
+      </SelectField>
       <div className='profile-goals'>
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
