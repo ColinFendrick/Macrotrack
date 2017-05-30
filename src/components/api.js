@@ -61,7 +61,7 @@ const getData = query => {
       'filters': filters,
       'sort': sort
     })
-  }).then(r => r.json()).then(r => store.entries = r.hits)
+  }).then(r => r.json()).then(r => { store.entries = r.hits })
 }
 
 autorun(() => {
