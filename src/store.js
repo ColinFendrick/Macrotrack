@@ -4,8 +4,8 @@ class Store {
   @observable daily = {
     'calories': 2000,
     'protein': 100,
-    'carbs': 100,
-    'fat': 33
+    'carbs': 300,
+    'fats': 33
   }
 
   @observable profile = {
@@ -42,7 +42,7 @@ class Store {
       'Snack': 11,
       'total': 111
     },
-    'fat': {
+    'fats': {
       'Breakfast': 3,
       'Lunch': 9,
       'Dinner': 0,
