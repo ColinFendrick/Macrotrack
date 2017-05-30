@@ -7,8 +7,7 @@ const Splash = ({ history }) => (
   <div className='Splash'>
     <Banner
       align='center'
-      backgroundImage={SplashImage}
-      >
+      backgroundImage={SplashImage}>
       <div className='splash-container'>
         <div className='logo'>
           <h3>MacroTrack</h3>
