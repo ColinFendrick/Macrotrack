@@ -24,6 +24,32 @@ const getData = query => {
     }
   }
 
+  let sort = {
+    'field': 'item_name',
+    'order': 'desc'
+  }
+  if (store.sort === 1) {
+    sort = {
+      'field': 'nf_calories',
+      'order': 'desc'
+    }
+  } else if (store.sort === 2) {
+    sort = {
+      'field': 'nf_protein',
+      'order': 'desc'
+    }
+  } else if (store.sort === 3) {
+    sort = {
+      'field': 'nf_total_carbohydrate',
+      'order': 'desc'
+    }
+  } else if (store.sort === 4) {
+    sort = {
+      'field': 'nf_total_fat',
+      'order': 'desc'
+    }
+  }
+
   window.fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -33,10 +59,7 @@ const getData = query => {
       'query': query,
       'fields': ['*'],
       'filters': filters,
-      'sort': {
-        'field': 'nf_calories',
-        'order': 'desc'
-      }
+      'sort': sort
     })
   }).then(r => r.json()).then(r => store.entries = r.hits)
 }

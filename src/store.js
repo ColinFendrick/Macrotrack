@@ -89,7 +89,7 @@ class Store {
     }
   }
 
-  @action sort = value => {
+  @action _sort = value => {
     this.sort = value
   }
 
