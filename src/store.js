@@ -82,14 +82,6 @@ class Store {
     }
   }
 
-  @action toggle = input => {
-    if (this.display[input] === 'none') {
-      this.display[input] = 'flex'
-    } else {
-      this.display[input] = 'none'
-    }
-  }
-
   @action _filter = value => {
     this.filter = value
     console.log(value)
@@ -105,7 +97,6 @@ class Store {
     }
 
     this.log = newLog
-    console.log(this.log)
   }
 
   @action delete = (log, food, meal) => {

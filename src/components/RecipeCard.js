@@ -77,7 +77,6 @@ class RecipeCard extends Component {
             <div>Carbohydrates</div>
             <div>{entry.fields.nf_total_carbohydrate}</div>
           </div>
-          {entry.fields.images_front_full_url}
         </div>
       </CardText>
       <CardActions>

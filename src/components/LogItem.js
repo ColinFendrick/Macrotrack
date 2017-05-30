@@ -9,15 +9,30 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
+  state = {
+    'key': 'id'
+  }
   logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => <TableRow key={i}>
     <TableRowColumn>{i + 1}</TableRowColumn>
     <TableRowColumn>{entry[1].item_name}</TableRowColumn>
     <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
     <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
-    <TableRowColumn className='carbs'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
+    <TableRowColumn className='carb'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
     <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
   </TableRow>
-  )
+.then(this.setState({
+  i: entry[1].item_id
+})).then(console.log(this.state)))
+
+  _toggle = e => {
+    if ((e === 'none') || (e.length === 0)) {
+      console.log(this.state)
+      store.display.remove[this.props.meal] = 'none'
+    } else {
+      console.log(this.state)
+      store.display.remove[this.props.meal] = 'flex'
+    }
+  }
 
   render () {
     const { props: { meal } } = this
@@ -26,8 +41,8 @@ class LogItem extends Component {
       {meal}:
       <Table
         multiSelectable
-        onRowSelection={() =>
-          store.mealToggle('remove', meal)
+        onRowSelection={e =>
+          this._toggle(e)
         }>
         <TableHeader>
           <TableRow>
@@ -40,7 +55,7 @@ class LogItem extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? {this.logitems} : null}
+          {(store.log && store.log[meal]) ? this.logitems : null}
         </TableBody>
         <TableFooter>
           <TableRow>
@@ -54,10 +69,10 @@ class LogItem extends Component {
         </TableFooter>
       </Table>
       <IconButton tooltip='Delete'
-        style={{'display': store.display.remove[meal]}}
-      >
-        <ActionDelete onTouchTap={() => store.delete(store.log, y, meal)} />
+        style={{'display': store.display.remove[meal]}}>
+        <ActionDelete onTouchTap={(selectedRows) => console.log(selectedRows)} />
       </IconButton>
+
       {/* To do: Add in action button to add food from here */}
       {/* <FloatingActionButton
       label='+'
