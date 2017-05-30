@@ -22,24 +22,32 @@ class Store {
 
   @observable used = {
     'calories': {
-      'Breakfast': '1000',
-      'Lunch': '450',
-      'Dinner': '0'
+      'Breakfast': 1000,
+      'Lunch': 450,
+      'Dinner': 0,
+      'Snack': 100,
+      'total': 1550
     },
     'protein': {
-      'Breakfast': '1000',
-      'Lunch': '450',
-      'Dinner': '0'
+      'Breakfast': 18,
+      'Lunch': 22,
+      'Dinner': 0,
+      'Snack': 18,
+      'total': 58
     },
     'carbs': {
-      'Breakfast': '1000',
-      'Lunch': '450',
-      'Dinner': '0'
+      'Breakfast': 90,
+      'Lunch': 10,
+      'Dinner': 0,
+      'Snack': 11,
+      'total': 111
     },
     'fat': {
-      'Breakfast': '1000',
-      'Lunch': '450',
-      'Dinner': '0'
+      'Breakfast': 3,
+      'Lunch': 9,
+      'Dinner': 0,
+      'Snack': 11,
+      'total': 23
     }
   }
 

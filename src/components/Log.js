@@ -10,7 +10,7 @@ const Log = () => (
       <Donut
         color='hsl(118, 24%, 45%)'
         size={256}
-        value={(store.daily.calories - store.used.calories) / 2000}
+        value={(store.daily.calories - store.used.calories.total) / 2000}
       />
       <div>Daily Calories</div>
     </div>
