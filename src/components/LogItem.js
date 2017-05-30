@@ -1,18 +1,23 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import IconButton from 'material-ui/IconButton'
+import ActionDelete from 'material-ui/svg-icons/action/delete'
 // import FloatingActionButton from 'material-ui/FloatingActionButton'
 // import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
-const LogItem = ({ meal }) => (
-  <div className='LogItem'>
-    {meal}:
+class LogItem extends Component {
+  render () {
+    const { props: { meal } } = this
+    return <div className='LogItem'>
+      {meal}:
       <Table
         multiSelectable
-        onRowSelection={() => store.mealToggle('remove', meal)}>
+        onRowSelection={() =>
+          store.mealToggle('remove', meal)
+        }>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>ID</TableHeaderColumn>
@@ -44,21 +49,22 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableFooter>
       </Table>
-    <IconButton tooltip='Delete'
-      style={{'display': store.display.remove[meal]}}
+      <IconButton tooltip='Delete'
+        style={{'display': store.display.remove[meal]}}
       >
-      home
-    </IconButton>
-    {/* To do: Add in action button to add food from here */}
-    {/* <FloatingActionButton
+        <ActionDelete onTouchTap={() => store.delete(store.log, y, meal)} />
+      </IconButton>
+      {/* To do: Add in action button to add food from here */}
+      {/* <FloatingActionButton
       label='+'
       onTouchTap={(() => {
         store.toggle(`${meal}`)
       })}>
       <ContentAdd />
     </FloatingActionButton> */}
-    <Modal meal={meal} />
-  </div>
-)
+      <Modal meal={this.props.meal} />
+    </div>
+  }
+}
 
 export default observer(LogItem)

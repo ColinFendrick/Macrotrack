@@ -105,6 +105,12 @@ class Store {
     }
 
     this.log = newLog
+    console.log(this.log)
+  }
+
+  @action delete = (log, food, meal) => {
+    const foodId = food['item_id']
+    delete log[meal][foodId]
   }
 }
 
