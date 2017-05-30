@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal, LogEntry } from '.'
+import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 // import FloatingActionButton from 'material-ui/FloatingActionButton'
@@ -23,7 +23,14 @@ const LogItem = ({ meal }) => (
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <LogEntry entry={entry} key={i} id={i} />) : null}
+          {(store.log && store.log[meal]) ? Object.entries(store.log[meal]).map((entry, i) => <TableRow key={i} on>
+            <TableRowColumn>{i + 1}</TableRowColumn>
+            <TableRowColumn>{entry[1].item_name}</TableRowColumn>
+            <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
+            <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
+            <TableRowColumn className='carbs'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
+            <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
+          </TableRow>) : null}
         </TableBody>
         <TableFooter>
           <TableRow>
