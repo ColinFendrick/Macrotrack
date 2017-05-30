@@ -22,30 +22,38 @@ class Profile extends Component {
     'activity': 'low',
     'goal': 'lose'
   }
+
   _update = () => {
     store.profile = {...this.state}
+    console.log(this.state)
   }
+
   _change = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
+
   _activity = input => {
     this.setState({
       'goal': input
     })
   }
+
   _height = (_, value) => {
     this.setState({'height': value})
   }
+
   _age = (_, value) => {
     this.setState({'date': value})
     let age = moment(value).fromNow().split(' ')[0]
     this.setState({'age': age})
   }
+
   disableFuture = date => {
     return moment(date).fromNow().includes('in')
   }
+
   render () {
     return <div className='Profile'>
       <div className='profile-top'>

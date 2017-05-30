@@ -9,20 +9,18 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
-  state = {
-    'key': 'id'
+  state = {}
+  logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
+    return <TableRow key={i}>
+      <TableRowColumn>{i + 1}</TableRowColumn>
+      <TableRowColumn>{entry[1].item_name}</TableRowColumn>
+      <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
+      <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
+      <TableRowColumn className='carb'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
+      <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
+    </TableRow>
   }
-  logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => <TableRow key={i}>
-    <TableRowColumn>{i + 1}</TableRowColumn>
-    <TableRowColumn>{entry[1].item_name}</TableRowColumn>
-    <TableRowColumn className='calories'>{entry[1].nf_calories}</TableRowColumn>
-    <TableRowColumn className='protein'>{entry[1].nf_protein}</TableRowColumn>
-    <TableRowColumn className='carb'>{entry[1].nf_total_carbohydrate}</TableRowColumn>
-    <TableRowColumn className='fat'>{entry[1].nf_total_fat}</TableRowColumn>
-  </TableRow>
-.then(this.setState({
-  i: entry[1].item_id
-})).then(console.log(this.state)))
+)
 
   _toggle = e => {
     if ((e === 'none') || (e.length === 0)) {
