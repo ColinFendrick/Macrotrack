@@ -58,7 +58,7 @@ class RecipeCard extends Component {
       </CardMedia>
       <CardText className='card-text'>
         <div className='card-description'>
-          {entry.fields.item_description}
+          {entry.fields.item_description ? entry.fields.item_description : 'Description Unavailable'}
         </div>
         <div className='card-nutrition'>
           <div className='calories card-nutrition-details'>
