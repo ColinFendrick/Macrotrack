@@ -46,16 +46,18 @@ class Profile extends Component {
     }, this.update())
   }
 
-  _activity = input => {
+  _click = input => {
     this.setState({
-      'goal': input
+      'goal': input,
+      'prevGoal': input
     }, this.update())
   }
 
   _hover = input => {
     this.setState({
-      'prevGoal': this.state.goal
-    }, this._activity(input))
+      'prevGoal': this.state.goal,
+      'goal': input
+    }, this.update())
   }
 
   _unhover = () => {
@@ -155,17 +157,21 @@ class Profile extends Component {
         <div className='profile-goals-list'>
           <Paper
             className={cx('paper-goals', {selected: this.state.goal === 'lose'})}
-            onTouchTap={() => this._activity('lose')}>Lose Weight
+            onMouseEnter={() => this._hover('lose')}
+            onMouseLeave={() => this._unhover()}
+            onTouchTap={() => this._click('lose')}>Lose Weight
             <DailyNutrients />
           </Paper>
           <Paper className={cx('paper-goals', {selected: this.state.goal === 'maintain'})}
-            onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain
+            onMouseEnter={() => this._hover('maintain')}
+            onMouseLeave={() => this._unhover()}
+            onTouchTap={() => this._click('maintain')}>Sculpt and Maintain
             <DailyNutrients />
           </Paper>
           <Paper className={cx('paper-goals', {selected: this.state.goal === 'gain'})}
-            // onMouseEnter={() => this._hover('gain')}
-            // onMouseLeave={() => this._unhover()}
-            onTouchTap={() => this._activity('gain')}>Gain Muscle
+            onMouseEnter={() => this._hover('gain')}
+            onMouseLeave={() => this._unhover()}
+            onTouchTap={() => this._click('gain')}>Gain Muscle
             <DailyNutrients />
           </Paper>
         </div>
