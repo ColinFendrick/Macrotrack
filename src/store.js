@@ -50,10 +50,14 @@ class Store {
 
     @computed get total () {
       return {
-        'calories': Object.keys(this.used.calories).map(key => this.used.calories[key]).reduce((a, b) => a + b),
-        'protein': Object.keys(this.used.protein).map(key => this.used.protein[key]).reduce((a, b) => a + b),
-        'carbs': Object.keys(this.used.carbs).map(key => this.used.carbs[key]).reduce((a, b) => a + b),
-        'fats': Object.keys(this.used.fats).map(key => this.used.fats[key]).reduce((a, b) => a + b)
+        'calories': Object.keys(this.used.calories)
+        .map(key => this.used.calories[key]).reduce((a, b) => a + b),
+        'protein': Object.keys(this.used.protein)
+        .map(key => this.used.protein[key]).reduce((a, b) => a + b),
+        'carbs': Object.keys(this.used.carbs)
+        .map(key => this.used.carbs[key]).reduce((a, b) => a + b),
+        'fats': Object.keys(this.used.fats)
+        .map(key => this.used.fats[key]).reduce((a, b) => a + b)
       }
     }
 

@@ -12,7 +12,8 @@ const Filters = () => (
         defaultToggled={store.toggle}
         label='Show only foods within budget'
         onTouchTap={() => store._toggle()} />
-      <DropDownMenu value={store.sort} onChange={(_, x, value) => store._sort(value)}>
+      <DropDownMenu value={store.sort}
+        onChange={(_, x, value) => store._sort(value)}>
         <MenuItem primaryText='Filter By' value={0} />
         <MenuItem primaryText='Calories: Highest to Lowest' value={1} />
         <MenuItem primaryText='Protein: Highest to Lowest' value={2} />

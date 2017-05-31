@@ -98,7 +98,9 @@ class Profile extends Component {
             errorText={this.state.weight ? null : error}
             floatingLabelFixed />
           <div className='height'>
-            <span>Height: {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}</span>
+            <span>Height:
+              {Math.floor(store.profile.height / 12)}'{(store.profile.height % 12)}
+            </span>
             <Slider min={40}
               max={90}
               step={1}
@@ -130,7 +132,10 @@ class Profile extends Component {
         <MenuItem value={1} primaryText='Mesomorph' />
         <MenuItem value={1.2} primaryText='Ectomorph' />
       </SelectField>
-      <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a></div><br />
+      <div>Not sure? Find a handy guide
+         <a href='http://www.superskinnyme.com/body-types.html'>here</a>
+      </div>
+      <br />
       <SelectField
         floatingLabelText='Activity Level'
         value={this.state.activity}

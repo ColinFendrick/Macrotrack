@@ -6,14 +6,11 @@ import { observer } from 'mobx-react'
 import store from '../store'
 
 class Recipes extends Component {
-  updateResults (query) {
-    getData(query)
-  }
-
   render () {
     return <div className='Recipes'>
       <div>
-        <TextField hintText='Search Recipes' onChange={e => this.updateResults(e.target.value)} />
+        <TextField hintText='Search Recipes'
+          onChange={e => getData(e.target.value)} />
         <Filters />
       </div>
       <div className='recipe-card-list'>

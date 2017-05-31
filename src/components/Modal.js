@@ -14,11 +14,13 @@ class Modal extends Component {
   }
 
   render () {
-    return <div className='Modal' style={{'display': store.display[`${this.props.meal}`]}}>
+    return <div className='Modal'
+      style={{'display': store.display[`${this.props.meal}`]}}>
       <div className='modal-window'>
         <div className='modal-window-top'>
           <h4>{this.props.meal}</h4>
-          <TextField hintText='Search for Recipes' onChange={e => this.updateResults(e.target.value)} />
+          <TextField hintText='Search for Recipes'
+            onChange={e => this.updateResults(e.target.value)} />
           <FontIcon className='fa fa-times delete-button'
             onTouchTap={() => store.toggle(this.props.meal)} />
         </div>

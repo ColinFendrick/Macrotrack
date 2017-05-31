@@ -15,8 +15,10 @@ const Splash = ({ history }) => (
           <div>Health, deconstructed</div>
         </div>
         <div className='splash-button-container'>
-          <RaisedButton className='splash-button' label='Make a profile' onTouchTap={() => history.push('app/profile')} />
-          <RaisedButton className='splash-button' label='Go to your log' onTouchTap={() => history.push('app/log')} />
+          <RaisedButton className='splash-button' label='Make a profile'
+            onTouchTap={() => history.push('app/profile')} />
+          <RaisedButton className='splash-button' label='Go to your log'
+            onTouchTap={() => history.push('app/log')} />
         </div>
       </div>
     </Banner>

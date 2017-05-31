@@ -28,11 +28,16 @@ class AddFood extends Component {
       <div className='add-window'>
         <FontIcon className='fa fa-times delete-button'
           onTouchTap={() => store.toggle('add')} />
-        <TextField hintText='Name' defaultValue='Name' onChange={this._change} />
-        <TextField hintText='Calories' defaultValue='Calories' onChange={this._change} />
-        <TextField hintText='Protein' defaultValue='Protein' onChange={this._change} />
-        <TextField hintText='Carbs' defaultValue='Carbs' onChange={this._change} />
-        <TextField hintText='Fats' defaultValue='Fats' onChange={this._change} />
+        <TextField hintText='Name' defaultValue='Name'
+          onChange={this._change} />
+        <TextField hintText='Calories' defaultValue='Calories'
+          onChange={this._change} />
+        <TextField hintText='Protein' defaultValue='Protein'
+          onChange={this._change} />
+        <TextField hintText='Carbs' defaultValue='Carbs'
+          onChange={this._change} />
+        <TextField hintText='Fats' defaultValue='Fats'
+          onChange={this._change} />
         <FloatingActionButton>
           <ContentAdd onTouchTap={() => this._update()} />
         </FloatingActionButton>
