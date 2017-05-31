@@ -250,6 +250,18 @@ body {
   }
 }
 
+.Footer {
+  width: 100%;
+  margin-top: 20px;
+  text-align: right;
+  bottom: 0;
+  font-size: 0.7em;
+
+  img {
+    width: 100px;
+  }
+}
+
 .DailyNutrients {
   margin-right: 100px;
   display: flex;
