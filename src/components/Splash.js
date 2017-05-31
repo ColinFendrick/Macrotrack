@@ -11,8 +11,8 @@ const Splash = ({ history }) => (
       backgroundImage={SplashImage}>
       <div className='splash-container'>
         <div className='logo'>
-          <img src={Logo} />
-          <div>A better way</div>
+          <img src={Logo} onTouchTap={() => history.push('app/profile')} />
+          <div>Health, deconstructed</div>
         </div>
         <div className='splash-button-container'>
           <RaisedButton className='splash-button' label='Make a profile' onTouchTap={() => history.push('app/profile')} />
