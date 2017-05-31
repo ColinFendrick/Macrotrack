@@ -135,10 +135,6 @@ body {
       display: flex;
       justify-content: space-around;
 
-      .selected {
-        font-size: 1.38em;
-      }
-
       .paper-goals {
         height: 150px;
         width: 120px;
@@ -149,7 +145,13 @@ body {
 
         &:hover {
           width: 300px;
+        }
+      }
 
+      .selected {
+        font-size: 1.38em;
+
+        &:hover {
           .DailyNutrients {
             display: inline;
           }

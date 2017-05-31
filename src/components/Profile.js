@@ -32,6 +32,7 @@ class Profile extends Component {
       this.setState({'error': true})
     }
     store.profile = {...this.state}
+    console.log(store.profile)
   }
 
   _change = event => {
