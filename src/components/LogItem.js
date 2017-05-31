@@ -34,10 +34,8 @@ class LogItem extends Component {
 
   _toggle = e => {
     if ((e === 'none') || (e.length === 0)) {
-      console.log(this.state)
       store.display.remove[this.props.meal] = 'none'
     } else {
-      console.log(this.state)
       store.display.remove[this.props.meal] = 'flex'
     }
   }
