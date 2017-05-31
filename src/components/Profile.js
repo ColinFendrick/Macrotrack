@@ -61,9 +61,8 @@ class Profile extends Component {
     age !== 'a' ? this.setState({'age': parseInt(age)}) : this.setState({'age': 0}, this.update())
   }
 
-// Fix this function to work for all drops
   _drop = (e, i, value, key) => {
-    this.setState({key: value}, this.update())
+    this.setState({[key]: value}, this.update())
     console.log(this.state)
   }
 
