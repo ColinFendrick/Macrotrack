@@ -135,6 +135,10 @@ body {
       display: flex;
       justify-content: space-around;
 
+      .selected {
+        color: $protein;
+      }
+
       .paper-goals {
         height: 150px;
         width: 120px;
@@ -149,10 +153,6 @@ body {
           .DailyNutrients {
             display: inline;
           }
-        }
-
-        .active {
-          background-color: $protein;
         }
       }
     }

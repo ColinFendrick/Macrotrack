@@ -141,15 +141,15 @@ class Profile extends Component {
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
           <Paper
-            className={cx('paper-goals', {active: this.state.goal === 'lose'})}
+            className='paper-goals'
             onTouchTap={() => this._activity('lose')}>Lose Weight
             <DailyNutrients />
           </Paper>
-          <Paper className={cx('paper-goals', {active: this.state.goal === 'maintain'})}
+          <Paper className={cx('paper-goals', {selected: this.state.goal === 'maintain'})}
             onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain
             <DailyNutrients />
           </Paper>
-          <Paper className={cx('paper-goals', {active: this.state.goal === 'gain'})}
+          <Paper className={cx('paper-goals', {selected: this.state.goal === 'gain'})}
             onTouchTap={() => this._activity('gain')}>Gain Muscle
             <DailyNutrients />
           </Paper>
