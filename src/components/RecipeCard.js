@@ -41,7 +41,6 @@ class RecipeCard extends Component {
     store.used.protein[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_protein).reduce((a, b) => a + b)
     store.used.carbs[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_total_carbohydrate).reduce((a, b) => a + b)
     store.used.fats[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_total_fat).reduce((a, b) => a + b)
-    console.log(store.used.fats[meal])
   }
 
   action = [<FlatButton

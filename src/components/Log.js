@@ -11,24 +11,24 @@ const Log = () => (
       <Donut
         color='hsl(118, 24%, 45%)'
         size={256}
-        value={1 - ((store.daily.calories - store.used.calories.total) / store.daily.calories)}
+        value={1 - ((store.daily.calories - store.total.calories) / store.daily.calories)}
       />
       <div>Daily Calories</div>
     </div>
     <div className='log-macro-donut'>
       <div>
         <Donut color='hsl(280, 28%, 52%)'
-          value={1 - ((store.daily.protein - store.used.protein.total) / store.daily.protein)} />
+          value={1 - ((store.daily.protein - store.total.protein) / store.daily.protein)} />
         <div>Protein</div>
       </div>
       <div>
         <Donut color='hsl(359, 64%, 45%)'
-          value={1 - ((store.daily.carbs - store.used.carbs.total) / store.daily.carbs)} />
+          value={1 - ((store.daily.carbs - store.total.carbs) / store.daily.carbs)} />
         <div>Carbs</div>
       </div>
       <div>
         <Donut color='hsl(37, 100%, 85%)'
-          value={1 - ((store.daily.fats - store.used.fats.total) / store.daily.fats)} />
+          value={1 - ((store.daily.fats - store.total.fats) / store.daily.fats)} />
         <div>Fats</div>
       </div>
     </div>
