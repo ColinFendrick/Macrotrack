@@ -8,6 +8,7 @@ const Log = () => (
   <div className='Log'>
     <div className='log-cal'>
       <Donut
+        onTouchTap={() => console.log(store.log.Breakfast)}
         color='hsl(118, 24%, 45%)'
         size={256}
         value={1 - ((store.daily.calories - store.used.calories.total) / store.daily.calories)}

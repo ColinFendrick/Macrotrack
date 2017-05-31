@@ -25,6 +25,7 @@ class Store {
   @observable used = {
     'calories': {
       'Breakfast': 1000,
+
       'Lunch': 450,
       'Dinner': 0,
       'Snack': 100,
@@ -95,7 +96,7 @@ class Store {
 
   @action add = (log, food, meal) => {
     let newLog = { ...log }
-    const foodId = food['item_id']
+    const foodId = food['_id']
 
     newLog[meal] = {
       ...log[meal],
