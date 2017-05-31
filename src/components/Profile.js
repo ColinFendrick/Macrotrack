@@ -54,6 +54,7 @@ class Profile extends Component {
     this.update()
   }
 
+// Fix async
   _height = (_, value) => {
     this.setState({'height': value})
     this.update()
@@ -66,8 +67,9 @@ class Profile extends Component {
     this.update()
   }
 
+// Fix this function to work for all drops
   _drop = (e, i, value, key) => {
-    this.setState({'gender': value})
+    this.setState({key: value})
     console.log(this.state)
   }
 
@@ -76,8 +78,7 @@ class Profile extends Component {
   }
 
   render () {
-    const req = 'This is required'
-    const error = this.state.error ? req : null
+    const error = this.state.error ? 'This is required' : null
 
     return <div className='Profile'>
       <div className='profile-top'>
@@ -132,8 +133,7 @@ class Profile extends Component {
         <MenuItem value={1} primaryText='Mesomorph' />
         <MenuItem value={1.2} primaryText='Ectomorph' />
       </SelectField>
-      <div>Not sure? Find a handy guide
-         <a href='http://www.superskinnyme.com/body-types.html'>here</a>
+      <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a>
       </div>
       <br />
       <SelectField
