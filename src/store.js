@@ -3,13 +3,6 @@ import { observable, action } from 'mobx'
 class Store {
   @observable entries = []
 
-  @observable daily = {
-    'calories': 2000,
-    'protein': 100,
-    'carbs': 300,
-    'fats': 33
-  }
-
   @observable profile = {
     'name': '',
     'age': 0,
@@ -22,7 +15,14 @@ class Store {
     'goal': 'lose'
   }
 
-// Object.keys(store.log.Breakfast).map(key => store.log.Breakfast[key].nf_calories)
+    @observable daily = {
+      'calories': 2000,
+      'protein': 100,
+      'carbs': 300,
+      'fats': 33
+    }
+
+// Object.keys(store.log.Breakfast).map(key => store.log.Breakfast[key].nf_calories).reduce((a, b) => a + b))
 
   @observable used = {
     'calories': {
@@ -97,7 +97,7 @@ class Store {
 
   @action add = (log, food, meal) => {
     let newLog = { ...log }
-    const foodId = food['_id']
+    const foodId = `${food['_id']}${Math.random()}`
 
     newLog[meal] = {
       ...log[meal],
