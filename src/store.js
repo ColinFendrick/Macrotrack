@@ -11,13 +11,13 @@ class Store {
     'height': 55,
     'gender': 'male',
     'body': 'endo',
-    'activity': 'low',
+    'activity': 1.2,
     'goal': 'lose'
   }
 
     @computed get daily () {
       return {
-        'calories': 2000,
+        'calories': (this.profile.weight * 9),
         'protein': 100,
         'carbs': 200,
         'fats': 33

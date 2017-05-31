@@ -18,9 +18,9 @@ class Profile extends Component {
     'date': '',
     'weight': null,
     'height': 55,
-    'gender': 'male',
-    'body': 'endo',
-    'activity': 'low',
+    'gender': 1.2,
+    'body': 0.8,
+    'activity': 1.2,
     'goal': 'lose'
   }
 
@@ -28,6 +28,7 @@ class Profile extends Component {
     if (!this.state.name || !this.state.weight || !this.state.height) {
       alert('All fields are required')
     } else { store.profile = {...this.state} }
+    console.log(this.state)
   }
 
   _change = event => {
@@ -98,27 +99,27 @@ class Profile extends Component {
         floatingLabelText='Gender'
         value={this.state.gender}
         onChange={(e, i, v) => this.setState({'gender': v})}>
-        <MenuItem value='male' primaryText='Male' />
-        <MenuItem value='female' primaryText='Female' />
-        <MenuItem value='trans' primaryText='Transgender / Transsexual / Non-Binary' />
+        <MenuItem value={1.2} primaryText='Male' />
+        <MenuItem value={0.9} primaryText='Female' />
+        <MenuItem value={1} primaryText='Transgender / Transsexual / Non-Binary' />
       </SelectField>
       <br />
       <SelectField
         floatingLabelText='Body Type'
         value={this.state.body}
         onChange={(e, i, v) => this.setState({'body': v})}>
-        <MenuItem value='endo' primaryText='Endomorph' />
-        <MenuItem value='meso' primaryText='Mesomorph' />
-        <MenuItem value='ecto' primaryText='Ectomorph' />
+        <MenuItem value={0.8} primaryText='Endomorph' />
+        <MenuItem value={1} primaryText='Mesomorph' />
+        <MenuItem value={1.2} primaryText='Ectomorph' />
       </SelectField>
       <div>Not sure? Find a handy guide <a href='http://www.superskinnyme.com/body-types.html'>here</a></div><br />
       <SelectField
         floatingLabelText='Activity Level'
         value={this.state.activity}
         onChange={(e, i, v) => this.setState({'activity': v})}>
-        <MenuItem value='low' primaryText='Low Activity (0-2 workout per week)' />
-        <MenuItem value='med' primaryText='Medium Activity (3-5 workouts per week)' />
-        <MenuItem value='high' primaryText='High Activity (6+ workouts per week)' />
+        <MenuItem value={1.2} primaryText='Low Activity (0-2 workout per week)' />
+        <MenuItem value={1.5} primaryText='Medium Activity (3-5 workouts per week)' />
+        <MenuItem value={1.75} primaryText='High Activity (6+ workouts per week)' />
       </SelectField>
       <div className='profile-goals'>
         <h3>What are my goals?</h3>
