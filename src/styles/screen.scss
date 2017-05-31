@@ -213,7 +213,9 @@ body {
 
 .Splash .splash-container {
   .logo {
-    h3 {
+    border-radius: 15px;
+
+    img {
       opacity: 0;
       animation-name: fadeIn;
       animation-duration: 2s;

@@ -1,5 +1,6 @@
 import React from 'react'
 import SplashImage from '../../public/spalsh-race.jpeg'
+import Logo from '../../public/logo.png'
 import { Banner } from 'rebass'
 import RaisedButton from 'material-ui/RaisedButton'
 
@@ -10,7 +11,7 @@ const Splash = ({ history }) => (
       backgroundImage={SplashImage}>
       <div className='splash-container'>
         <div className='logo'>
-          <h3>MacroTrack</h3>
+          <img src={Logo} />
           <div>A better way</div>
         </div>
         <div className='splash-button-container'>
