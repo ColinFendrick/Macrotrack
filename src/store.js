@@ -22,10 +22,11 @@ class Store {
     'goal': 'lose'
   }
 
+// Object.keys(store.log.Breakfast).map(key => store.log.Breakfast[key].nf_calories)
+
   @observable used = {
     'calories': {
       'Breakfast': 1000,
-
       'Lunch': 450,
       'Dinner': 0,
       'Snack': 100,
