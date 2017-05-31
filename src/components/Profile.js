@@ -10,6 +10,7 @@ import { DailyNutrients } from '.'
 import { observer } from 'mobx-react'
 import store from '../store'
 import moment from 'moment'
+import cx from 'classnames'
 
 class Profile extends Component {
   state = {
@@ -21,37 +22,47 @@ class Profile extends Component {
     'gender': 'male',
     'body': 0.8,
     'activity': 1.2,
-    'goal': 'lose'
+    'goal': 'lose',
+    'error': false
   }
 
-  _update = () => {
+  update = () => {
     if (!this.state.name || !this.state.weight || !this.state.height) {
-      alert('All fields are required')
-    } else { store.profile = {...this.state} }
-    console.log(store.daily)
+      this.setState({'error': true})
+    }
+    store.profile = {...this.state}
   }
 
   _change = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
+    this.update()
   }
 
   _activity = input => {
     this.setState({
       'goal': input
     })
-    console.log(this.state)
+    this.update()
   }
 
   _height = (_, value) => {
     this.setState({'height': value})
+    this.update()
   }
 
   _age = (_, value) => {
     this.setState({'date': value})
     let age = moment(value).fromNow().split(' ')[0]
     age !== 'a' ? this.setState({'age': parseInt(age)}) : this.setState({'age': 0})
+    this.update()
+  }
+
+  _drop = (e, i, value, key) => {
+    this.setState({'gender': value})
+    console.log(this.state)
+    this.update()
   }
 
   disableFuture = date => {
@@ -98,7 +109,7 @@ class Profile extends Component {
       <SelectField
         floatingLabelText='Gender'
         value={this.state.gender}
-        onChange={(e, i, v) => this.setState({'gender': v})}>
+        onChange={(e, i, value) => this._drop(e, i, value, 'gender')}>
         <MenuItem value='male' primaryText='Male' />
         <MenuItem value='female' primaryText='Female' />
         <MenuItem value='trans' primaryText='Transgender / Transsexual / Non-Binary' />
@@ -107,7 +118,7 @@ class Profile extends Component {
       <SelectField
         floatingLabelText='Body Type'
         value={this.state.body}
-        onChange={(e, i, v) => this.setState({'body': v})}>
+        onChange={(e, i, value) => this._drop(e, i, value, 'body')}>
         <MenuItem value={0.8} primaryText='Endomorph' />
         <MenuItem value={1} primaryText='Mesomorph' />
         <MenuItem value={1.2} primaryText='Ectomorph' />
@@ -116,7 +127,7 @@ class Profile extends Component {
       <SelectField
         floatingLabelText='Activity Level'
         value={this.state.activity}
-        onChange={(e, i, v) => this.setState({'activity': v})}>
+        onChange={(e, i, value) => this._drop(e, i, value, 'activity')}>
         <MenuItem value={1.2} primaryText='Low Activity (0-2 workout per week)' />
         <MenuItem value={1.5} primaryText='Medium Activity (3-5 workouts per week)' />
         <MenuItem value={1.75} primaryText='High Activity (6+ workouts per week)' />
@@ -124,20 +135,24 @@ class Profile extends Component {
       <div className='profile-goals'>
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
-          <Paper className='paper-goals'
-            onTouchTap={() => this._activity('lose')}>Lose Weight<DailyNutrients />
+          <Paper
+            className={cx('paper-goals', {active: this.state.goal === 'lose'})}
+            onTouchTap={() => this._activity('lose')}>Lose Weight
+            <DailyNutrients />
           </Paper>
-          <Paper className='paper-goals'
-            onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain<DailyNutrients />
+          <Paper className={cx('paper-goals', {active: this.state.goal === 'maintain'})}
+            onTouchTap={() => this._activity('maintain')}>Sculpt and Maintain
+            <DailyNutrients />
           </Paper>
-          <Paper className='paper-goals'
-            onTouchTap={() => this._activity('gain')}>Gain Muscle<DailyNutrients />
+          <Paper className={cx('paper-goals', {active: this.state.goal === 'gain'})}
+            onTouchTap={() => this._activity('gain')}>Gain Muscle
+            <DailyNutrients />
           </Paper>
         </div>
       </div>
       <br />
       <div style={{'width': '100%', 'textAlign': 'center'}}>
-        <RaisedButton style={{'border': '1px solid black'}} label='Update Profile' onTouchTap={() => this._update()} />
+        <RaisedButton style={{'border': '1px solid black'}} label='Update Profile' onTouchTap={() => this.update()} />
       </div>
       <br />
     </div>

@@ -150,6 +150,10 @@ body {
             display: inline;
           }
         }
+
+        .active {
+          background-color: $protein;
+        }
       }
     }
   }
