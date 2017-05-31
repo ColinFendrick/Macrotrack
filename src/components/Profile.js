@@ -36,40 +36,34 @@ class Profile extends Component {
   _change = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-    this.update()
+    }, this.update())
   }
 
   _weight = event => {
     this.setState({
       'weight': event.target.value.replace(/\D/g, '')
-    })
-    this.update()
+    }, this.update())
   }
 
   _activity = input => {
     this.setState({
       'goal': input
-    })
-    this.update()
+    }, this.update())
   }
 
-// Fix async
   _height = (_, value) => {
-    this.setState({'height': value})
-    this.update()
+    this.setState({'height': value}, this.update())
   }
 
   _age = (_, value) => {
     this.setState({'date': value})
     let age = moment(value).fromNow().split(' ')[0]
-    age !== 'a' ? this.setState({'age': parseInt(age)}) : this.setState({'age': 0})
-    this.update()
+    age !== 'a' ? this.setState({'age': parseInt(age)}) : this.setState({'age': 0}, this.update())
   }
 
 // Fix this function to work for all drops
   _drop = (e, i, value, key) => {
-    this.setState({key: value})
+    this.setState({key: value}, this.update())
     console.log(this.state)
   }
 
