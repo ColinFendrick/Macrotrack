@@ -141,7 +141,7 @@ class Profile extends Component {
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
           <Paper
-            className='paper-goals'
+            className={cx('paper-goals', {selected: this.state.goal === 'lose'})}
             onTouchTap={() => this._activity('lose')}>Lose Weight
             <DailyNutrients />
           </Paper>
