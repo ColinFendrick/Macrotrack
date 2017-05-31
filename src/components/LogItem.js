@@ -22,10 +22,6 @@ class LogItem extends Component {
   }
 )
 
-  componentDidMount () {
-    const arr = Object.entries(store.log[this.props.meal])
-  }
-
   _toggle = e => {
     if ((e === 'none') || (e.length === 0)) {
       console.log(this.state)
