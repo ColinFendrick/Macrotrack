@@ -62,7 +62,6 @@ class Profile extends Component {
   _drop = (e, i, value, key) => {
     this.setState({'gender': value})
     console.log(this.state)
-    this.update()
   }
 
   disableFuture = date => {
@@ -71,6 +70,7 @@ class Profile extends Component {
 
   render () {
     const req = 'This is required'
+    const error = this.state.error ? req : null
 
     return <div className='Profile'>
       <div className='profile-top'>
@@ -78,17 +78,17 @@ class Profile extends Component {
           <TextField hintText='Name'
             defaultValue={store.profile.name}
             name='name' onChange={this._change}
-            floatingLabelText={req}
+            errorText={this.state.name ? null : error}
             floatingLabelFixed />
           <DatePicker hintText='Birthday'
             shouldDisableDate={this.disableFuture}
             name='age' onChange={this._age}
-            floatingLabelText={req}
+            errorText={this.state.age ? null : error}
             floatingLabelFixed />
           <TextField hintText='Weight'
             defaultValue={store.profile.weight}
             name='weight' onChange={this._change}
-            floatingLabelText={req}
+            errorText={this.state.weight ? null : error}
             floatingLabelFixed />
           <div className='height'>
             <span>Height: {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}</span>
