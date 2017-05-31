@@ -7,6 +7,7 @@ import { LogItem } from '.'
 const Log = () => (
   <div className='Log'>
     <div className='log-cal'>
+      <br />
       <Donut
         color='hsl(118, 24%, 45%)'
         size={256}
