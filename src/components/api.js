@@ -55,20 +55,23 @@ const getData = (query, offset) => {
     pos = offset
   }
 
-  window.fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      'appId': API_ID,
-      'appKey': API_KEY,
-      'query': query,
-      'offset': pos,
-      'fields': ['*'],
-      'limit': 50,
-      'filters': filters,
-      'sort': sort
-    })
-  }).then(r => r.json()).then(r => { store.entries = store.entries.concat(r.hits) })
+  if (query) {
+    window.fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'appId': API_ID,
+        'appKey': API_KEY,
+        'query': query,
+        'offset': pos,
+        'fields': ['*'],
+        'limit': 50,
+        'filters': filters,
+        'sort': sort
+      })
+    }).then(r => r.json())
+  .then(r => { store.entries = store.entries.concat(r.hits) })
+  }
 }
 
 autorun(() => {

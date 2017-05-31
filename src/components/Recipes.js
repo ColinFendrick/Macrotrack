@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import TextField from 'material-ui/TextField'
 import { RecipeCardList, Filters } from '.'
 import { getData } from './api'
-import { observer } from 'mobx-react'
-import store from '../store'
 
 let search
 
@@ -23,16 +21,15 @@ class Recipes extends Component {
         <TextField hintText='Search Recipes'
           onChange={e => {
             getData(e.target.value)
-            this.search = e.target.value
-          }
-          } />
+            search = e.target.value
+          }} />
         <Filters />
       </div>
       <div className='recipe-card-list'>
-        <RecipeCardList entries={store.entries} />
+        <RecipeCardList />
       </div>
     </div>
   }
 }
 
-export default observer(Recipes)
+export default Recipes
