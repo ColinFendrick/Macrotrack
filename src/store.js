@@ -7,7 +7,7 @@ class Store {
     'name': '',
     'age': 0,
     'date': '',
-    'weight': '',
+    'weight': 0,
     'height': 55,
     'gender': 'male',
     'body': 'endo',
@@ -16,11 +16,32 @@ class Store {
   }
 
     @computed get daily () {
+      const calories = ((this.profile.gender === 'male' || this.profile.gender === 'trans')
+      ? ((66 + (6.2 * this.profile.weight) + (12.7 * this.profile.height) - (6.76 * this.profile.age)) * this.profile.activity)
+      : (655.1 + (4.35 * this.profile.weight) + (4.7 * this.profile.height) - (4.7 * this.profile.age)) * this.profile.activity)
+
+      let protein
+      let carbs
+      let fats
+      if (this.profile.goal === 'lose') {
+        protein = ((calories / 2) / 4)
+        carbs = (calories / 10) / 4
+        fats = (calories / (10 / 4)) / 9
+      } else if (this.profile.goal === 'maintain') {
+        protein = (calories / 3) / 4
+        carbs = (calories / 3) / 4
+        fats = (calories / 3) / 9
+      } else {
+        protein = (calories / 4) / 4
+        carbs = (calories / 2) / 4
+        fats = (calories / 4) / 9
+      }
+
       return {
-        'calories': (this.profile.weight * 9),
-        'protein': 100,
-        'carbs': 200,
-        'fats': 33
+        'calories': calories,
+        'protein': protein,
+        'carbs': carbs,
+        'fats': fats
       }
     }
 

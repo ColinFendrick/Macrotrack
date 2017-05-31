@@ -18,7 +18,7 @@ class Profile extends Component {
     'date': '',
     'weight': null,
     'height': 55,
-    'gender': 1.2,
+    'gender': 'male',
     'body': 0.8,
     'activity': 1.2,
     'goal': 'lose'
@@ -28,7 +28,7 @@ class Profile extends Component {
     if (!this.state.name || !this.state.weight || !this.state.height) {
       alert('All fields are required')
     } else { store.profile = {...this.state} }
-    console.log(this.state)
+    console.log(store.daily)
   }
 
   _change = event => {
@@ -99,9 +99,9 @@ class Profile extends Component {
         floatingLabelText='Gender'
         value={this.state.gender}
         onChange={(e, i, v) => this.setState({'gender': v})}>
-        <MenuItem value={1.2} primaryText='Male' />
-        <MenuItem value={0.9} primaryText='Female' />
-        <MenuItem value={1} primaryText='Transgender / Transsexual / Non-Binary' />
+        <MenuItem value='male' primaryText='Male' />
+        <MenuItem value='female' primaryText='Female' />
+        <MenuItem value='trans' primaryText='Transgender / Transsexual / Non-Binary' />
       </SelectField>
       <br />
       <SelectField
