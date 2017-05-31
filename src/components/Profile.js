@@ -40,6 +40,13 @@ class Profile extends Component {
     this.update()
   }
 
+  _weight = event => {
+    this.setState({
+      'weight': event.target.value.replace(/\D/g, '')
+    })
+    this.update()
+  }
+
   _activity = input => {
     this.setState({
       'goal': input
@@ -87,7 +94,7 @@ class Profile extends Component {
             floatingLabelFixed />
           <TextField hintText='Weight'
             defaultValue={store.profile.weight}
-            name='weight' onChange={this._change}
+            name='weight' onChange={this._weight}
             errorText={this.state.weight ? null : error}
             floatingLabelFixed />
           <div className='height'>
