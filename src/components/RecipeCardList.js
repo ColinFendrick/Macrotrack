@@ -4,8 +4,8 @@ import store from '../store'
 import { observer } from 'mobx-react'
 
 const RecipeCardList = () => {
-  const list = store.entries ? store.entries.map(entry =>
-    <RecipeCard entry={entry} key={entry._id} />)
+  const list = store.entries ? store.entries.map((entry, i) =>
+    <RecipeCard entry={entry} key={i} />)
   : <div />
 
   return <div className='RecipeCardList'>
