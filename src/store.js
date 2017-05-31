@@ -15,11 +15,13 @@ class Store {
     'goal': 'lose'
   }
 
-    @observable daily = {
-      'calories': 2000,
-      'protein': 100,
-      'carbs': 300,
-      'fats': 33
+    @computed get daily () {
+      return {
+        'calories': 2000,
+        'protein': 100,
+        'carbs': 200,
+        'fats': 33
+      }
     }
 
     @computed get total () {
@@ -31,32 +33,30 @@ class Store {
       }
     }
 
-  @computed get used () {
-    return {
-      'calories': {
-        'Breakfast': 0,
-        'Lunch': 0,
-        'Dinner': 0,
-        'Snack': 0
-      },
-      'protein': {
-        'Breakfast': 0,
-        'Lunch': 0,
-        'Dinner': 0,
-        'Snack': 0
-      },
-      'carbs': {
-        'Breakfast': 0,
-        'Lunch': 0,
-        'Dinner': 0,
-        'Snack': 0
-      },
-      'fats': {
-        'Breakfast': 0,
-        'Lunch': 0,
-        'Dinner': 0,
-        'Snack': 0
-      }
+  @observable used = {
+    'calories': {
+      'Breakfast': 0,
+      'Lunch': 0,
+      'Dinner': 0,
+      'Snack': 0
+    },
+    'protein': {
+      'Breakfast': 0,
+      'Lunch': 0,
+      'Dinner': 0,
+      'Snack': 0
+    },
+    'carbs': {
+      'Breakfast': 0,
+      'Lunch': 0,
+      'Dinner': 0,
+      'Snack': 0
+    },
+    'fats': {
+      'Breakfast': 0,
+      'Lunch': 0,
+      'Dinner': 0,
+      'Snack': 0
     }
   }
 

@@ -10,16 +10,16 @@ const getData = query => {
   if (store.toggle) {
     filters = {
       'nf_calories': {
-        'lte': store.daily.calories - store.used.calories.total
+        'lte': store.daily.calories - store.total.calories
       },
       'nf_protein': {
-        'lte': store.daily.protein - store.used.protein.total
+        'lte': store.daily.protein - store.total.protein
       },
       'nf_total_carbohydrate': {
-        'lte': store.daily.carbs - store.used.carbs.total
+        'lte': store.daily.carbs - store.total.carbs
       },
       'nf_total_fat': {
-        'lte': store.daily.fats - store.used.fats.total
+        'lte': store.daily.fats - store.total.fats
       }
     }
   }
@@ -57,6 +57,7 @@ const getData = query => {
       'appId': API_ID,
       'appKey': API_KEY,
       'query': query,
+      'offset': 25,
       'fields': ['*'],
       'limit': 50,
       'filters': filters,
