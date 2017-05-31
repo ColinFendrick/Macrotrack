@@ -22,36 +22,39 @@ class Store {
       'fats': 33
     }
 
-// Object.keys(store.log.Breakfast).map(key => store.log.Breakfast[key].nf_calories).reduce((a, b) => a + b))
+    @computed get total () {
+      return (
+        'calories_total': 0,
+        'protein_total': 0,
+        'carbs_total': 0,
+        'fats_total': 0
+      )
+    }
 
   @observable used = {
     'calories': {
-      'Breakfast': 1000,
-      'Lunch': 450,
+      'Breakfast': 0,
+      'Lunch': 0,
       'Dinner': 0,
-      'Snack': 100,
-      'total': 1550
+      'Snack': 0
     },
     'protein': {
-      'Breakfast': 18,
-      'Lunch': 22,
+      'Breakfast': 0,
+      'Lunch': 0,
       'Dinner': 0,
-      'Snack': 18,
-      'total': 58
+      'Snack': 0
     },
     'carbs': {
-      'Breakfast': 90,
-      'Lunch': 10,
+      'Breakfast': 0,
+      'Lunch': 0,
       'Dinner': 0,
-      'Snack': 11,
-      'total': 111
+      'Snack': 0
     },
     'fats': {
-      'Breakfast': 3,
-      'Lunch': 9,
+      'Breakfast': 0,
+      'Lunch': 0,
       'Dinner': 0,
-      'Snack': 11,
-      'total': 23
+      'Snack': 0
     }
   }
 

@@ -34,9 +34,14 @@ class RecipeCard extends Component {
     })
   }
 
-  _submit = () => {
+  _submit = meal => {
     store.add(store.log, this.state.food.fields, this.state.meal)
     this._close()
+    store.used.calories[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_calories).reduce((a, b) => a + b)
+    store.used.protein[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_protein).reduce((a, b) => a + b)
+    store.used.carbs[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_total_carbohydrate).reduce((a, b) => a + b)
+    store.used.fats[meal] = Object.keys(store.log[meal]).map(key => store.log[meal][key].nf_total_fat).reduce((a, b) => a + b)
+    console.log(store.used.fats[meal])
   }
 
   action = [<FlatButton
@@ -47,7 +52,7 @@ class RecipeCard extends Component {
     <FlatButton
       label='Submit'
       primary
-      onTouchTap={() => this._submit()}
+      onTouchTap={() => this._submit(this.state.meal)}
     />]
 
   render () {
