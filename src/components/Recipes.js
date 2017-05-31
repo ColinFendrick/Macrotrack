@@ -5,12 +5,27 @@ import { getData } from './api'
 import { observer } from 'mobx-react'
 import store from '../store'
 
+let search
+
+let pos = 75
+
+window.onscroll = e => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    getData(search, pos)
+    pos += 50
+  }
+}
+
 class Recipes extends Component {
   render () {
     return <div className='Recipes'>
       <div>
         <TextField hintText='Search Recipes'
-          onChange={e => getData(e.target.value)} />
+          onChange={e => {
+            getData(e.target.value)
+            this.search = e.target.value
+          }
+          } />
         <Filters />
       </div>
       <div className='recipe-card-list'>

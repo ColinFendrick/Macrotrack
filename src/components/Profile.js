@@ -93,7 +93,7 @@ class Profile extends Component {
             floatingLabelFixed />
           <div className='height'>
             <span>Height:
-              {Math.floor(store.profile.height / 12)}'{(store.profile.height % 12)}
+              {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}
             </span>
             <Slider min={40}
               max={90}
