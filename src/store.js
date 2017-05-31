@@ -31,30 +31,32 @@ class Store {
       }
     }
 
-  @observable used = {
-    'calories': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'protein': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'carbs': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'fats': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
+  @computed get used () {
+    return {
+      'calories': {
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Snack': 0
+      },
+      'protein': {
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Snack': 0
+      },
+      'carbs': {
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Snack': 0
+      },
+      'fats': {
+        'Breakfast': 0,
+        'Lunch': 0,
+        'Dinner': 0,
+        'Snack': 0
+      }
     }
   }
 
