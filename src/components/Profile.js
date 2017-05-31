@@ -23,6 +23,7 @@ class Profile extends Component {
     'body': 0.8,
     'activity': 1.2,
     'goal': 'lose',
+    'prevGoal': '',
     'error': false
   }
 
@@ -48,6 +49,18 @@ class Profile extends Component {
   _activity = input => {
     this.setState({
       'goal': input
+    }, this.update())
+  }
+
+  _hover = input => {
+    this.setState({
+      'prevGoal': this.state.goal
+    }, this._activity(input))
+  }
+
+  _unhover = () => {
+    this.setState({
+      'goal': this.state.prevGoal
     }, this.update())
   }
 
@@ -150,6 +163,8 @@ class Profile extends Component {
             <DailyNutrients />
           </Paper>
           <Paper className={cx('paper-goals', {selected: this.state.goal === 'gain'})}
+            // onMouseEnter={() => this._hover('gain')}
+            // onMouseLeave={() => this._unhover()}
             onTouchTap={() => this._activity('gain')}>Gain Muscle
             <DailyNutrients />
           </Paper>
