@@ -56,7 +56,6 @@ const getData = (query, offset) => {
   }
 
   if (query && query.length > 0) {
-    console.log(query)
     window.fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
