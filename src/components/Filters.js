@@ -1,7 +1,5 @@
 import React from 'react'
-import Toggle from 'material-ui/Toggle'
-import DropDownMenu from 'material-ui/DropDownMenu'
-import MenuItem from 'material-ui/MenuItem'
+import { Toggle, DropDownMenu, MenuItem } from 'material-ui'
 import store from '../store'
 import { observer } from 'mobx-react'
 

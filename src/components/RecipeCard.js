@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Card, CardHeader, CardText, CardMedia, CardTitle, CardActions } from 'material-ui/Card'
-import FlatButton from 'material-ui/FlatButton'
-import Dialog from 'material-ui/Dialog'
+import { FlatButton, Dialog } from 'material-ui'
 import store from '../store'
 import { observer } from 'mobx-react'
 

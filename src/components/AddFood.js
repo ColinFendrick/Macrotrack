@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store'
-import TextField from 'material-ui/TextField'
-import FontIcon from 'material-ui/FontIcon'
+import { TextField, FontIcon } from 'material-ui'
 import { observer } from 'mobx-react'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/content/add'

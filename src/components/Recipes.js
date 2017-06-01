@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
+import { TextField } from 'material-ui'
 import { RecipeCardList, Filters } from '.'
 import { getData } from './api'
 

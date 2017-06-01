@@ -2,7 +2,7 @@ import React from 'react'
 import SplashImage from '../../public/spalsh-race.jpeg'
 import Logo from '../../public/logo.png'
 import { Banner } from 'rebass'
-import RaisedButton from 'material-ui/RaisedButton'
+import { RaisedButton } from 'material-ui'
 
 const Splash = ({ history }) => (
   <div className='Splash'>

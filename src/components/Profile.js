@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import TextField from 'material-ui/TextField'
-import DatePicker from 'material-ui/DatePicker'
-import Paper from 'material-ui/Paper'
-import Slider from 'material-ui/Slider'
-import SelectField from 'material-ui/SelectField'
-import MenuItem from 'material-ui/MenuItem'
-import RaisedButton from 'material-ui/RaisedButton'
+import {
+  Paper,
+  Slider,
+  TextField,
+  DatePicker,
+  SelectField,
+  MenuItem,
+  RaisedButton
+} from 'material-ui'
 import { DailyNutrients } from '.'
 import { observer } from 'mobx-react'
 import store from '../store'
