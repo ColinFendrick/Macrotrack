@@ -14,7 +14,7 @@ import store from '../store'
 import moment from 'moment'
 import cx from 'classnames'
 
-@observer class Profile extends Component {
+class Profile extends Component {
   error = () => {
     if (!store.profile.name || !store.profile.weight || !store.profile.height) {
       store.profile.error = true
@@ -164,4 +164,4 @@ import cx from 'classnames'
   }
 }
 
-export default Profile
+export default observer(Profile)
