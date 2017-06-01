@@ -10,7 +10,7 @@ class Store {
     'weight': 0,
     'height': 55,
     'gender': 'male',
-    'body': 'endo',
+    'body': 1,
     'activity': 1.2,
     'goal': 'lose'
   }
