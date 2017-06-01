@@ -32,7 +32,6 @@ class Profile extends Component {
       this.setState({'error': true})
     }
     store.profile = {...this.state}
-    console.log(store.profile)
   }
 
   _change = event => {
@@ -54,6 +53,7 @@ class Profile extends Component {
     }, this.update())
   }
 
+// Prevent the daily nutrients from rendenring async
   _hover = input => {
     this.setState({
       'prevGoal': this.state.goal,
@@ -79,7 +79,6 @@ class Profile extends Component {
 
   _drop = (e, i, value, key) => {
     this.setState({[key]: value}, this.update())
-    console.log(this.state)
   }
 
   disableFuture = date => {
@@ -109,7 +108,7 @@ class Profile extends Component {
             floatingLabelFixed />
           <div className='height'>
             <span>Height:
-              {Math.floor(this.state.height / 12)}'{(this.state.height % 12)}
+              {Math.floor(store.profile.height / 12)}'{(store.profile.height % 12)}
             </span>
             <Slider min={40}
               max={90}
