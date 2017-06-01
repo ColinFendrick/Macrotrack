@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { TextField } from 'material-ui'
 import { RecipeCardList, Filters } from '.'
 import { getData } from './api'
+import { observer } from 'mobx-react'
 
 let search
 
@@ -32,4 +33,4 @@ class Recipes extends Component {
   }
 }
 
-export default Recipes
+export default observer(Recipes)
