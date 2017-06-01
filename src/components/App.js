@@ -19,7 +19,7 @@ class App extends Component {
   render () {
     return <MuiThemeProvider muiTheme={muiTheme}>
       <Router>
-        <div>
+        <div style={{'background': '#fff'}}>
           <Route exact path='/' component={Splash} />
           <Route path='/app' component={TopBar} />
           <Route exact path='/app/log' component={Log} />
