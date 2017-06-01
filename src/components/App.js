@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { TopBar, Splash, Log, Recipes, Profile, Footer } from '.'
+import { TopBar, Splash, Log, Recipes, Profile, Footer, Error } from '.'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 
 const muiTheme = getMuiTheme({
@@ -20,12 +21,15 @@ class App extends Component {
     return <MuiThemeProvider muiTheme={muiTheme}>
       <Router>
         <div style={{'background': '#fff'}}>
-          <Route exact path='/' component={Splash} />
-          <Route path='/app' component={TopBar} />
+          <Switch>
+            <Route exact path='/' component={Splash} />
+            <Route path='/app' component={TopBar} />
+            <Route path='/app' component={Footer} />
+            <Route path='/:placeholder' component={Error} />
+          </Switch>
           <Route exact path='/app/log' component={Log} />
           <Route exact path='/app/recipes' component={Recipes} />
           <Route exact path='/app/profile' component={Profile} />
-          <Route path='/app' component={Footer} />
         </div>
       </Router>
     </MuiThemeProvider>
