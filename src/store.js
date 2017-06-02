@@ -137,7 +137,6 @@ class Store {
     }
 
     this.log = newLog
-    console.log(store.log[meal])
   }
 
   @action delete = (log, food, meal) => {

@@ -10,7 +10,6 @@ import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableB
 class LogItem extends Component {
   logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
     return <TableRow key={i}>
-      <TableRowColumn>{i + 1}</TableRowColumn>
       <TableRowColumn style={{'wordWrap': 'break-word'}}>
         <div className=''>{entry[1].item_name}</div>
       </TableRowColumn>
@@ -51,7 +50,6 @@ class LogItem extends Component {
         }>
         <TableHeader>
           <TableRow>
-            <TableHeaderColumn>ID</TableHeaderColumn>
             <TableHeaderColumn>Name</TableHeaderColumn>
             <TableHeaderColumn>Calories</TableHeaderColumn>
             <TableHeaderColumn>Protein</TableHeaderColumn>
