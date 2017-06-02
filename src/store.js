@@ -139,19 +139,18 @@ class Store {
     this.sort = value
   }
 
-  @action add = (log, food, meal) => {
-    let newLog = { ...log }
+  @action add = (food, meal) => {
+    let newLog = { ...this.log }
 
     newLog[meal] = {
-      ...log[meal],
+      ...this.log[meal],
       [this.index[meal]]: food
     }
     this.log = newLog
   }
 
-  @action delete = (log, food, meal) => {
-    const foodId = food['_id']
-    delete log[meal][foodId]
+  @action delete = (meal, selected) => {
+    console.log(this.log[meal], selected)
   }
 }
 

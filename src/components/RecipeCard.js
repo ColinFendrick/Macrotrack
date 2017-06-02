@@ -35,7 +35,7 @@ class RecipeCard extends Component {
   }
 
   _submit = () => {
-    store.add(store.log, this.state.food.fields, this.state.meal)
+    store.add(this.state.food.fields, this.state.meal)
     this.setState(oldState => {
       let newState = {...oldState}
       store.index[this.state.meal] = store.index[this.state.meal] + 1
