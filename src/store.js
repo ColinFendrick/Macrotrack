@@ -15,6 +15,10 @@ class Store {
     'goal': 'lose'
   }
 
+  @observable query = ''
+  @observable offset = 25
+  @observable scroll = false
+
     @computed get daily () {
       let calories = ((this.profile.gender === 'male' || this.profile.gender === 'trans')
       ? ((66 + (6.2 * this.profile.weight) + (12.7 * this.profile.height) - (6.76 * this.profile.age)) * this.profile.activity * this.profile.body)
@@ -128,19 +132,18 @@ class Store {
     this.sort = value
   }
 
-  @action add = (log, food, meal, i) => {
+  @action add = (log, food, meal) => {
     let newLog = { ...log }
 
     newLog[meal] = {
       ...log[meal],
-      [i]: food
+      [food['_id']]: food
     }
-
     this.log = newLog
   }
 
   @action delete = (log, food, meal) => {
-    const foodId = food['item_id']
+    const foodId = food['_id']
     delete log[meal][foodId]
   }
 }

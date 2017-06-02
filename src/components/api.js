@@ -4,7 +4,7 @@ const API_BASE = 'https://api.nutritionix.com/v1_1/search/'
 const API_KEY = '105450dabfa9aba34c9ace6b9248ef91'
 const API_ID = 'fc3e322d'
 
-const getData = (query, offset) => {
+const getData = () => {
   const url = API_BASE
   let filters = {}
   if (store.toggle) {
@@ -50,20 +50,33 @@ const getData = (query, offset) => {
     }
   }
 
-  let pos = 25
-  if (offset) {
-    pos = offset
-  }
-
-  if (query && query.length > 0) {
+  if (store.query && store.query.length > 0 && !store.scroll) {
     window.fetch(url, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         'appId': API_ID,
         'appKey': API_KEY,
-        'query': query,
-        'offset': pos,
+        'query': store.query,
+        'offset': store.offset,
+        'fields': ['*'],
+        'limit': 50,
+        'filters': filters,
+        'sort': sort
+      })
+    }).then(r => r.json())
+  .then(r => { store.entries = r.hits })
+  }
+
+  if (store.scroll) {
+    window.fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'appId': API_ID,
+        'appKey': API_KEY,
+        'query': store.query,
+        'offset': store.offset,
         'fields': ['*'],
         'limit': 50,
         'filters': filters,

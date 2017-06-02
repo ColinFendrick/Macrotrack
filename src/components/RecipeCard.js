@@ -10,7 +10,12 @@ class RecipeCard extends Component {
     food: {},
     dialog: '',
     meal: '',
-    index: 0
+    index: {
+      'Breakfast': 0,
+      'Lunch': 0,
+      'Dinner': 0,
+      'Snack': 0
+    }
   }
 
   _open = (food, meal) => {
@@ -31,32 +36,38 @@ class RecipeCard extends Component {
       newState.food = {}
       newState.dialog = ''
       newState.meal = ''
-      newState.index = oldState.index + 1
       return newState
     })
   }
 
-  _submit = (meal, index) => {
-    store.add(store.log, this.state.food.fields, this.state.meal, this.state.index)
+  _submit = () => {
+    store.add(store.log, this.state.food.fields, this.state.meal, this.state.index[this.state.meal])
+    this.setState(oldState => {
+      let newState = {...oldState}
+      newState.index[this.state.meal] = oldState.index[this.state.meal] + 1
+      return newState
+    })
     this._close()
-    store.used.calories[meal] =
-    Object.keys(store.log[meal])
-    .map(key => store.log[meal][key].nf_calories)
+    // console.log(this.state.index)
+
+    store.used.calories[this.state.meal] =
+    Object.keys(store.log[this.state.meal])
+    .map(key => store.log[this.state.meal][key].nf_calories)
     .reduce((a, b) => a + b)
 
-    store.used.protein[meal] =
-    Object.keys(store.log[meal])
-    .map(key => store.log[meal][key].nf_protein)
+    store.used.protein[this.state.meal] =
+    Object.keys(store.log[this.state.meal])
+    .map(key => store.log[this.state.meal][key].nf_protein)
     .reduce((a, b) => a + b)
 
-    store.used.carbs[meal] =
-    Object.keys(store.log[meal])
-    .map(key => store.log[meal][key].nf_total_carbohydrate)
+    store.used.carbs[this.state.meal] =
+    Object.keys(store.log[this.state.meal])
+    .map(key => store.log[this.state.meal][key].nf_total_carbohydrate)
     .reduce((a, b) => a + b)
 
-    store.used.fats[meal] =
-    Object.keys(store.log[meal])
-    .map(key => store.log[meal][key].nf_total_fat)
+    store.used.fats[this.state.meal] =
+    Object.keys(store.log[this.state.meal])
+    .map(key => store.log[this.state.meal][key].nf_total_fat)
     .reduce((a, b) => a + b)
   }
 
@@ -68,7 +79,7 @@ class RecipeCard extends Component {
     <FlatButton
       label='Submit'
       primary
-      onTouchTap={() => this._submit(this.state.meal)}
+      onTouchTap={() => this._submit()}
     />]
 
   render () {
@@ -76,7 +87,7 @@ class RecipeCard extends Component {
 
     return <Card className='recipe-card'>
       <CardMedia
-        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 12)} />}
+        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 18)} />}
       >
         <img className='recipe-image' src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg' />
       </CardMedia>

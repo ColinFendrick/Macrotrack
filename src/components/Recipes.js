@@ -3,15 +3,13 @@ import { TextField } from 'material-ui'
 import { RecipeCardList, Filters } from '.'
 import { getData } from './api'
 import { observer } from 'mobx-react'
-
-let search
-
-let pos = 75
+import store from '../store'
 
 window.onscroll = e => {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-    getData(search, pos)
-    pos += 50
+    store.offset += 50
+    store.scroll = true
+    getData()
   }
 }
 
@@ -21,8 +19,7 @@ class Recipes extends Component {
       <div>
         <TextField hintText='Search Recipes'
           onChange={e => {
-            getData(e.target.value)
-            search = e.target.value
+            store.query = e.target.value
           }} />
         <Filters />
       </div>
