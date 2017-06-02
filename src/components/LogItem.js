@@ -8,7 +8,6 @@ import { observer } from 'mobx-react'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
-  state = {}
   logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
     return <TableRow key={i}>
       <TableRowColumn>{i + 1}</TableRowColumn>
@@ -47,7 +46,8 @@ class LogItem extends Component {
       <Table
         multiSelectable
         onRowSelection={e =>
-          this._toggle(e)
+          // this._toggle(e)
+          console.log(e)
         }>
         <TableHeader>
           <TableRow>

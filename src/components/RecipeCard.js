@@ -9,7 +9,8 @@ class RecipeCard extends Component {
     open: false,
     food: {},
     dialog: '',
-    meal: ''
+    meal: '',
+    index: 0
   }
 
   _open = (food, meal) => {
@@ -27,27 +28,32 @@ class RecipeCard extends Component {
     this.setState(oldState => {
       let newState = {...oldState}
       newState.open = false
+      newState.food = {}
       newState.dialog = ''
       newState.meal = ''
+      newState.index = oldState.index + 1
       return newState
     })
   }
 
-  _submit = meal => {
-    store.add(store.log, this.state.food.fields, this.state.meal)
+  _submit = (meal, index) => {
+    store.add(store.log, this.state.food.fields, this.state.meal, this.state.index)
     this._close()
     store.used.calories[meal] =
     Object.keys(store.log[meal])
     .map(key => store.log[meal][key].nf_calories)
     .reduce((a, b) => a + b)
+
     store.used.protein[meal] =
     Object.keys(store.log[meal])
     .map(key => store.log[meal][key].nf_protein)
     .reduce((a, b) => a + b)
+
     store.used.carbs[meal] =
     Object.keys(store.log[meal])
     .map(key => store.log[meal][key].nf_total_carbohydrate)
     .reduce((a, b) => a + b)
+
     store.used.fats[meal] =
     Object.keys(store.log[meal])
     .map(key => store.log[meal][key].nf_total_fat)

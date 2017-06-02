@@ -128,16 +128,16 @@ class Store {
     this.sort = value
   }
 
-  @action add = (log, food, meal) => {
+  @action add = (log, food, meal, i) => {
     let newLog = { ...log }
-    const foodId = `${food['_id']}${Math.random()}`
 
     newLog[meal] = {
       ...log[meal],
-      [foodId]: food
+      [i]: food
     }
 
     this.log = newLog
+    console.log(store.log[meal])
   }
 
   @action delete = (log, food, meal) => {
