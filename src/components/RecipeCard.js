@@ -31,11 +31,11 @@ class RecipeCard extends Component {
       newState.dialog = ''
       newState.meal = ''
       return newState
-    }, () => console.log(store.index))
+    })
   }
 
   _submit = () => {
-    store.add(store.log, this.state.food.fields, this.state.meal, store.index[this.state.meal])
+    store.add(store.log, this.state.food.fields, this.state.meal)
     this.setState(oldState => {
       let newState = {...oldState}
       store.index[this.state.meal] = store.index[this.state.meal] + 1

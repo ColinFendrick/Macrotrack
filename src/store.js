@@ -144,7 +144,7 @@ class Store {
 
     newLog[meal] = {
       ...log[meal],
-      [food['_id']]: food
+      [this.index[meal]]: food
     }
     this.log = newLog
   }
