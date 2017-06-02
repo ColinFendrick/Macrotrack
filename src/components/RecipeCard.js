@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardHeader, CardText, CardMedia, CardTitle, CardActions } from 'material-ui/Card'
+import { Card, CardText, CardMedia, CardTitle, CardActions } from 'material-ui/Card'
 import { FlatButton, Dialog } from 'material-ui'
 import store from '../store'
 import { observer } from 'mobx-react'
@@ -75,9 +75,8 @@ class RecipeCard extends Component {
     const { props: { entry } } = this
 
     return <Card className='recipe-card'>
-      <CardHeader />
       <CardMedia
-        overlay={<CardTitle title={entry.fields.item_name} />}
+        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 12)} />}
       >
         <img className='recipe-image' src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg' />
       </CardMedia>
