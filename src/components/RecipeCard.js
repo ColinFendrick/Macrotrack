@@ -9,13 +9,7 @@ class RecipeCard extends Component {
     open: false,
     food: {},
     dialog: '',
-    meal: '',
-    index: {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    }
+    meal: ''
   }
 
   _open = (food, meal) => {
@@ -37,18 +31,16 @@ class RecipeCard extends Component {
       newState.dialog = ''
       newState.meal = ''
       return newState
-    })
+    }, () => console.log(store.index))
   }
 
   _submit = () => {
-    store.add(store.log, this.state.food.fields, this.state.meal, this.state.index[this.state.meal])
+    store.add(store.log, this.state.food.fields, this.state.meal, store.index[this.state.meal])
     this.setState(oldState => {
       let newState = {...oldState}
-      newState.index[this.state.meal] = oldState.index[this.state.meal] + 1
+      store.index[this.state.meal] = store.index[this.state.meal] + 1
       return newState
-    })
-    this._close()
-    // console.log(this.state.index)
+    }, () => this._close())
 
     store.used.calories[this.state.meal] =
     Object.keys(store.log[this.state.meal])

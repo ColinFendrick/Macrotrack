@@ -99,6 +99,13 @@ class Store {
     'Snack': {}
   }
 
+  @observable index = {
+    'Breakfast': 0,
+    'Lunch': 0,
+    'Dinner': 0,
+    'Snack': 0
+  }
+
   @observable display = {
     'Breakfast': 'none',
     'Lunch': 'none',
