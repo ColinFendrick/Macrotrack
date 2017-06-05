@@ -192,6 +192,15 @@ body {
       justify-content: space-around;
     }
 
+    .grid-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      height: 400px;
+      width: 400px;
+      overflow-y: auto;
+    }
+
     .filters {
       display: flex;
       flex-direction: column;

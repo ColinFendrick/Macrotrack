@@ -10,14 +10,9 @@ import ContentAdd from 'material-ui/svg-icons/content/add'
 import { AddFood, Filters } from '.'
 
 class Modal extends Component {
-  gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
-  }
-
   render () {
     const { props: { meal } } = this
+
     return <div className='Modal'
       style={{'display': store.display[meal]}}>
       <div className='modal-window'>
@@ -33,6 +28,7 @@ class Modal extends Component {
         <Filters />
         <div className='grid-list'>
           <GridList cellHeight={180}
+            className='grid-list'
             style={this.gridList}>
             {store.entries.map((entry, i) => <GridTile
               key={i}
