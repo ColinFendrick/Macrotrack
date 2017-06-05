@@ -150,9 +150,17 @@ class Store {
   }
 
   @action delete = (meal, e) => {
+    console.log(e)
     for (let i = 0; i < e.length; i++) {
-      console.log(e[i])
+      if (e === 'all') {
+        this.log[meal] = {}
+        return
+      }
+      if (typeof e[i] === 'number') {
+        delete this.log[meal][e[i]]
+      }
     }
+    console.log(this.log[meal])
   }
 }
 
