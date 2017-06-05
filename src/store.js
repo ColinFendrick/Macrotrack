@@ -123,13 +123,6 @@ class Store {
   @observable sort = 0
   @observable toggle = false
 
-  @observable selected = {
-    'Breakfast': [],
-    'Lunch': [],
-    'Dinner': [],
-    'Snack': []
-  }
-
   @action _toggle = () => {
     this.toggle = !this.toggle
   }
@@ -156,15 +149,10 @@ class Store {
     this.log = newLog
   }
 
-  @action _selected = (meal, e) => {
-    console.log(this.selected[meal])
-  }
-
   @action delete = (meal, e) => {
     for (let i = 0; i < e.length; i++) {
       console.log(e[i])
     }
-    // console.log(this.log[meal], selected)
   }
 }
 
