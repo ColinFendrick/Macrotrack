@@ -35,7 +35,7 @@ const Log = () => {
       </div>
     </div>
     <div className='daily-log'>
-      <div className='add-food-buttons'>
+      <div className='log-list'>
         <LogItem meal='Breakfast' />
         <LogItem meal='Lunch' />
         <LogItem meal='Dinner' />

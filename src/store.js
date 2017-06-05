@@ -148,7 +148,6 @@ class Store {
       [this.index[meal]]: food
     }
     this.log = newLog
-    console.log(this.log[meal])
   }
 
   @action delete = (meal, e) => {

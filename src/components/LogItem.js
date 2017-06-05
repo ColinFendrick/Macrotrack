@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 // import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
-import { IconButton } from 'material-ui'
+import { IconButton, FloatingActionButton } from 'material-ui'
 import ActionDelete from 'material-ui/svg-icons/action/delete'
-// import ContentAdd from 'material-ui/svg-icons/content/add'
+import ContentAdd from 'material-ui/svg-icons/content/add'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
@@ -19,7 +19,7 @@ class LogItem extends Component {
     if ((e === 'none') || (e.length === 0)) {
       store.display.remove[this.props.meal] = 'none'
     } else {
-      store.display.remove[this.props.meal] = 'flex'
+      store.display.remove[this.props.meal] = 'inline'
     }
   }
 
@@ -68,7 +68,13 @@ class LogItem extends Component {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableRowColumn />
+            <TableRowColumn>
+              <IconButton tooltip='Delete'
+                style={{'display': store.display.remove[meal]}}>
+                <ActionDelete
+                  onTouchTap={() => store.delete(meal, this.state.selected)} />
+              </IconButton>
+            </TableRowColumn>
             <TableRowColumn>Total</TableRowColumn>
             <TableRowColumn className='calories'>
               {store.used.calories[meal]}
@@ -85,20 +91,15 @@ class LogItem extends Component {
           </TableRow>
         </TableFooter>
       </Table>
-      <IconButton tooltip='Delete'
-        style={{'display': store.display.remove[meal]}}>
-        <ActionDelete
-          onTouchTap={() => store.delete(meal, this.state.selected)} />
-      </IconButton>
 
-      {/* To do: Add in action button to add food from here */}
-      {/* <FloatingActionButton
-      label='+'
-      onTouchTap={(() => {
-        store.toggle(`${meal}`)
-      })}>
-      <ContentAdd />
-    </FloatingActionButton> */}
+      <FloatingActionButton
+        label='+'
+        onTouchTap={(() => {
+          store.toggle(`${meal}`)
+        })}>
+        <ContentAdd />
+      </FloatingActionButton>
+
       {/* <Modal meal={this.props.meal} /> */}
     </div>
   }
