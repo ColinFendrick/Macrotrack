@@ -8,37 +8,30 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
-  state: {
+  state = {
     selected: []
   }
 
   _toggle = e => {
+    this.setState({
+      selected: e
+    })
     if ((e === 'none') || (e.length === 0)) {
       store.display.remove[this.props.meal] = 'none'
     } else {
       store.display.remove[this.props.meal] = 'flex'
-      this._selected(e)
-      console.log(e)
     }
-  }
-
-  _selected = e => {
-    this.setState({
-      selected: e
-    })
-  }
-
-  isSelected = i => {
-    return this.state.selected.indexOf(0) !== -1
   }
 
   render () {
     const { props: { meal } } = this
 
-    const logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
-      return <TableRow key={i} selected={this.isSelected(i)}>
+    const logitems = Object.entries(store.log[meal]).map((entry, i) => {
+      return <TableRow key={i}
+        selected={this.state.selected.indexOf(i) !== -1}
+        >
         <TableRowColumn style={{'wordWrap': 'break-word'}}>
-          <div className=''>{entry[1].item_name}</div>
+          <div>{entry[1].item_name}</div>
         </TableRowColumn>
         <TableRowColumn className='calories'>
           {entry[1].nf_calories}
