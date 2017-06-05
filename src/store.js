@@ -52,18 +52,18 @@ class Store {
       }
     }
 
-    @computed get total () {
-      return {
-        'calories': Object.keys(this.used.calories)
+  @computed get total () {
+    return {
+      'calories': Object.keys(this.used.calories)
         .map(key => this.used.calories[key]).reduce((a, b) => a + b),
-        'protein': Object.keys(this.used.protein)
+      'protein': Object.keys(this.used.protein)
         .map(key => this.used.protein[key]).reduce((a, b) => a + b),
-        'carbs': Object.keys(this.used.carbs)
+      'carbs': Object.keys(this.used.carbs)
         .map(key => this.used.carbs[key]).reduce((a, b) => a + b),
-        'fats': Object.keys(this.used.fats)
+      'fats': Object.keys(this.used.fats)
         .map(key => this.used.fats[key]).reduce((a, b) => a + b)
-      }
     }
+  }
 
   @computed get used () {
     return {
@@ -148,14 +148,17 @@ class Store {
       [this.index[meal]]: food
     }
     this.log = newLog
+    console.log(this.log[meal])
   }
 
   @action delete = (meal, e) => {
     if (e === 'all') {
       this.log[meal] = {}
+      this.index[meal] = 0
     } else {
       for (let i = 0; i < e.length; i++) {
         delete this.log[meal][e[i]]
+        this.index[meal] = this.index[meal] - 1
       }
     }
   }
