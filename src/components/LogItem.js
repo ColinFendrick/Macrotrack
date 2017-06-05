@@ -38,8 +38,14 @@ class LogItem extends Component {
       store.display.remove[this.props.meal] = 'none'
     } else {
       store.display.remove[this.props.meal] = 'flex'
-      console.log(e)
+      this.setState({ selected: e }, () => console.log(this.state))
     }
+  }
+
+  _selected = e => {
+    this.setState({
+      selected: e
+    })
   }
 
   render () {
@@ -49,7 +55,7 @@ class LogItem extends Component {
       {meal}:
       <Table
         multiSelectable
-        // onRowSelection={e => this._toggle(e)}
+        onRowSelection={e => store._selected(this.props.meal, e)}
         >
         <TableHeader>
           <TableRow>
@@ -85,7 +91,7 @@ class LogItem extends Component {
       <IconButton tooltip='Delete'
         style={{'display': store.display.remove[meal]}}>
         <ActionDelete
-          onTouchTap={selected => store.delete(meal, selected)} />
+          onTouchTap={() => store.delete(meal, this.state.selected)} />
       </IconButton>
 
       {/* To do: Add in action button to add food from here */}
