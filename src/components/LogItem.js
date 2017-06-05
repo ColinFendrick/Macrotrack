@@ -54,7 +54,7 @@ class LogItem extends Component {
       <Table
         multiSelectable
         onRowSelection={this._toggle}
-        >
+      >
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>

@@ -19,19 +19,19 @@ const Log = () => {
     </div>
     <div className='log-macro-donut'>
       <div>
-        <Donut color='hsl(280, 28%, 52%)'
+        <Donut color='#b33951'
           value={1 - ((d.protein - t.protein) / d.protein)} />
-        <div>Protein</div>
+        <div className='donut-label protein'>Protein</div>
       </div>
       <div>
-        <Donut color='hsl(359, 64%, 45%)'
+        <Donut color='hsla(212, 68%, 40%, 0.58)'
           value={1 - ((d.carbs - t.carbs) / d.carbs)} />
-        <div>Carbs</div>
+        <div className='donut-label carb'>Carbs</div>
       </div>
       <div>
-        <Donut color='hsl(37, 100%, 85%)'
+        <Donut color='#e3d081'
           value={1 - ((d.fats - t.fats) / d.fats)} />
-        <div>Fats</div>
+        <div className='donut-label fat'>Fats</div>
       </div>
     </div>
     <div className='daily-log'>
