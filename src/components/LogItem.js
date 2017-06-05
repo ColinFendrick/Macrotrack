@@ -43,7 +43,7 @@ class LogItem extends Component {
   _selected = e => {
     this.setState({
       selected: e
-    }, () => console.log(this.state.selected))
+    })
   }
 
   render () {
