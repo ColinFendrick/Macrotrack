@@ -155,10 +155,12 @@ class Store {
       this.log[meal] = {}
       this.index[meal] = 0
     } else {
+      let newLog = {...this.log}
       for (let i = 0; i < e.length; i++) {
-        delete this.log[meal][e[i]]
+        delete newLog[meal][e[i]]
         this.index[meal] = this.index[meal] - 1
       }
+      this.log = newLog
     }
   }
 
