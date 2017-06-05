@@ -106,6 +106,27 @@ class Store {
     'Snack': 0
   }
 
+  @action add = (food, meal) => {
+    let newLog = { ...this.log }
+
+    newLog[meal] = {
+      ...this.log[meal],
+      [this.index[meal]]: food
+    }
+    this.log = newLog
+  }
+
+  @action delete = (meal, e) => {
+    if (e === 'all') {
+      this.log[meal] = {}
+      this.index[meal] = 0
+    } else {
+      for (let i = 0; i < e.length; i++) {
+        delete this.log[meal][e[i]]
+      }
+    }
+  }
+
   @observable display = {
     'Breakfast': 'none',
     'Lunch': 'none',
@@ -120,13 +141,6 @@ class Store {
     }
   }
 
-  @observable sort = 0
-  @observable toggle = false
-
-  @action _toggle = () => {
-    this.toggle = !this.toggle
-  }
-
   @action mealToggle = (input, meal) => {
     if (this.display[input][meal] === 'none') {
       this.display[input][meal] = 'flex'
@@ -135,28 +149,16 @@ class Store {
     }
   }
 
+  @observable toggle = false
+
+  @action _toggle = () => {
+    this.toggle = !this.toggle
+  }
+
+  @observable sort = 0
+
   @action _sort = value => {
     this.sort = value
-  }
-
-  @action add = (food, meal) => {
-    let newLog = { ...this.log }
-
-    newLog[meal] = {
-      ...this.log[meal],
-      [this.index[meal]]: food
-    }
-    this.log = newLog
-  }
-
-  @action delete = (meal, e) => {
-    if (e === 'all') {
-      this.log[meal] = {}
-    } else {
-      for (let i = 0; i < e.length; i++) {
-        delete this.log[meal][e[i]]
-      }
-    }
   }
 }
 

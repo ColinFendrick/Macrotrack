@@ -11,25 +11,6 @@ class LogItem extends Component {
   state: {
     selected: []
   }
-  logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
-    return <TableRow key={i}>
-      <TableRowColumn style={{'wordWrap': 'break-word'}}>
-        <div className=''>{entry[1].item_name}</div>
-      </TableRowColumn>
-      <TableRowColumn className='calories'>
-        {entry[1].nf_calories}
-      </TableRowColumn>
-      <TableRowColumn className='protein'>
-        {entry[1].nf_protein}
-      </TableRowColumn>
-      <TableRowColumn className='carb'>
-        {entry[1].nf_total_carbohydrate}
-      </TableRowColumn>
-      <TableRowColumn className='fat'>
-        {entry[1].nf_total_fat}
-      </TableRowColumn>
-    </TableRow>
-  })
 
   _toggle = e => {
     if ((e === 'none') || (e.length === 0)) {
@@ -37,6 +18,7 @@ class LogItem extends Component {
     } else {
       store.display.remove[this.props.meal] = 'flex'
       this._selected(e)
+      console.log(e)
     }
   }
 
@@ -46,8 +28,32 @@ class LogItem extends Component {
     })
   }
 
+  isSelected = i => {
+    return this.state.selected.indexOf(0) !== -1
+  }
+
   render () {
     const { props: { meal } } = this
+
+    const logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
+      return <TableRow key={i} selected={this.isSelected(i)}>
+        <TableRowColumn style={{'wordWrap': 'break-word'}}>
+          <div className=''>{entry[1].item_name}</div>
+        </TableRowColumn>
+        <TableRowColumn className='calories'>
+          {entry[1].nf_calories}
+        </TableRowColumn>
+        <TableRowColumn className='protein'>
+          {entry[1].nf_protein}
+        </TableRowColumn>
+        <TableRowColumn className='carb'>
+          {entry[1].nf_total_carbohydrate}
+        </TableRowColumn>
+        <TableRowColumn className='fat'>
+          {entry[1].nf_total_fat}
+        </TableRowColumn>
+      </TableRow>
+    })
 
     return <div className='LogItem'>
       {meal}:
@@ -65,7 +71,7 @@ class LogItem extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {(store.log && store.log[meal]) ? this.logitems : null}
+          {(store.log && store.log[meal]) ? logitems : null}
         </TableBody>
         <TableFooter>
           <TableRow>
