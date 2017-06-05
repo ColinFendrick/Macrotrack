@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { TextField } from 'material-ui'
-import { RecipeCardList, Filters } from '.'
+import { RecipeCard, Filters } from '.'
 import { getData } from './api'
 import { observer } from 'mobx-react'
 import store from '../store'
@@ -24,7 +24,10 @@ class Recipes extends Component {
         <Filters />
       </div>
       <div className='recipe-card-list'>
-        <RecipeCardList />
+        <div className='RecipeCardList'>
+          { store.entries.map((entry, i) =>
+            <RecipeCard entry={entry} key={i} />)}
+        </div>
       </div>
     </div>
   }
