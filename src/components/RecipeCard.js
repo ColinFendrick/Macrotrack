@@ -41,26 +41,6 @@ class RecipeCard extends Component {
       store.index[this.state.meal] = store.index[this.state.meal] + 1
       return newState
     }, () => this._close())
-
-    store.used.calories[this.state.meal] =
-    Object.keys(store.log[this.state.meal])
-    .map(key => store.log[this.state.meal][key].nf_calories)
-    .reduce((a, b) => a + b)
-
-    store.used.protein[this.state.meal] =
-    Object.keys(store.log[this.state.meal])
-    .map(key => store.log[this.state.meal][key].nf_protein)
-    .reduce((a, b) => a + b)
-
-    store.used.carbs[this.state.meal] =
-    Object.keys(store.log[this.state.meal])
-    .map(key => store.log[this.state.meal][key].nf_total_carbohydrate)
-    .reduce((a, b) => a + b)
-
-    store.used.fats[this.state.meal] =
-    Object.keys(store.log[this.state.meal])
-    .map(key => store.log[this.state.meal][key].nf_total_fat)
-    .reduce((a, b) => a + b)
   }
 
   action = [<FlatButton

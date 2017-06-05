@@ -64,31 +64,65 @@ class Store {
         .map(key => this.used.fats[key]).reduce((a, b) => a + b)
       }
     }
-// turn this into an action
-  @observable used = {
-    'calories': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'protein': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'carbs': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
-    },
-    'fats': {
-      'Breakfast': 0,
-      'Lunch': 0,
-      'Dinner': 0,
-      'Snack': 0
+
+  @computed get used () {
+    return {
+      'calories': {
+        'Breakfast': this.log.Breakfast[0] ? Object.keys(this.log.Breakfast)
+        .map(key => this.log.Breakfast[key].nf_calories)
+        .reduce((a, b) => a + b) : 0,
+        'Lunch': this.log.Lunch[0] ? Object.keys(this.log.Lunch)
+        .map(key => this.log.Lunch[key].nf_calories)
+        .reduce((a, b) => a + b) : 0,
+        'Dinner': this.log.Dinner[0] ? Object.keys(this.log.Dinner)
+        .map(key => this.log.Dinner[key].nf_calories)
+        .reduce((a, b) => a + b) : 0,
+        'Snack': this.log.Snack[0] ? Object.keys(this.log.Snack)
+        .map(key => this.log.Snack[key].nf_calories)
+        .reduce((a, b) => a + b) : 0
+      },
+      'protein': {
+        'Breakfast': this.log.Breakfast[0] ? Object.keys(this.log.Breakfast)
+        .map(key => this.log.Breakfast[key].nf_protein)
+        .reduce((a, b) => a + b) : 0,
+        'Lunch': this.log.Lunch[0] ? Object.keys(this.log.Lunch)
+        .map(key => this.log.Lunch[key].nf_protein)
+        .reduce((a, b) => a + b) : 0,
+        'Dinner': this.log.Dinner[0] ? Object.keys(this.log.Dinner)
+        .map(key => this.log.Dinner[key].nf_protein)
+        .reduce((a, b) => a + b) : 0,
+        'Snack': this.log.Snack[0] ? Object.keys(this.log.Snack)
+        .map(key => this.log.Snack[key].nf_protein)
+        .reduce((a, b) => a + b) : 0
+      },
+      'carbs': {
+        'Breakfast': this.log.Breakfast[0] ? Object.keys(this.log.Breakfast)
+        .map(key => this.log.Breakfast[key].nf_total_carbohydrate)
+        .reduce((a, b) => a + b) : 0,
+        'Lunch': this.log.Lunch[0] ? Object.keys(this.log.Lunch)
+        .map(key => this.log.Lunch[key].nf_total_carbohydrate)
+        .reduce((a, b) => a + b) : 0,
+        'Dinner': this.log.Dinner[0] ? Object.keys(this.log.Dinner)
+        .map(key => this.log.Dinner[key].nf_total_carbohydrate)
+        .reduce((a, b) => a + b) : 0,
+        'Snack': this.log.Snack[0] ? Object.keys(this.log.Snack)
+        .map(key => this.log.Snack[key].nf_total_carbohydrate)
+        .reduce((a, b) => a + b) : 0
+      },
+      'fats': {
+        'Breakfast': this.log.Breakfast[0] ? Object.keys(this.log.Breakfast)
+        .map(key => this.log.Breakfast[key].nf_total_fat)
+        .reduce((a, b) => a + b) : 0,
+        'Lunch': this.log.Lunch[0] ? Object.keys(this.log.Lunch)
+        .map(key => this.log.Lunch[key].nf_total_fat)
+        .reduce((a, b) => a + b) : 0,
+        'Dinner': this.log.Dinner[0] ? Object.keys(this.log.Dinner)
+        .map(key => this.log.Dinner[key].nf_total_fat)
+        .reduce((a, b) => a + b) : 0,
+        'Snack': this.log.Snack[0] ? Object.keys(this.log.Snack)
+        .map(key => this.log.Snack[key].nf_total_fat)
+        .reduce((a, b) => a + b) : 0
+      }
     }
   }
 
