@@ -49,9 +49,8 @@ class LogItem extends Component {
       {meal}:
       <Table
         multiSelectable
-        onRowSelection={e =>
-          this._toggle(e)
-        }>
+        // onRowSelection={e => this._toggle(e)}
+        >
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
