@@ -3,11 +3,19 @@ import { observer } from 'mobx-react'
 import store from '../store'
 import { TextField,
   FontIcon,
-  FloatingActionButton } from 'material-ui'
+  FloatingActionButton,
+GridList,
+GridTile } from 'material-ui'
 import ContentAdd from 'material-ui/svg-icons/content/add'
-import { AddFood, SearchList, Filters } from '.'
+import { AddFood, Filters } from '.'
 
 class Modal extends Component {
+  gridList: {
+    width: 500,
+    height: 450,
+    overflowY: 'auto',
+  }
+
   render () {
     const { props: { meal } } = this
     return <div className='Modal'
@@ -23,7 +31,20 @@ class Modal extends Component {
             onTouchTap={() => store.mealToggle(meal)} />
         </div>
         <Filters />
-        <SearchList meal={meal} />
+        <div className='grid-list'>
+          <GridList cellHeight={180}
+            style={this.gridList}>
+            {store.entries.map((entry, i) => <GridTile
+              key={i}
+              title={entry.fields.item_name}
+              subtitle={entry.fields.item_description}
+              onTouchTap={() => store.add(entry, meal)}>
+              <img src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg'
+                alt=' No image' />
+            </GridTile>
+          )}
+          </GridList>
+        </div>
         <div className='add-custom'>
           <FloatingActionButton>
             <ContentAdd onTouchTap={() => store.toggle('add')} />
