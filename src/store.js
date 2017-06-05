@@ -160,9 +160,9 @@ class Store {
     console.log(this.selected[meal])
   }
 
-  @action delete = (meal, selected) => {
-    for (let i = 0; i < selected.length; i++) {
-      console.log(selected[i])
+  @action delete = (meal, e) => {
+    for (let i = 0; i < e.length; i++) {
+      console.log(e[i])
     }
     // console.log(this.log[meal], selected)
   }

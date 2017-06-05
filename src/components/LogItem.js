@@ -8,10 +8,6 @@ import ActionDelete from 'material-ui/svg-icons/action/delete'
 import { Table, TableHeader, TableRow, TableRowColumn, TableHeaderColumn, TableBody, TableFooter } from 'material-ui/Table'
 
 class LogItem extends Component {
-  state = {
-    selected: null
-  }
-
   logitems = Object.entries(store.log[this.props.meal]).map((entry, i) => {
     return <TableRow key={i}>
       <TableRowColumn style={{'wordWrap': 'break-word'}}>
@@ -38,14 +34,8 @@ class LogItem extends Component {
       store.display.remove[this.props.meal] = 'none'
     } else {
       store.display.remove[this.props.meal] = 'flex'
-      this.setState({ selected: e }, () => console.log(this.state))
+      store._selected(this.props.meal, e)
     }
-  }
-
-  _selected = e => {
-    this.setState({
-      selected: e
-    })
   }
 
   render () {
@@ -55,7 +45,7 @@ class LogItem extends Component {
       {meal}:
       <Table
         multiSelectable
-        onRowSelection={e => store._selected(this.props.meal, e)}
+        onRowSelection={this._toggle}
         >
         <TableHeader>
           <TableRow>
