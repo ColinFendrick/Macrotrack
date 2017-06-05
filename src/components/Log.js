@@ -15,7 +15,9 @@ const Log = () => {
         size={256}
         value={1 - ((d.calories - t.calories) / d.calories)}
       />
-      <div>Daily Calories</div>
+      <div
+        onTouchTap={() => console.log(store.entries)}
+        >Daily Calories</div>
     </div>
     <div className='log-macro-donut'>
       <div>

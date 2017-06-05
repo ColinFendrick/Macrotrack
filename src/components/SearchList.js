@@ -4,13 +4,15 @@ import store from '../store'
 
 const Searchlist = ({ meal }) => (
   <GridList cellHeight={20}>
-    {store.entries.map(entry => <GridTile
+    {store.entries.map((entry, i) => <GridTile
+      key={i}
       title={entry.fields.item_name}
       subtitle={entry.fields.item_description}
-      key={entry.fields.item_id}
       onTouchTap={() => store.add(entry, meal)}>
-      <img src={entry.fields.images_front_full_url} alt=' No image' />
-    </GridTile>)}
+      <img src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg'
+        alt=' No image' />
+    </GridTile>
+    )}
   </GridList>
 )
 
