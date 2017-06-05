@@ -178,11 +178,11 @@ class Store {
     }
   }
 
-  @action mealToggle = (input, meal) => {
-    if (this.display[input][meal] === 'none') {
-      this.display[input][meal] = 'flex'
+  @action mealToggle = meal => {
+    if (this.display[meal] === 'none') {
+      this.display[meal] = 'flex'
     } else {
-      this.display[input][meal] = 'none'
+      this.display[meal] = 'none'
     }
   }
 

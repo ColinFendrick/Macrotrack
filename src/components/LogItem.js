@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Modal } from '.'
+import { Modal } from '.'
 import store from '../store'
 import { observer } from 'mobx-react'
 import { IconButton, FloatingActionButton } from 'material-ui'
@@ -94,13 +94,11 @@ class LogItem extends Component {
 
       <FloatingActionButton
         label='+'
-        onTouchTap={(() => {
-          store.toggle(`${meal}`)
-        })}>
+        onTouchTap={() => store.mealToggle(this.props.meal)}>
         <ContentAdd />
       </FloatingActionButton>
 
-      {/* <Modal meal={this.props.meal} /> */}
+      <Modal meal={this.props.meal} />
     </div>
   }
 }

@@ -2,9 +2,9 @@ import React from 'react'
 import { GridList, GridTile } from 'material-ui/GridList'
 import store from '../store'
 
-const Searchlist = ({ entries, meal }) => (
+const Searchlist = ({ meal }) => (
   <GridList cellHeight={20}>
-    {entries.map(entry => <GridTile
+    {store.entries.map(entry => <GridTile
       title={entry.fields.item_name}
       subtitle={entry.fields.item_description}
       key={entry.fields.item_id}
