@@ -64,7 +64,7 @@ class Store {
         .map(key => this.used.fats[key]).reduce((a, b) => a + b)
       }
     }
-
+// turn this into an action
   @observable used = {
     'calories': {
       'Breakfast': 0,
@@ -119,7 +119,6 @@ class Store {
   @action delete = (meal, e) => {
     if (e === 'all') {
       this.log[meal] = {}
-      this.index[meal] = 0
     } else {
       for (let i = 0; i < e.length; i++) {
         delete this.log[meal][e[i]]
