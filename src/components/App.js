@@ -21,15 +21,15 @@ class App extends Component {
     return <MuiThemeProvider muiTheme={muiTheme}>
       <Router>
         <div style={{'background': '#fff'}}>
+          <Route exact path='/' component={Splash} />
+          <Route path='/app' component={TopBar} />
+          <Route path='/app' component={Footer} />
           <Switch>
-            <Route exact path='/' component={Splash} />
-            <Route path='/app' component={TopBar} />
-            <Route path='/app' component={Footer} />
-            <Route path='/:placeholder' component={Error} />
+            <Route exact path='/app/log' component={Log} />
+            <Route exact path='/app/recipes' component={Recipes} />
+            <Route exact path='/app/profile' component={Profile} />
+            <Route path='/app/:anything' component={Error} />
           </Switch>
-          <Route exact path='/app/log' component={Log} />
-          <Route exact path='/app/recipes' component={Recipes} />
-          <Route exact path='/app/profile' component={Profile} />
         </div>
       </Router>
     </MuiThemeProvider>
