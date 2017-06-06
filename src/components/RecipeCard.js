@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import { Card, CardText, CardMedia, CardTitle, CardActions } from 'material-ui/Card'
-import { FlatButton, Dialog } from 'material-ui'
+import { Card,
+  CardText,
+  CardMedia,
+  CardTitle,
+  CardActions,
+  FlatButton,
+  Dialog } from 'material-ui'
 import store from '../store'
 import { observer } from 'mobx-react'
 
@@ -36,10 +41,7 @@ class RecipeCard extends Component {
 
   _submit = () => {
     store.add(this.state.food.fields, this.state.meal)
-    this.setState(oldState => {
-      let newState = {...oldState}
-      return newState
-    }, () => this._close())
+    this._close()
   }
 
   action = [<FlatButton

@@ -4,12 +4,57 @@ import store from '../store'
 import { TextField,
   FontIcon,
   FloatingActionButton,
-GridList,
-GridTile } from 'material-ui'
+  GridList,
+  GridTile,
+  Dialog,
+  FlatButton } from 'material-ui'
 import ContentAdd from 'material-ui/svg-icons/content/add'
 import { AddFood, Filters } from '.'
 
 class Modal extends Component {
+  state = {
+    open: false,
+    food: {},
+    dialog: '',
+    meal: ''
+  }
+
+  _open = (food, meal) => {
+    this.setState(oldState => {
+      let newState = {...oldState}
+      newState.open = true
+      newState.food = food
+      newState.dialog = `Add ${food.fields.item_name} to ${meal}`
+      newState.meal = meal
+      return newState
+    })
+  }
+
+  _close = () => {
+    this.setState({
+      open: false,
+      food: {},
+      dialog: '',
+      meal: ''
+    })
+  }
+
+  _submit = () => {
+    store.add(this.state.food.fields, this.state.meal)
+    this._close()
+  }
+
+  action = [<FlatButton
+    label='Cancel'
+    primary
+    onTouchTap={() => this._close()}
+        />,
+    <FlatButton
+      label='Submit'
+      primary
+      onTouchTap={() => this._submit()}
+    />]
+
   render () {
     const { props: { meal } } = this
 
@@ -34,7 +79,7 @@ class Modal extends Component {
               key={i}
               title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 15)}
               subtitle={entry.fields.item_description ? entry.fields.item_description : null}
-              onTouchTap={() => store.add(entry.fields, meal)}>
+              onTouchTap={() => this._open(entry, meal)}>
               <img src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg'
                 alt=' No image' />
             </GridTile>
@@ -48,6 +93,11 @@ class Modal extends Component {
         </div>
         <AddFood meal={meal} />
       </div>
+      <Dialog
+        open={this.state.open}
+        title={this.state.dialog}
+        actions={this.action}
+      />
     </div>
   }
 }
