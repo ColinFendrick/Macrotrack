@@ -34,7 +34,7 @@ class Modal extends Component {
               key={i}
               title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 15)}
               subtitle={entry.fields.item_description ? entry.fields.item_description : null}
-              onTouchTap={() => store.add(entry, meal)}>
+              onTouchTap={() => store.add(entry.fields, meal)}>
               <img src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg'
                 alt=' No image' />
             </GridTile>

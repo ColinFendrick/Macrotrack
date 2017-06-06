@@ -148,6 +148,7 @@ class Store {
       [this.index[meal]]: food
     }
     this.log = newLog
+    this.index[meal] = this.index[meal] + 1
   }
 
   @action delete = (meal, e) => {
