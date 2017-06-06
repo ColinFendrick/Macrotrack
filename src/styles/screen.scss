@@ -53,15 +53,20 @@ body {
 }
 
 .Log {
-  .log-cal {
+  .log-top {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 
-    div {
-      padding: 20px;
-      font-size: 1.7em;
+    .log-cal {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      div {
+        padding: 20px;
+        font-size: 1.7em;
+      }
     }
   }
 

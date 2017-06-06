@@ -3,21 +3,38 @@ import { Donut } from 'rebass'
 import store from '../store'
 import { observer } from 'mobx-react'
 import { LogItem } from '.'
+import PieChart from 'react-simple-pie-chart'
 
 const Log = () => {
   const d = store.daily
   const t = store.total
+  const slices = [
+    {
+      color: '#b33951',
+      value: t.protein
+    },
+    {
+      color: '#e3d081',
+      value: t.fats
+    },
+    {
+      color: 'hsla(212, 68%, 40%, 0.58)',
+      value: t.carbs
+    }
+  ]
+
   return <div className='Log'>
-    <div className='log-cal'>
-      <br />
-      <Donut
-        color='hsl(118, 24%, 45%)'
-        size={256}
-        value={1 - ((d.calories - t.calories) / d.calories)}
-      />
-      <div
-        onTouchTap={() => console.log(store.entries)}
-        >Daily Calories</div>
+    <div className='log-top'>
+      <div className='log-cal'>
+        <br />
+        <Donut
+          color='hsl(118, 24%, 45%)'
+          size={256}
+          value={1 - ((d.calories - t.calories) / d.calories)}
+        />
+        <div className='calories'>Daily Calories</div>
+      </div>
+      <PieChart slices={slices} />
     </div>
     <div className='log-macro-donut'>
       <div>
