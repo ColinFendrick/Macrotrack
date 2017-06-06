@@ -6,30 +6,28 @@ import { LogItem } from '.'
 import PieChart from 'react-svg-piechart'
 
 class Log extends Component {
-  data = [
-    {
-      label: 'Protein',
-      value: 10,
-      color: '#b33951'
-
-    },
-    {
-      label: 'Fats',
-      value: 10,
-      color: '#e3d081'
-
-    },
-    {
-      label: 'Carbs',
-      value: 10,
-      color: 'hsla(212, 68%, 40%, 0.58)'
-
-    }
-  ]
-
   render () {
     const d = store.daily
     const t = store.total
+    const data = [
+      {
+        label: 'Protein',
+        value: t.protein,
+        color: '#b33951'
+
+      },
+      {
+        label: 'Fats',
+        value: t.fats,
+        color: '#e3d081'
+
+      },
+      {
+        label: 'Carbs',
+        value: t.carbs,
+        color: 'hsla(212, 68%, 40%, 0.58)'
+      }
+    ]
 
     return <div className='Log'>
       <div className='log-top'>
@@ -46,17 +44,17 @@ class Log extends Component {
           <br />
           <div style={{'width': '256px'}}>
             <PieChart
-              data={this.data}
+              data={data}
               expandOnHover={false}
             />
           </div>
           <div>
-            {this.data.map((element, i) => (
+            {this.data ? this.data.map((element, i) => (
               <div key={i}>
                 <span>{element.label}</span>
                 <span>{element.value}</span>
               </div>
-            ))}
+            )) : <div />}
           </div>
         </div>
       </div>
