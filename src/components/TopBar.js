@@ -13,6 +13,7 @@ const TopBar = ({ history, location }) => {
   } else {
     loc = -1
   }
+
   return <Tabs initialSelectedIndex={loc}>
     <Tab label='Food Log' onActive={() => history.push('log')} />
     <Tab label='Recipes' onActive={() => history.push('recipes')} />
