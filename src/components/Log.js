@@ -6,10 +6,6 @@ import { LogItem } from '.'
 import PieChart from 'react-svg-piechart'
 
 class Log extends Component {
-  state = {
-    expanded: null
-  }
-
   data = [
     {
       label: 'Protein',
@@ -31,10 +27,6 @@ class Log extends Component {
     }
   ]
 
-  _mouseEnter = sector => {
-    this.setState({expanded: sector})
-  }
-
   render () {
     const d = store.daily
     const t = store.total
@@ -50,14 +42,25 @@ class Log extends Component {
         />
           <div className='calories'>Daily Calories</div>
         </div>
-        <div style={{'width': '300px'}}>
-          <PieChart
-            data={this.data}
-            expandedSector={this.state.expanded}
-            onSectorHover={this._mouseEnter}
-          />
+        <div>
+          <br />
+          <div style={{'width': '256px'}}>
+            <PieChart
+              data={this.data}
+              expandOnHover={false}
+            />
+          </div>
+          <div>
+            {this.data.map((element, i) => (
+              <div key={i}>
+                <span>{element.label}</span>
+                <span>{element.value}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
       <div className='log-macro-donut'>
         <div>
           <Donut color='#b33951'

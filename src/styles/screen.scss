@@ -61,11 +61,11 @@ body {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
 
       div {
-        padding: 20px;
         font-size: 1.7em;
+        padding: 0;
+        margin: 0;
       }
     }
   }
@@ -73,6 +73,7 @@ body {
   .log-macro-donut {
     display: flex;
     justify-content: space-around;
+    padding-top: 30px;
     padding-bottom: 50px;
 
     .donut-label {
