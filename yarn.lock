@@ -4885,7 +4885,7 @@ prompt@~0.2.14:
     utile "0.2.x"
     winston "0.8.x"
 
-prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
+prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7, prop-types@~15.5.9:
   version "15.5.9"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.5.9.tgz#d478eef0e761396942f70c78e772f76e8be747c9"
   dependencies:
@@ -5082,9 +5082,11 @@ react-router@^4.1.1:
     prop-types "^15.5.4"
     warning "^3.0.0"
 
-react-simple-pie-chart@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-simple-pie-chart/-/react-simple-pie-chart-0.4.1.tgz#d1f4e09238b4c9ea9faa55aaf3df5721c56d26c6"
+react-svg-piechart@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-svg-piechart/-/react-svg-piechart-1.2.3.tgz#5e4a27ceaf9ceff10de0ea1f16558e504d17dfa4"
+  dependencies:
+    prop-types "~15.5.9"
 
 react-tap-event-plugin@^2.0.1:
   version "2.0.1"
