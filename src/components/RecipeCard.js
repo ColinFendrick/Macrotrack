@@ -59,14 +59,11 @@ class RecipeCard extends Component {
 
     return <Card className='recipe-card'>
       <CardMedia
-        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 18)} />}
+        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 30)} />}
       >
         <img className='recipe-image' src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg' />
       </CardMedia>
       <CardText className='card-text'>
-        <div className='card-description'>
-          {entry.fields.item_description ? entry.fields.item_description : 'Description Unavailable'}
-        </div>
         <div className='card-nutrition'>
           <div className='calories card-nutrition-details'>
             <div>Calories</div>

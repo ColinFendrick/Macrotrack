@@ -32,7 +32,7 @@ class Modal extends Component {
             style={this.gridList}>
             {store.entries.map((entry, i) => <GridTile
               key={i}
-              title={entry.fields.item_name}
+              title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 15)}
               subtitle={entry.fields.item_description}
               onTouchTap={() => store.add(entry, meal)}>
               <img src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg'
