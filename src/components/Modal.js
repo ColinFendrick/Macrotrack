@@ -9,12 +9,12 @@ import { TextField,
   Dialog,
   FlatButton } from 'material-ui'
 import ContentAdd from 'material-ui/svg-icons/content/add'
-import { AddFood, Filters } from '.'
+import { AddFood, Filters, FoodNutrients } from '.'
 
 class Modal extends Component {
   state = {
     open: false,
-    food: {},
+    food: null,
     dialog: '',
     meal: ''
   }
@@ -33,7 +33,7 @@ class Modal extends Component {
   _close = () => {
     this.setState({
       open: false,
-      food: {},
+      food: null,
       dialog: '',
       meal: ''
     })
@@ -97,7 +97,9 @@ class Modal extends Component {
         open={this.state.open}
         title={this.state.dialog}
         actions={this.action}
-      />
+        >
+        <FoodNutrients food={this.state.food} />
+      </Dialog>
     </div>
   }
 }
