@@ -306,3 +306,17 @@ body {
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.FoodNutrients {
+  font-size: 1.4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .nutrient {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+  }
+}
