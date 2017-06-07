@@ -8,6 +8,7 @@ import { Card,
   Dialog } from 'material-ui'
 import store from '../store'
 import { observer } from 'mobx-react'
+import Images from './FoodImages'
 
 class RecipeCard extends Component {
   state = {
@@ -57,12 +58,13 @@ class RecipeCard extends Component {
 
   render () {
     const { props: { entry } } = this
+    const rNum = Math.floor(Math.random() * 23)
 
     return <Card className='recipe-card'>
       <CardMedia
         overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 30)} />}
       >
-        <img className='recipe-image' src='http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/3/22/0/FNCC_bobby-flay-salmon-brown-sugar-mustard_s4x3.jpg.rend.hgtvcom.336.252.jpeg' />
+        <img className='recipe-image' src={Images[rNum]} />
       </CardMedia>
       <CardText className='card-text'>
         <div className='card-description'>
