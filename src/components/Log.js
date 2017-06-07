@@ -35,22 +35,18 @@
        }
      ]
 
-     const donutValue = macro => {
-       let percentage = 1 - ((t[macro] - d[macro]) / d[macro])
-       return percentage < 1 ? percentage : percentage
-     }
+     const donutValue = macro => (
+       1 - ((d[macro] - t[macro]) / d[macro])
+     )
 
-     return <div className='Log'
-       onTouchTap={() => console.log(1 - ((t['calories'] - d['calories']) / d['calories']))}
-       >
+     return <div className='Log'>
        <div className='log-top'>
          <div className='log-cal'>
            <br />
            <Donut
-             color='hsl(118, 24%, 45%)'
+             color={donutValue('calories') < 1 ? 'hsl(118, 24%, 45%)' : 'hsla(118, 24%, 45%, 0.5)'}
              size={256}
-             value={donutValue('calories')}
-        />
+             value={donutValue('calories')} />
            <div className='calories'>Daily Calories</div>
          </div>
          <div>
@@ -75,17 +71,17 @@
 
        <div className='log-macro-donut'>
          <div>
-           <Donut color='#b33951'
+           <Donut color={donutValue('protein') ? 'rgb(179,57,81)' : 'rgba(179,57,81, 0.5)'}
              value={donutValue('protein')} />
            <div className='donut-label protein'>Protein</div>
          </div>
          <div>
-           <Donut color='hsla(212, 68%, 40%, 0.58)'
+           <Donut color={donutValue('carbs') < 1 ? 'hsla(212, 68%, 40%, 0.58)' : 'hsla(212, 68%, 40%, 0.2)'}
              value={donutValue('carbs')} />
            <div className='donut-label carb'>Carbs</div>
          </div>
          <div>
-           <Donut color='#e3d081'
+           <Donut color={donutValue('fats') < 1 ? 'rgb(227,208,129)' : 'rgba(227,208,129, 0.5)'}
              value={donutValue('fats')} />
            <div className='donut-label fat'>Fats</div>
          </div>
