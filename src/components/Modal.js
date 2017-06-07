@@ -19,7 +19,7 @@ class Modal extends Component {
     dialog: '',
     meal: ''
   }
-
+  // Confirm food addition
   _open = (food, meal) => {
     this.setState(oldState => {
       let newState = {...oldState}
@@ -30,7 +30,7 @@ class Modal extends Component {
       return newState
     })
   }
-
+  // Close food addition dialog
   _close = () => {
     this.setState({
       open: false,
@@ -39,12 +39,12 @@ class Modal extends Component {
       meal: ''
     })
   }
-
+  // Submits food to store
   _submit = () => {
     store.add(this.state.food.fields, this.state.meal)
     this._close()
   }
-
+  // Actions for the buttons
   action = [<FlatButton
     label='Cancel'
     primary
@@ -66,9 +66,11 @@ class Modal extends Component {
           <h4>{this.props.meal}</h4>
           <TextField hintText='Search for Recipes'
             onChange={e => {
+              // Calls API on searchbar change
               store.query = e.target.value
             }} />
           <FontIcon className='fa fa-times delete-button'
+            // Turns modal off
             onTouchTap={() => store.mealToggle(meal)} />
         </div>
         <Filters />
@@ -76,6 +78,7 @@ class Modal extends Component {
           <GridList cellHeight={180}
             className='grid-list'
             style={this.gridList}>
+            {/* Map all the API data into grids */}
             {store.entries.map((entry, i) => {
               const rNum = Math.floor(Math.random() * 23)
               return <GridTile
@@ -92,6 +95,7 @@ class Modal extends Component {
         </div>
         <div className='add-custom'>
           <FloatingActionButton>
+            {/* Adds the food */}
             <ContentAdd onTouchTap={() => store.toggle('add')} />
           </FloatingActionButton>
         </div>

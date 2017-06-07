@@ -5,6 +5,7 @@ import { getData } from './api'
 import { observer } from 'mobx-react'
 import store from '../store'
 
+// If user scrolls to bottom, research and concat results to end so they can keep scrolling
 window.onscroll = e => {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
     store.offset += 50
@@ -19,6 +20,7 @@ class Recipes extends Component {
       <div>
         <TextField hintText='Search Recipes'
           onChange={e => {
+            // Searches recipes on change
             store.query = e.target.value
           }} />
         <Filters />
@@ -26,6 +28,7 @@ class Recipes extends Component {
       <div className='recipe-card-list'>
         <div className='RecipeCardList'>
           { store.entries.map((entry, i) =>
+            // Map the API search results
             <RecipeCard entry={entry} key={i} />)}
         </div>
       </div>

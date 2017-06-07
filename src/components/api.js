@@ -4,6 +4,7 @@ const API_BASE = 'https://api.nutritionix.com/v1_1/search/'
 const API_KEY = '105450dabfa9aba34c9ace6b9248ef91'
 const API_ID = 'fc3e322d'
 
+// Gets data from API
 const getData = () => {
   const url = API_BASE
   let filters = {}
@@ -24,6 +25,7 @@ const getData = () => {
     }
   }
 
+  // Sorts API data based on dropdown
   let sort = {
     'field': 'item_name',
     'order': 'desc'
@@ -50,6 +52,7 @@ const getData = () => {
     }
   }
 
+  // Fetch data from API
   if (store.query && store.query.length > 0 && !store.scroll) {
     window.fetch(url, {
       method: 'POST',
@@ -68,6 +71,7 @@ const getData = () => {
   .then(r => { store.entries = r.hits })
   }
 
+  // Fetch API on scrolling to bottom of page
   if (store.scroll) {
     window.fetch(url, {
       method: 'POST',
@@ -87,6 +91,7 @@ const getData = () => {
   }
 }
 
+// Reruns this fn on toggles/filters
 autorun(() => {
   getData()
 })

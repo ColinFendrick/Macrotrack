@@ -17,7 +17,7 @@ class RecipeCard extends Component {
     dialog: '',
     meal: ''
   }
-
+  // Temp storage on dialog popup
   _open = (food, meal) => {
     this.setState(oldState => {
       let newState = {...oldState}
@@ -28,7 +28,7 @@ class RecipeCard extends Component {
       return newState
     })
   }
-
+  // Clears store, closes dialog
   _close = () => {
     this.setState(oldState => {
       let newState = {...oldState}
@@ -39,12 +39,12 @@ class RecipeCard extends Component {
       return newState
     })
   }
-
+  // Adds food to store
   _submit = () => {
     store.add(this.state.food.fields, this.state.meal)
     this._close()
   }
-
+  // Dialog button actions
   action = [<FlatButton
     label='Cancel'
     primary
@@ -62,12 +62,14 @@ class RecipeCard extends Component {
 
     return <Card className='recipe-card'>
       <CardMedia
+        // Truncate title
         overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 30)} />}
       >
         <img className='recipe-image' src={Images[rNum]} />
       </CardMedia>
       <CardText className='card-text'>
         <div className='card-description'>
+          {/* Show description only if it exists */}
           {entry.fields.item_description ? entry.fields.item_description : null}
         </div>
         <div className='card-nutrition'>
@@ -99,6 +101,7 @@ class RecipeCard extends Component {
         <FlatButton label='Add to Snacks'
           onTouchTap={() => this._open(entry, 'Snack')} />
       </CardActions>
+      {/* Dialog button for confirmation */}
       <Dialog
         title={this.state.dialog}
         actions={this.action}

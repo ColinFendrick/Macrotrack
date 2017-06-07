@@ -15,12 +15,13 @@ import moment from 'moment'
 import cx from 'classnames'
 
 class Profile extends Component {
+  // Error on uncompleted fields
   error = () => {
     if (!store.profile.name || !store.profile.weight || !store.profile.height) {
       store.profile.error = true
     }
   }
-
+  // All fns below handle inputs for their name
   _name = event => {
     store.profile[event.target.name] = event.target.value
     this.error()
@@ -41,12 +42,16 @@ class Profile extends Component {
   _height = (_, value) => {
     store.profile.height = value
   }
-
+    // Handles all the dropdowns
+  _drop = (e, i, value, key) => {
+    store.profile[key] = value
+  }
+  // Changes goals permanently
   _click = input => {
     store.profile.goal = input
     store.profile.prevGoal = input
   }
-
+  // Temp goal change to show what other macros are required
   _hover = input => {
     store.profile.prevGoal = store.profile.goal
     store.profile.goal = input
@@ -55,11 +60,7 @@ class Profile extends Component {
   _unhover = () => {
     store.profile.goal = store.profile.prevGoal
   }
-
-  _drop = (e, i, value, key) => {
-    store.profile[key] = value
-  }
-
+  // Can't be born tomorrow
   disableFuture = date => {
     return moment(date).fromNow().includes('in')
   }
@@ -87,6 +88,7 @@ class Profile extends Component {
             floatingLabelFixed />
           <div className='height'>
             <span>Height:
+              {/* Turn inches into ft'in" */}
               {Math.floor(store.profile.height / 12)}'{(store.profile.height % 12)}
             </span>
             <Slider min={40}
@@ -134,6 +136,7 @@ class Profile extends Component {
       <div className='profile-goals'>
         <h3>What are my goals?</h3>
         <div className='profile-goals-list'>
+          {/* Contain temp hover fn and permanent click fn */}
           <Paper
             className={cx('paper-goals', {selected: store.profile.goal === 'lose'})}
             onMouseEnter={() => this._hover('lose')}
@@ -157,6 +160,7 @@ class Profile extends Component {
       </div>
       <br />
       <div style={{'width': '100%', 'textAlign': 'center'}}>
+        {/* This button is here to make users feel better */}
         <RaisedButton style={{'border': '1px solid black'}} label='Update Profile' onTouchTap={() => this.error()} />
       </div>
       <br />

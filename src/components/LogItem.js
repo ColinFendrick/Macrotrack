@@ -12,6 +12,7 @@ class LogItem extends Component {
     selected: []
   }
 
+  // Toggles the delete button
   _toggle = e => {
     this.setState({
       selected: e
@@ -26,6 +27,7 @@ class LogItem extends Component {
   render () {
     const { props: { meal } } = this
 
+    // Map all the entries into a table
     const logitems = Object.entries(store.log[meal]).map((entry, i) => {
       return <TableRow key={i}
         selected={this.state.selected.indexOf(i) !== -1}
@@ -64,6 +66,7 @@ class LogItem extends Component {
           </TableRow>
         </TableHeader>
         <TableBody>
+          {/* Only render if there's data */}
           {(store.log && store.log[meal]) ? logitems : null}
         </TableBody>
         <TableFooter>
@@ -72,6 +75,7 @@ class LogItem extends Component {
               <IconButton tooltip='Delete'
                 style={{'display': store.display.remove[meal]}}>
                 <ActionDelete
+                  // Deletes meals
                   onTouchTap={() => store.delete(meal, this.state.selected)} />
               </IconButton>
             </TableRowColumn>
@@ -91,7 +95,7 @@ class LogItem extends Component {
           </TableRow>
         </TableFooter>
       </Table>
-
+      {/* Brings up the modal to add food */}
       <FloatingActionButton
         label='+'
         onTouchTap={() => store.mealToggle(this.props.meal)}>

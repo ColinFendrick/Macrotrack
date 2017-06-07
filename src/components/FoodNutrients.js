@@ -1,5 +1,6 @@
 import React from 'react'
 
+// A small component to list out nutrients of an individual entry
 const FoodNutrients = ({ food }) => {
   const f = food.fields
   return <div className='FoodNutrients'>

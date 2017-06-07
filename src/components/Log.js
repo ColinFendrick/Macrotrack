@@ -9,6 +9,7 @@
    render () {
      const d = store.daily
      const t = store.total
+    //  Data for the pie chart
      const data = [
        {
          label: 'Carbs',
@@ -34,7 +35,7 @@
 
        }
      ]
-
+    //  Value of each donut
      const donutValue = macro => (
        1 - ((d[macro] - t[macro]) / d[macro])
      )
@@ -44,6 +45,7 @@
          <div className='log-cal'>
            <br />
            <Donut
+            //  Each donut's color adjusts if over 100%
              color={donutValue('calories') < 1 ? 'hsl(118, 24%, 45%)' : 'hsla(118, 24%, 45%, 0.5)'}
              size={256}
              value={donutValue('calories')} />
@@ -52,12 +54,14 @@
          <div>
            <br />
            <div style={{'width': '256px'}}>
+             {/* Pie chart with macro data  */}
              <PieChart
                data={data}
                expandOnHover={false}
             />
            </div>
            <div>
+             {/* Map all macro data to a readable table */}
              {data[0].value ? data.map((element, i) => (
                <div key={i} className='pie-info'>
                  <span className={`${element.tag}`}>{element.label}</span>
@@ -71,6 +75,7 @@
 
        <div className='log-macro-donut'>
          <div>
+           {/* Three smaller donuts for individual macros */}
            <Donut color={donutValue('protein') ? 'rgb(179,57,81)' : 'rgba(179,57,81, 0.5)'}
              value={donutValue('protein')} />
            <div className='donut-label protein'>Protein</div>
@@ -88,6 +93,7 @@
        </div>
        <div className='daily-log'>
          <div className='log-list'>
+           {/* Food logs */}
            <LogItem meal='Breakfast' />
            <LogItem meal='Lunch' />
            <LogItem meal='Dinner' />

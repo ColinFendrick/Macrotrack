@@ -1,8 +1,10 @@
 import { observable, action, computed } from 'mobx'
 
 class Store {
+  // Search entries
   @observable entries = []
 
+  // User stats
   @observable profile = {
     'name': '',
     'age': 0,
@@ -15,10 +17,14 @@ class Store {
     'goal': 'lose'
   }
 
+  // Search query
   @observable query = ''
-  @observable offset = 25
+  // Offset of search
+  @observable offset = 10
+  // Has user reached bottom of search results?
   @observable scroll = false
 
+  // Daily nutrient allotment from profile
     @computed get daily () {
       let calories = ((this.profile.gender === 'male' || this.profile.gender === 'trans')
       ? ((66 + (6.2 * this.profile.weight) + (12.7 * this.profile.height) - (6.76 * this.profile.age)) * this.profile.activity * this.profile.body)
@@ -52,6 +58,7 @@ class Store {
       }
     }
 
+  // Total used nutrients
   @computed get total () {
     return {
       'calories': Object.keys(this.used.calories)
@@ -65,6 +72,7 @@ class Store {
     }
   }
 
+  // Used nutrients at each meal
   @computed get used () {
     return {
       'calories': {
@@ -126,6 +134,7 @@ class Store {
     }
   }
 
+  // Here's where all the food user has eaten goes
   @observable log = {
     'Breakfast': {},
     'Lunch': {},
@@ -133,6 +142,7 @@ class Store {
     'Snack': {}
   }
 
+  // Index of food additions/subtractions, used to manage delete functionality
   @observable index = {
     'Breakfast': 0,
     'Lunch': 0,
@@ -140,6 +150,7 @@ class Store {
     'Snack': 0
   }
 
+  // Add food
   @action add = (food, meal) => {
     let newLog = { ...this.log }
 
@@ -151,6 +162,7 @@ class Store {
     this.index[meal] = this.index[meal] + 1
   }
 
+  // Delete food based on position of index
   @action delete = (meal, e) => {
     if (e === 'all') {
       this.log[meal] = {}
@@ -165,6 +177,7 @@ class Store {
     }
   }
 
+  // Display information
   @observable display = {
     'Breakfast': 'none',
     'Lunch': 'none',
@@ -179,6 +192,7 @@ class Store {
     }
   }
 
+  // More display information
   @action mealToggle = meal => {
     if (this.display[meal] === 'none') {
       this.display[meal] = 'flex'
@@ -187,12 +201,14 @@ class Store {
     }
   }
 
+  // Toggle from 'Is within budget?'
   @observable toggle = false
 
   @action _toggle = () => {
     this.toggle = !this.toggle
   }
 
+  // Sorts based on macros
   @observable sort = 0
 
   @action _sort = value => {

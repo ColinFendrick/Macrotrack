@@ -1,7 +1,8 @@
 import React from 'react'
 import { Tabs, Tab } from 'material-ui/Tabs'
-import { observer } from 'mobx-react'
 
+// Topbar that controls location of user in app
+// This component always shows
 const TopBar = ({ history, location }) => {
   let loc = -1
   if (location.pathname === '/app/log') {
@@ -21,4 +22,4 @@ const TopBar = ({ history, location }) => {
   </Tabs>
 }
 
-export default observer(TopBar)
+export default TopBar

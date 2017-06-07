@@ -4,6 +4,7 @@ import Logo from '../../public/logo.png'
 import { Banner } from 'rebass'
 import { RaisedButton } from 'material-ui'
 
+// Splash page, some links into app
 const Splash = ({ history }) => (
   <div className='Splash'>
     <Banner

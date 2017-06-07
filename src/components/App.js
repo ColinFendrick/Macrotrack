@@ -22,6 +22,7 @@ class App extends Component {
       <Router>
         <div style={{'background': '#fff'}}>
           <Route exact path='/' component={Splash} />
+          {/* TopBar handles user navigation */}
           <Route path='/app' component={TopBar} />
           <Route path='/app' component={Footer} />
           <Switch>

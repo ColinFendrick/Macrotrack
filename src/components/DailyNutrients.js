@@ -2,6 +2,7 @@ import React from 'react'
 import { observer } from 'mobx-react'
 import store from '../store'
 
+// A quick component to put daily nutrients in places
 const DailyNutrients = () => (
   <div className='DailyNutrients'>
     <div className='daily'>

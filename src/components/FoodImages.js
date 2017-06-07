@@ -1,3 +1,4 @@
+// Since the API is buggy, this is an array of random food images
 const Images = [
   'http://images2.fanpop.com/images/photos/5400000/Random-Food-random-5409310-1280-800.jpg',
   'http://cdn.playbuzz.com/cdn/89c9243a-e0cd-495e-90e0-11642327f13f/f4b834c8-a506-43f5-8c2c-3e125311275c_560_420.jpg',

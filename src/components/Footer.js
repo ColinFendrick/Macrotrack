@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Footer, fixed on bottom of page and shows API
 const Footer = () => (
   <div className='Footer'>
     Powered by

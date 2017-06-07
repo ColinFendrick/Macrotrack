@@ -1,3 +1,4 @@
+// To cleanly import components
 export TopBar from './TopBar'
 export Log from './Log'
 export Profile from './Profile'
