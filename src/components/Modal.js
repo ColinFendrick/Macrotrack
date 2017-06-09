@@ -96,7 +96,7 @@ class Modal extends Component {
         <div className='add-custom'>
           <FloatingActionButton>
             {/* Adds the food */}
-            <ContentAdd onTouchTap={() => store.toggle('add')} />
+            <ContentAdd onTouchTap={() => store.mealToggle('add')} />
           </FloatingActionButton>
         </div>
         <AddFood meal={meal} />

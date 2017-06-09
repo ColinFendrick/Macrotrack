@@ -1,45 +1,61 @@
 import React, { Component } from 'react'
 import store from '../store'
-import { TextField, FontIcon } from 'material-ui'
 import { observer } from 'mobx-react'
-import FloatingActionButton from 'material-ui/FloatingActionButton'
-import ContentAdd from 'material-ui/svg-icons/content/add'
+import { FlatButton } from 'material-ui'
 
 class AddFood extends Component {
   state = {
-    'Name': '',
-    'Calories': '',
-    'Protein': '',
-    'Carbs': '',
-    'Fats': ''
+    'Name': 'Calories',
+    'nf_calories': 0,
+    'nf_protein': 0,
+    'nf_total_carbohydrate': 0,
+    'nf_total_fat': 0
   }
-  _change = event => {
+
+  _change = e => {
     this.setState({
-      [event.target.name]: event.target.value
+      [e.target.name]: e.target.value
     })
   }
+
   _update = () => {
-    store.log[this.props.meal] = {...this.state}
-    store.toggle('add')
+    console.log(this.state)
+    // store.log[this.props.meal] = {...this.state}
   }
+
   render () {
     return <div className='AddFood' style={{'display': store.display.add}} >
       <div className='add-window'>
-        <FontIcon className='fa fa-times delete-button'
-          onTouchTap={() => store.toggle('add')} />
-        <TextField hintText='Name' defaultValue='Name'
-          onChange={this._change} />
-        <TextField hintText='Calories' defaultValue='Calories'
-          onChange={this._change} />
-        <TextField hintText='Protein' defaultValue='Protein'
-          onChange={this._change} />
-        <TextField hintText='Carbs' defaultValue='Carbs'
-          onChange={this._change} />
-        <TextField hintText='Fats' defaultValue='Fats'
-          onChange={this._change} />
-        <FloatingActionButton>
-          <ContentAdd onTouchTap={() => this._update()} />
-        </FloatingActionButton>
+        <div className='add-inputs'>
+          <div className='add-input-indiv'>
+            Calories:
+            <input type='number' name='nf_calories'
+              onChange={this._change} value={this.state.nf_calories}
+            />
+          </div>
+          <div className='add-input-indiv'>
+            Protein (g):
+            <input type='number' name='nf_protein'
+              onChange={this._change} value={this.state.nf_protein}
+            />
+          </div>
+          <div className='add-input-indiv'>
+            Carbs (g):
+            <input type='number' name='nf_total_carbohydrate'
+              onChange={this._change} value={this.state.nf_total_carbohydrate}
+            />
+          </div>
+          <div className='add-input-indiv'>
+            Fats (g):
+            <input type='number' name='nf_total_fat'
+              onChange={this._change} value={this.state.nf_total_fat}
+            />
+          </div>
+        </div>
+        <div className='add-buttons'>
+          <FlatButton label='cancel' primary />
+          <FlatButton label='submit' primary onTouchTap={this._update} />
+        </div>
       </div>
     </div>
   }

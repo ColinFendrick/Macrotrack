@@ -3,8 +3,8 @@
 $base-text-size: 16px;
 $base-font-family: sans-serif;
 $calories: #91c7b1;
-$protein: rgb(179,57,81);
-$fat: rgb(227,208,129);
+$protein: rgb(179, 57, 81);
+$fat: rgb(227, 208, 129);
 $carb: hsla(212, 68%, 40%, 0.58);
 
 @keyframes fadeIn {
@@ -236,8 +236,25 @@ body {
     z-index: 2;
 
     .add-window {
-      width: 400px;
+      width: 300px;
       background-color: white;
+
+      .add-inputs {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .add-input-indiv {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      .add-buttons {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
     }
   }
 }
