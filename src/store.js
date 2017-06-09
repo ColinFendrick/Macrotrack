@@ -25,6 +25,7 @@ class Store {
   @observable scroll = false
 
   // Daily nutrient allotment from profile
+  // These values are based on a formula, some are my additions
     @computed get daily () {
       let calories = ((this.profile.gender === 'male' || this.profile.gender === 'trans')
       ? ((66 + (6.2 * this.profile.weight) + (12.7 * this.profile.height) - (6.76 * this.profile.age)) * this.profile.activity * this.profile.body)

@@ -10,20 +10,25 @@
      const d = store.daily
      const t = store.total
     //  Data for the pie chart
+    //  Percentages are converted grams to calories, then divided by total, then put into percent
+    //  Fat is remainder, to account for rounding errors
+     const carbPercent = ((t.carbs * 4) / t.calories) * 100
+     const proPercent = ((t.protein * 4) / t.calories) * 100
+     const fatPercent = 100 - proPercent - carbPercent
      const data = [
        {
          label: 'Carbs',
          value: t.carbs,
          color: 'hsla(212, 68%, 40%, 0.58)',
          tag: 'carb',
-         percent: ((t.carbs * 4) / t.calories) * 100
+         percent: carbPercent
        },
        {
          label: 'Protein',
          value: t.protein,
          color: '#b33951',
          tag: 'protein',
-         percent: ((t.protein * 4) / t.calories) * 100
+         percent: proPercent
 
        },
        {
@@ -31,8 +36,7 @@
          value: t.fats,
          color: '#e3d081',
          tag: 'fat',
-         percent: ((t.fats * 9) / t.calories) * 100
-
+         percent: fatPercent
        }
      ]
     //  Value of each donut
