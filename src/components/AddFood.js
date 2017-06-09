@@ -14,12 +14,20 @@ class AddFood extends Component {
 
   _change = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: parseInt(e.target.value, 10)
     })
   }
 
   _submit = () => {
     store.add(this.state, this.props.meal)
+    this.setState({
+      item_name: 'Calories',
+      nf_calories: 0,
+      nf_protein: 0,
+      nf_total_carbohydrate: 0,
+      nf_total_fat: 0
+    })
+    store.mealToggle('add')
   }
 
   render () {
