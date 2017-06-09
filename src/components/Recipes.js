@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { TextField } from 'material-ui'
-import { RecipeCard, Filters } from '.'
+import { TextField, FlatButton } from 'material-ui'
+import { RecipeCard, Filters, AddCustomButtons } from '.'
 import { getData } from './api'
 import { observer } from 'mobx-react'
 import store from '../store'
@@ -25,6 +25,15 @@ class Recipes extends Component {
           }} />
         <Filters />
       </div>
+      <FlatButton
+        label='Add Custom Calorie Entry'
+        primary
+        onTouchTap={() => store.mealToggle('custom')} />
+      <AddCustomButtons meal='Breakfast' />
+      <AddCustomButtons meal='Lunch' />
+      <AddCustomButtons meal='Dinner' />
+      <AddCustomButtons meal='Snack' />
+
       <div className='recipe-card-list'>
         <div className='RecipeCardList'>
           { store.entries.map((entry, i) =>

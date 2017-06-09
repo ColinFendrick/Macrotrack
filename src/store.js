@@ -190,7 +190,8 @@ class Store {
       'Lunch': 'none',
       'Dinner': 'none',
       'Snack': 'none'
-    }
+    },
+    'custom': 'none'
   }
 
   // More display information

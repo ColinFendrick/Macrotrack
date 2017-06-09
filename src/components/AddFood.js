@@ -33,6 +33,7 @@ class AddFood extends Component {
   render () {
     return <div className='AddFood' style={{'display': store.display.add}} >
       <div className='add-window'>
+        {this.props.meal}
         <div className='add-inputs'>
           <div className='add-input-indiv'>
             Calories:

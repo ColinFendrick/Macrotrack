@@ -8,6 +8,7 @@ const Filters = () => (
   <div className='DropDownMenu'>
     <div className='filters'>
       <Toggle
+        style={{'width': '300px'}}
         defaultToggled={store.toggle}
         label='Show only foods within budget'
         // Changes the toggle boolean in store
