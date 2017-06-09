@@ -5,11 +5,11 @@ import { FlatButton } from 'material-ui'
 
 class AddFood extends Component {
   state = {
-    'Name': 'Calories',
-    'nf_calories': 0,
-    'nf_protein': 0,
-    'nf_total_carbohydrate': 0,
-    'nf_total_fat': 0
+    item_name: 'Calories',
+    nf_calories: 0,
+    nf_protein: 0,
+    nf_total_carbohydrate: 0,
+    nf_total_fat: 0
   }
 
   _change = e => {
@@ -18,9 +18,8 @@ class AddFood extends Component {
     })
   }
 
-  _update = () => {
-    console.log(this.state)
-    // store.log[this.props.meal] = {...this.state}
+  _submit = () => {
+    store.add(this.state, this.props.meal)
   }
 
   render () {
@@ -53,8 +52,8 @@ class AddFood extends Component {
           </div>
         </div>
         <div className='add-buttons'>
-          <FlatButton label='cancel' primary />
-          <FlatButton label='submit' primary onTouchTap={this._update} />
+          <FlatButton label='cancel' primary onTouchTap={() => store.mealToggle('add')} />
+          <FlatButton label='submit' primary onTouchTap={this._submit} />
         </div>
       </div>
     </div>

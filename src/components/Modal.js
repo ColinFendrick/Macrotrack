@@ -3,12 +3,10 @@ import { observer } from 'mobx-react'
 import store from '../store'
 import { TextField,
   FontIcon,
-  FloatingActionButton,
   GridList,
   GridTile,
   Dialog,
   FlatButton } from 'material-ui'
-import ContentAdd from 'material-ui/svg-icons/content/add'
 import { AddFood, Filters, FoodNutrients } from '.'
 import Images from './FoodImages'
 
@@ -94,10 +92,11 @@ class Modal extends Component {
           </GridList>
         </div>
         <div className='add-custom'>
-          <FloatingActionButton>
-            {/* Adds the food */}
-            <ContentAdd onTouchTap={() => store.mealToggle('add')} />
-          </FloatingActionButton>
+          {/* Custom calorie entry modal */}
+          <FlatButton
+            label='Add Custom Calorie Entry'
+            primary
+            onTouchTap={() => store.mealToggle('add')} />
         </div>
         <AddFood meal={meal} />
       </div>
@@ -105,7 +104,7 @@ class Modal extends Component {
         open={this.state.open}
         title={this.state.dialog}
         actions={this.action}
-        >
+      >
         <FoodNutrients food={this.state.food} />
       </Dialog>
     </div>

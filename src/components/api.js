@@ -6,7 +6,6 @@ const API_ID = 'fc3e322d'
 
 // Gets data from API
 const getData = () => {
-  const url = API_BASE
   let filters = {}
   if (store.toggle) {
     filters = {
@@ -54,7 +53,7 @@ const getData = () => {
 
   // Fetch data from API
   if (store.query && store.query.length > 0 && !store.scroll) {
-    window.fetch(url, {
+    window.fetch(API_BASE, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -62,7 +61,13 @@ const getData = () => {
         'appKey': API_KEY,
         'query': store.query,
         'offset': store.offset,
-        'fields': ['*'],
+        'fields': [
+          'item_name',
+          'nf_calories',
+          'nf_protein',
+          'nf_total_carbohydrate',
+          'nf_total_fat'
+        ],
         'limit': 50,
         'filters': filters,
         'sort': sort
@@ -73,7 +78,7 @@ const getData = () => {
 
   // Fetch API on scrolling to bottom of page
   if (store.scroll) {
-    window.fetch(url, {
+    window.fetch(API_BASE, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -81,7 +86,13 @@ const getData = () => {
         'appKey': API_KEY,
         'query': store.query,
         'offset': store.offset,
-        'fields': ['*'],
+        'fields': [
+          'item_name',
+          'nf_calories',
+          'nf_protein',
+          'nf_total_carbohydrate',
+          'nf_total_fat'
+        ],
         'limit': 50,
         'filters': filters,
         'sort': sort

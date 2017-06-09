@@ -153,6 +153,7 @@ class Store {
   // Add food
   @action add = (food, meal) => {
     let newLog = { ...this.log }
+    console.log(food, meal)
 
     newLog[meal] = {
       ...this.log[meal],
