@@ -37,25 +37,25 @@ class AddFood extends Component {
         <div className='add-inputs'>
           <div className='add-input-indiv'>
             Calories:
-            <input type='number' name='nf_calories'
+            <input type='number' name='nf_calories' min='0'
               onChange={this._change} value={this.state.nf_calories}
             />
           </div>
           <div className='add-input-indiv'>
             Protein (g):
-            <input type='number' name='nf_protein'
+            <input type='number' name='nf_protein' min='0'
               onChange={this._change} value={this.state.nf_protein}
             />
           </div>
           <div className='add-input-indiv'>
             Carbs (g):
-            <input type='number' name='nf_total_carbohydrate'
+            <input type='number' name='nf_total_carbohydrate' min='0'
               onChange={this._change} value={this.state.nf_total_carbohydrate}
             />
           </div>
           <div className='add-input-indiv'>
             Fats (g):
-            <input type='number' name='nf_total_fat'
+            <input type='number' name='nf_total_fat' min='0'
               onChange={this._change} value={this.state.nf_total_fat}
             />
           </div>
