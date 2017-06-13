@@ -2,7 +2,7 @@
  import { Donut } from 'rebass'
  import store from '../store'
  import { observer } from 'mobx-react'
- import { LogItem } from '.'
+ import { LogItem, DailyNutrients } from '.'
  import PieChart from 'react-svg-piechart'
 
  class Log extends Component {
@@ -53,7 +53,9 @@
              color={donutValue('calories') < 1 ? 'hsl(118, 24%, 45%)' : 'hsla(118, 24%, 45%, 0.5)'}
              size={256}
              value={donutValue('calories')} />
-           <div className='calories'>Daily Calories</div>
+           <div className='calories'>Daily Calories
+             <br />
+             {store.total.calories.toString().substring(0, 4)} of {store.daily.calories.toString().substring(0, 4)}</div>
          </div>
          <div>
            <br />
@@ -82,17 +84,26 @@
            {/* Three smaller donuts for individual macros */}
            <Donut color={donutValue('protein') ? 'rgb(179,57,81)' : 'rgba(179,57,81, 0.5)'}
              value={donutValue('protein')} />
-           <div className='donut-label protein'>Protein</div>
+           <div className='donut-label protein'>Protein
+             <br />
+             {store.total.protein.toString().substring(0, 4)}g of {store.daily.protein.toString().substring(0, 4)}g
+           </div>
          </div>
          <div>
            <Donut color={donutValue('carbs') < 1 ? 'hsla(212, 68%, 40%, 0.58)' : 'hsla(212, 68%, 40%, 0.2)'}
              value={donutValue('carbs')} />
-           <div className='donut-label carb'>Carbs</div>
+           <div className='donut-label carb'>Carbs
+            <br />
+             {store.total.carbs.toString().substring(0, 4)}g of {store.daily.carbs.toString().substring(0, 4)}g
+           </div>
          </div>
          <div>
            <Donut color={donutValue('fats') < 1 ? 'rgb(227,208,129)' : 'rgba(227,208,129, 0.5)'}
              value={donutValue('fats')} />
-           <div className='donut-label fat'>Fats</div>
+           <div className='donut-label fat'>Fats
+            <br />
+             {store.total.fats.toString().substring(0, 4)}g of {store.daily.fats.toString().substring(0, 4)}g
+          </div>
          </div>
        </div>
        <div className='daily-log'>
@@ -104,7 +115,6 @@
            <LogItem meal='Snack' />
          </div>
        </div>
-       <div className='weekly-log' />
      </div>
    }
 }
