@@ -68,7 +68,7 @@ const getData = () => {
           'nf_total_carbohydrate',
           'nf_total_fat'
         ],
-        'limit': 50,
+        'limit': 20,
         'filters': filters,
         'sort': sort
       })

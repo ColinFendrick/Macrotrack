@@ -8,7 +8,6 @@ import { TextField,
   Dialog,
   FlatButton } from 'material-ui'
 import { AddFood, Filters, FoodNutrients } from '.'
-import Images from './FoodImages'
 
 class Modal extends Component {
   state = {
@@ -78,13 +77,12 @@ class Modal extends Component {
             style={this.gridList}>
             {/* Map all the API data into grids */}
             {store.entries.map((entry, i) => {
-              const rNum = Math.floor(Math.random() * 23)
               return <GridTile
                 key={i}
                 title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 15)}
                 subtitle={entry.fields.item_description ? entry.fields.item_description : null}
                 onTouchTap={() => this._open(entry, meal)}>
-                <img src={Images[rNum]}
+                <img src='http://images2.fanpop.com/images/photos/5400000/Random-Food-random-5409310-1280-800.jpg'
                   alt=' No image' />
               </GridTile>
             }

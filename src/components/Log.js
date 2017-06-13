@@ -2,7 +2,7 @@
  import { Donut } from 'rebass'
  import store from '../store'
  import { observer } from 'mobx-react'
- import { LogItem, DailyNutrients } from '.'
+ import { LogItem } from '.'
  import PieChart from 'react-svg-piechart'
 
  class Log extends Component {
@@ -55,7 +55,8 @@
              value={donutValue('calories')} />
            <div className='calories'>Daily Calories
              <br />
-             {store.total.calories.toString().substring(0, 4)} of {store.daily.calories.toString().substring(0, 4)}</div>
+             {Math.trunc(store.total.calories)} of {Math.trunc(store.daily.calories)}
+           </div>
          </div>
          <div>
            <br />
@@ -86,7 +87,7 @@
              value={donutValue('protein')} />
            <div className='donut-label protein'>Protein
              <br />
-             {store.total.protein.toString().substring(0, 4)}g of {store.daily.protein.toString().substring(0, 4)}g
+             {Math.trunc(store.total.protein)}g of {Math.trunc(store.daily.protein)}g
            </div>
          </div>
          <div>
@@ -94,7 +95,7 @@
              value={donutValue('carbs')} />
            <div className='donut-label carb'>Carbs
             <br />
-             {store.total.carbs.toString().substring(0, 4)}g of {store.daily.carbs.toString().substring(0, 4)}g
+             {Math.trunc(store.total.carbs)}g of {Math.trunc(store.daily.carbs)}g
            </div>
          </div>
          <div>
@@ -102,8 +103,8 @@
              value={donutValue('fats')} />
            <div className='donut-label fat'>Fats
             <br />
-             {store.total.fats.toString().substring(0, 4)}g of {store.daily.fats.toString().substring(0, 4)}g
-          </div>
+             {Math.trunc(store.total.fats)}g of {Math.trunc(store.daily.fats)}g
+           </div>
          </div>
        </div>
        <div className='daily-log'>
