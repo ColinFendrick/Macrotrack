@@ -7,9 +7,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './components/App'
 
 import './styles/screen.scss'
-
 injectTapEventPlugin()
-
 const root = document.getElementById('root')
 
 const render = app => {
