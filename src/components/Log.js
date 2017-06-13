@@ -43,7 +43,6 @@
      const donutValue = macro => (
        1 - ((d[macro] - t[macro]) / d[macro])
      )
-
      return <div className='Log'>
        <div className='log-top'>
          <div className='log-cal'>
