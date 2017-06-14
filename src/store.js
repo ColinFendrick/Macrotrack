@@ -71,6 +71,12 @@ class Store {
         carbs = (calories / 2) / 4
         fats = (calories / 4) / 9
       }
+      if (this.profile.tempGoal === this.profile.goal) {
+        tCalories = calories
+        tProtein = protein
+        tFats = fats
+        tCarbs = carbs
+      }
 
       return {
         calories,

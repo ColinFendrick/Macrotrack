@@ -157,6 +157,14 @@ body {
 
         .DailyNutrients {
           display: none;
+
+          span {
+            color: hsl(127, 81%, 49%);
+          }
+
+          .red {
+            color: hsl(0, 81%, 52%);
+          }
         }
 
         &:hover {
