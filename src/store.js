@@ -14,7 +14,8 @@ class Store {
     'gender': 'male',
     'body': 1,
     'activity': 1.2,
-    'goal': 'lose'
+    'goal': 'lose',
+    'tempGoal': null
   }
 
   // Search query
@@ -34,6 +35,16 @@ class Store {
       let protein
       let carbs
       let fats
+      let tCalories
+      let tProtein
+      let tCarbs
+      let tFats
+      if (this.tempGoal === 'lose') {
+        tCalories = calories * 0.9
+        tProtein = ((calories / 2) / 4)
+        tCarbs = (calories / 10) / 4
+        tFats = (calories / (10 / 4)) / 9
+      }
       if (this.profile.goal === 'lose') {
         calories = calories * 0.9
         protein = ((calories / 2) / 4)
@@ -52,10 +63,14 @@ class Store {
       }
 
       return {
-        'calories': calories,
-        'protein': protein,
-        'carbs': carbs,
-        'fats': fats
+        calories,
+        protein,
+        carbs,
+        fats,
+        tCalories,
+        tFats,
+        tProtein,
+        tCarbs
       }
     }
 

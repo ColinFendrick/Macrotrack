@@ -53,12 +53,15 @@ class Profile extends Component {
   }
   // Temp goal change to show what other macros are required
   _hover = input => {
-    store.profile.prevGoal = store.profile.goal
-    store.profile.goal = input
+    store.profile.tempGoal = input
+    console.log(store.daily.tCalories)
+    // store.profile.prevGoal = store.profile.goal
+    // store.profile.goal = input
   }
 
   _unhover = () => {
-    store.profile.goal = store.profile.prevGoal
+    store.tempGoal = null
+    // store.profile.goal = store.profile.prevGoal
   }
   // Can't be born tomorrow
   disableFuture = date => {
@@ -142,19 +145,19 @@ class Profile extends Component {
             onMouseEnter={() => this._hover('lose')}
             onMouseLeave={() => this._unhover()}
             onTouchTap={() => this._click('lose')}>Lose Weight
-            <DailyNutrients />
+            <DailyNutrients temp />
           </Paper>
           <Paper className={cx('paper-goals', {selected: store.profile.goal === 'maintain'})}
             onMouseEnter={() => this._hover('maintain')}
             onMouseLeave={() => this._unhover()}
             onTouchTap={() => this._click('maintain')}>Sculpt and Maintain
-            <DailyNutrients />
+            <DailyNutrients temp />
           </Paper>
           <Paper className={cx('paper-goals', {selected: store.profile.goal === 'gain'})}
             onMouseEnter={() => this._hover('gain')}
             onMouseLeave={() => this._unhover()}
             onTouchTap={() => this._click('gain')}>Gain Muscle
-            <DailyNutrients />
+            <DailyNutrients temp />
           </Paper>
         </div>
       </div>
