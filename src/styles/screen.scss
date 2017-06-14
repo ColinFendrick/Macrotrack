@@ -161,17 +161,15 @@ body {
 
         &:hover {
           width: 300px;
+
+          .DailyNutrients {
+            display: inline;
+          }
         }
       }
 
       .selected {
         font-size: 1.38em;
-
-        &:hover {
-          .DailyNutrients {
-            display: inline;
-          }
-        }
       }
     }
   }

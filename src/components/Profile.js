@@ -49,18 +49,17 @@ class Profile extends Component {
   // Changes goals permanently
   _click = input => {
     store.profile.goal = input
-    store.profile.prevGoal = input
+    // store.profile.prevGoal = input
   }
   // Temp goal change to show what other macros are required
   _hover = input => {
     store.profile.tempGoal = input
-    console.log(store.daily.tCalories)
     // store.profile.prevGoal = store.profile.goal
     // store.profile.goal = input
   }
 
   _unhover = () => {
-    store.tempGoal = null
+    store.profile.tempGoal = null
     // store.profile.goal = store.profile.prevGoal
   }
   // Can't be born tomorrow

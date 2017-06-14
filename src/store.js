@@ -39,11 +39,21 @@ class Store {
       let tProtein
       let tCarbs
       let tFats
-      if (this.tempGoal === 'lose') {
+      if (this.profile.tempGoal === 'lose') {
         tCalories = calories * 0.9
         tProtein = ((calories / 2) / 4)
         tCarbs = (calories / 10) / 4
         tFats = (calories / (10 / 4)) / 9
+      } else if (this.profile.tempGoal === 'maintain') {
+        tCalories = calories * 1.15
+        tProtein = (calories / 3) / 4
+        tCarbs = (calories / 3) / 4
+        tFats = (calories / 3) / 9
+      } else {
+        tCalories = calories * 1.4
+        tProtein = (calories / 4) / 4
+        tCarbs = (calories / 2) / 4
+        tFats = (calories / 4) / 9
       }
       if (this.profile.goal === 'lose') {
         calories = calories * 0.9
@@ -72,6 +82,10 @@ class Store {
         tProtein,
         tCarbs
       }
+    }
+
+    @action TESTING_CHANGE_TEMP = input => {
+      this.profile.tempGoal = input
     }
 
   // Total used nutrients
