@@ -1,4 +1,5 @@
 import store from '../store'
+import {observer} from 'mobx-react'
 import { autorun } from 'mobx'
 const API_BASE = 'https://api.nutritionix.com/v1_1/search/'
 const API_KEY = '105450dabfa9aba34c9ace6b9248ef91'
@@ -60,7 +61,7 @@ const getData = () => {
         'appId': API_ID,
         'appKey': API_KEY,
         'query': store.query,
-        'offset': store.offset,
+        'offset': 5,
         'fields': [
           'item_name',
           'nf_calories',
@@ -73,7 +74,7 @@ const getData = () => {
         'sort': sort
       })
     }).then(r => r.json())
-  .then(r => { store.entries = r.hits })
+  .then(r => { store.entries = r.hits }).then(() => console.log(store.entries))
   }
 
   // Fetch API on scrolling to bottom of page
@@ -109,4 +110,4 @@ autorun(() => {
 
 window.getData = getData
 
-export { getData }
+export default observer(getData)
