@@ -71,7 +71,7 @@
              {data[0].value ? data.map((element, i) => (
                <div key={i} className='pie-info'>
                  <span className={`${element.tag}`}>{element.label}</span>
-                 <span className={`${element.tag}`}>{element.value} g</span>
+                 <span className={`${element.tag}`}>{Math.trunc(element.value)} g</span>
                  <span className={`${element.tag}`}>{Math.trunc(element.percent)}%</span>
                </div>
             )) : <div />}
