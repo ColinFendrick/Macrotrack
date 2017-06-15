@@ -57,11 +57,12 @@ class RecipeCard extends Component {
 
   render () {
     const { props: { entry } } = this
+    // const name = entry.fields.item_name.replace(/\W/g, ' ').split(' ')
 
     return <Card className='recipe-card'>
       <CardMedia
         // Truncate title
-        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ').substring(0, 30)} />}
+        overlay={<CardTitle title={entry.fields.item_name.replace(/\W/g, ' ')} />}
       >
         <img className='recipe-image' src='http://images2.fanpop.com/images/photos/5400000/Random-Food-random-5409310-1280-800.jpg' />
       </CardMedia>

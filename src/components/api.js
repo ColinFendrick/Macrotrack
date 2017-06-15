@@ -74,7 +74,7 @@ const getData = () => {
         'sort': sort
       })
     }).then(r => r.json())
-  .then(r => { store.entries = r.hits }).then(() => console.log(store.entries))
+  .then(r => { store.entries = r.hits })
   }
 
   // Fetch API on scrolling to bottom of page
@@ -110,4 +110,4 @@ autorun(() => {
 
 window.getData = getData
 
-export default observer(getData)
+export default observer({getData})
