@@ -102,7 +102,7 @@ class LogItem extends Component {
         <ContentAdd />
       </FloatingActionButton>
 
-      <Modal meal={this.props.meal} />
+      {store.display[meal] === 'flex' ? <Modal meal={this.props.meal} /> : <div /> }
     </div>
   }
 }
