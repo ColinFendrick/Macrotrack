@@ -6,14 +6,14 @@ class Store {
 
   // User stats
   @observable profile = {
-    'name': 'Colin',
-    'age': 26,
-    'date': 'Fri Jun 29 1990 00:00:00 GMT-0400 (EDT)',
-    'weight': 180,
-    'height': 75,
+    'name': '',
+    'age': 0,
+    'date': '',
+    'weight': 0,
+    'height': 60,
     'gender': 'male',
     'body': 1,
-    'activity': 1.5,
+    'activity': 1.2,
     'goal': 'maintain',
     'tempGoal': null
   }

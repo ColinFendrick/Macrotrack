@@ -6,13 +6,13 @@ import { observer } from 'mobx-react'
 import store from '../store'
 
 // If user scrolls to bottom, research and concat results to end so they can keep scrolling
-// window.onscroll = e => {
-//   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-//     store.offset += 50
-//     store.scroll = true
-//     getData()
-//   }
-// }
+window.onscroll = e => {
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    store.offset += 50
+    store.scroll = true
+    getData()
+  }
+}
 
 class Recipes extends Component {
   state: {
