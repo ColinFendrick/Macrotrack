@@ -81,16 +81,16 @@ class LogItem extends Component {
             </TableRowColumn>
             <TableRowColumn>Total</TableRowColumn>
             <TableRowColumn className='calories'>
-              {store.used.calories[meal]}
+              {Math.trunc(store.used.calories[meal])}
             </TableRowColumn>
             <TableRowColumn className='protein'>
-              {store.used.protein[meal]}
+              {Math.trunc(store.used.protein[meal])}
             </TableRowColumn>
             <TableRowColumn className='carb'>
-              {store.used.carbs[meal]}
+              {Math.trunc(store.used.carbs[meal])}
             </TableRowColumn>
             <TableRowColumn className='fat'>
-              {store.used.fats[meal]}
+              {Math.trunc(store.used.fats[meal])}
             </TableRowColumn>
           </TableRow>
         </TableFooter>

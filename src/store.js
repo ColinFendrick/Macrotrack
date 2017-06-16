@@ -20,6 +20,9 @@ class Store {
 
   // Search query
   @observable query = ''
+  @action _query = e => {
+    this.query = e
+  }
   // Offset of search
   @observable offset = 10
   // Has user reached bottom of search results?
