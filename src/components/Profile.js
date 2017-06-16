@@ -28,6 +28,7 @@ class Profile extends Component {
   }
 
   _age = (_, value) => {
+    console.log(value)
     store.profile.date = value
     let age = moment(value).fromNow().split(' ')[0]
     age !== 'a' ? store.profile.age = parseInt(age) : store.profile.age = 0
